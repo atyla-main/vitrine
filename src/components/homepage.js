@@ -15,7 +15,7 @@ class HomePage extends React.Component {
         <div className="middle">
           <h1>COMING SOON</h1>
           <hr />
-          <p className="remaining">{days} days left</p>
+          <p>{days} days left</p>
         </div>
         <div className="bottomRight">
           <input type="text" placeholder="Newsletter" />
