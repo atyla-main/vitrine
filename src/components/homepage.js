@@ -17,6 +17,10 @@ class HomePage extends React.Component {
           <hr />
           <p className="remaining">{days} days left</p>
         </div>
+        <div className="bottomRight">
+          <input type="text" placeholder="Newsletter" />
+          <button type="submit">Submit</button>
+        </div>
       </div>
     );
   }
