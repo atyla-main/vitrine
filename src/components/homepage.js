@@ -1,4 +1,6 @@
 import React from 'react';
+import i18n from '../services/i18n';
+
 
 var countDownDate = new Date('Jun 30, 2018 20:00:00').getTime();
 var now = new Date().getTime();
@@ -34,31 +36,31 @@ class HomePage extends React.Component {
     .then(res => {
       if (res.name && res.name === 'SequelizeValidationError') {
         this.setState({
-          response: 'Please verify the email!'});
+          response: i18n.t('homepage.emailError')});
       } else {
         this.setState({
-          response: 'Thank you! We will keep you informed!'});
+          response: i18n.t('homepage.emailSuccess')});
       }
     })
     .catch(err => {
-      this.setState({ response: 'Please verify the email!' });
+      this.setState({ response: i18n.t('homepage.emailError')});
     });
   }
 
   render() {
     return (
-      <div className="bgImg">
-        <div className="topLeft">
+      <div className='bgImg'>
+        <div className='topLeft'>
           <p>atyla</p>
         </div>
-        <div className="middle">
+        <div className='middle'>
           <h1>COMING SOON</h1>
           <hr />
           <p>{days} days left</p>
         </div>
           <form onSubmit={this.postEmail}>
-            <p className="bottomRightText">{this.state.response}</p>
-            <div className="bottomRight">
+            <p className='bottomRightText'>{this.state.response}</p>
+            <div className='bottomRight'>
               <input ref={(email) => this.email = email} placeholder='Email' type='text' name='email'/><br />
               <button type='Submit'>Newsletter</button>
             </div>
