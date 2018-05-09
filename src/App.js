@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
+import Footer from './components/footer/Footer';
+import Newsletter from './components/newsletter/Newsletter';
 
 class App extends Component {
   render() {
@@ -29,6 +31,8 @@ class App extends Component {
             </p>
           </Grid>
         </Jumbotron>
+        <Newsletter />
+        <Footer />
       </div>
     );
   }
