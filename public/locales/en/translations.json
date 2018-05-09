@@ -2,5 +2,8 @@
   "homepage": {
     "emailError": "Please verify the email!",
     "emailSuccess": "Thank you! We will keep you informed!"
+  },
+  "newsletter": {
+    "placeholder": "Enter Email to Receive weekly Updates about the hottest upcoming Icos"
   }
 }

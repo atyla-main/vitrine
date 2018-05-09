@@ -1,0 +1,52 @@
+.newsletter {
+  align-items: center;
+  border-top: 2px solid $color-chambray;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+.newsletter-button {
+  background: red;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: unset;
+
+  @include sm {
+    margin-right: auto;
+  }
+
+  &:hover {
+    background-color: red;
+  }
+
+  &:active {
+    background-color: red;
+  }
+
+  &:focus {
+    background-color: red;
+  }
+}
+
+.newsletter-input {
+  width: 500px;
+  border: 2px solid red;
+  height: 40px;
+  margin-left: 10px;
+
+  @include sm {
+    margin-left: auto;
+  }
+
+  &.mod-error {
+    color: red;
+  }
+
+  &.mod-sucess {
+    color: green;
+  }
+}

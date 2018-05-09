@@ -2,5 +2,8 @@
   "homepage": {
     "emailError": "Merci de vérifier l'email!",
     "emailSuccess": "Merci! Nous vous tiendrons informé!"
+  },
+  "newsletter": {
+    "placeholder": "Entrez votre email pour recevoir des mises à jour sur les Icos à venir"
   }
 }
