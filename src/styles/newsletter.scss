@@ -33,12 +33,13 @@
 }
 
 .newsletter-input {
-  width: 500px;
+  width: 180px;
   border: 2px solid red;
   height: 40px;
   margin-left: 10px;
 
   @include sm {
+    width: 500px;
     margin-left: auto;
   }
 
