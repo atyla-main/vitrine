@@ -1,4 +1,6 @@
 import React from 'react';
+import Menu from './menu';
+import '../styles/menu.css';
 
 var countDownDate = new Date('Jun 30, 2018 20:00:00').getTime();
 var now = new Date().getTime();
@@ -21,33 +23,37 @@ class HomePage extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       },
       body: JSON.stringify({
-        'data': {
-          'attributes': {
-            'email': `${this.email.value}`
+        data: {
+          attributes: {
+            email: `${this.email.value}`
           }
         }
       })
-    }).then(res => res.json())
-    .then(res => {
-      if (res.name && res.name === 'SequelizeValidationError') {
-        this.setState({
-          response: 'Please verify the email!'});
-      } else {
-        this.setState({
-          response: 'Thank you! We will keep you informed!'});
-      }
     })
-    .catch(err => {
-      this.setState({ response: 'Please verify the email!' });
-    });
+      .then(res => res.json())
+      .then(res => {
+        if (res.name && res.name === 'SequelizeValidationError') {
+          this.setState({
+            response: 'Please verify the email!'
+          });
+        } else {
+          this.setState({
+            response: 'Thank you! We will keep you informed!'
+          });
+        }
+      })
+      .catch(err => {
+        this.setState({ response: 'Please verify the email!' });
+      });
   }
-
   render() {
     return (
       <div className="bgImg">
+        <input type="checkbox" id="toggle" />
+        <Menu />
         <div className="topLeft">
           <p>atyla</p>
         </div>
@@ -56,13 +62,19 @@ class HomePage extends React.Component {
           <hr />
           <p>{days} days left</p>
         </div>
-          <form onSubmit={this.postEmail}>
-            <p className="bottomRightText">{this.state.response}</p>
-            <div className="bottomRight">
-              <input ref={(email) => this.email = email} placeholder='Email' type='text' name='email'/><br />
-              <button type='Submit'>Newsletter</button>
-            </div>
-          </form>
+        <form onSubmit={this.postEmail}>
+          <p className="bottomRightText">{this.state.response}</p>
+          <div className="bottomRight">
+            <input
+              ref={email => (this.email = email)}
+              placeholder="Email"
+              type="text"
+              name="email"
+            />
+            <br />
+            <button type="Submit">Newsletter</button>
+          </div>
+        </form>
       </div>
     );
   }
