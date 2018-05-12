@@ -5,5 +5,20 @@
   },
   "newsletter": {
     "placeholder": "Enter Email to Receive weekly Updates about the hottest upcoming Icos"
+  },
+  "login": {
+    "title": "Sign in",
+    "username": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password"
+    },
+    "button": "Submit",
+    "error": "Something went wrong. Please reload the page.",
+    "userNotFound": "No such user found.",
+    "errorInformation": "Wrong email or password."
   }
 }
