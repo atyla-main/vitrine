@@ -5,5 +5,20 @@
   },
   "newsletter": {
     "placeholder": "Entrez votre email pour recevoir des mises à jour sur les Icos à venir"
+  },
+  "login": {
+    "title": "Se connecter",
+    "username": {
+      "label": "Email",
+      "placeholder": "Entrer votre email"
+    },
+    "password": {
+      "label": "Mot de passe",
+      "placeholder": "Entrer votre mot de passe"
+    },
+    "button": "Soumettre",
+    "error": "Une erreur s'est produite. Veuillez recharger la page.",
+    "userNotFound": "Aucun utilisateur trouvé.",
+    "errorInformation": "Mauvais email ou mot de passe."
   }
 }
