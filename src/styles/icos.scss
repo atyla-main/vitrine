@@ -1,0 +1,90 @@
+.icos {
+  margin: 100px 20px 0 20px;
+  max-width: 100%;
+
+  @include sm {
+    margin: 100px 20px 0 20px;
+    max-width: 100%;
+  }
+
+  @include lg {
+    margin: 100px auto 0 auto;
+    max-width: 1170px;
+  }
+}
+
+.icos-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  @include sm {
+    flex-direction: inherit;
+  }
+}
+
+.icos-card {
+  width: 200px;
+  height: 200px;
+  border: 2px solid $color-chambray;
+  margin-bottom: 20px;
+  flex: 0 1 calc(75% - 1em);
+
+  @include sm {
+    flex: 0 1 calc(50% - 1em);
+  }
+
+  @include lg {
+    flex: 0 1 calc(25% - 1em);
+  }
+}
+
+.icos-cardHeader {
+  color: red;
+  font-size: 20px;
+  font-weight: 200;
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icos-cardContent {
+  height: 110px;
+  margin: 0 5px 0 5px;
+}
+
+.icos-cardFooter {
+  text-align: center;
+}
+
+.icos-cardTitle {
+  color: red;
+}
+
+.icos-cardButton {
+  background: red;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    background-color: red;
+  }
+
+  &:active {
+    background-color: red;
+  }
+
+  &:focus:active {
+    background-color: red;
+  }
+}
+
+.icos-cardContentText {
+  height: 60px;
+  overflow: scroll;
+  text-overflow: ellipsis;
+}
