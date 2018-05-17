@@ -1,0 +1,30 @@
+.atylaNavBar {
+
+}
+
+.atylaNavBar-navLinks {
+  text-align: right;
+  padding-top: 15px;
+}
+
+.atylaNavBar-activeLink {
+  margin-right: 10px;
+
+  &.mod-last {
+    margin-right: 0;
+  }
+}
+
+.atylaNavBar-normalLink {
+  margin-right: 10px;
+
+  &.mod-last {
+    margin-right: 0;
+  }
+}
+
+.navbar-default {
+  .navbar-brand {
+     color: red;
+  }
+}
