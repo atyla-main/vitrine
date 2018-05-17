@@ -20,5 +20,15 @@
     "error": "Une erreur s'est produite. Veuillez recharger la page.",
     "userNotFound": "Aucun utilisateur trouvé.",
     "errorInformation": "Mauvais email ou mot de passe."
+  },
+  "ico": {
+    "informations": "Informations",
+    "labels": {
+      "name": "Nom:",
+      "link": "Lien:",
+      "blockchain": "Blockchain:",
+      "descriptionEn": "Description (En):",
+      "descriptionFr": "Description (Fr):"
+    }
   }
 }

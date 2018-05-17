@@ -5,6 +5,7 @@ import NotFound from '../components/not-found/not-found';
 import HomePage from '../components/homepage';
 import Login from '../components/login/Login';
 import Icos from '../components/icos/Icos';
+import Ico from '../components/ico/Ico';
 import Auth from '../services/Auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -70,6 +71,7 @@ class AtylaRouter extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <Switch>
+          <Route path="/icos/:id" component={Ico} />
           <Route exact path='/icos' component={Icos} />
           <Route exact path='/' component={HomePage} />
           <Route exact path='/login' component={Login} />
