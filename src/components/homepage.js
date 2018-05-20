@@ -49,11 +49,8 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div className='bgImg'>
-        <div className='topLeft'>
-          <p>atyla</p>
-        </div>
-        <div className='middle'>
+      <div>
+        <div className="middle">
           <h1>COMING SOON</h1>
           <hr />
           <p>{days} days left</p>
