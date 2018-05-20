@@ -1,0 +1,35 @@
+.footer {
+  border-top: 2px solid $color-chambray;
+  background-color: $color-linkWater;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-container {
+  padding-top: 20px;
+  text-align: center;
+  max-width: 300px;
+
+  @include sm {
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+.footer-element {
+  padding-top: 10px;
+}
+
+.footer-elementTitle {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.footer-link {
+  display: block;
+  text-decoration: none;
+}
+
+.footer-credentials {
+  text-align: center;
+}
