@@ -30,5 +30,14 @@
       "descriptionEn": "Description (En):",
       "descriptionFr": "Description (Fr):"
     }
+  },
+  "user": {
+    "informations": "Informations",
+    "labels": {
+      "email": "Email:",
+      "firstName": "First name:",
+      "lastName": "Last name:",
+      "token": "Token:"
+    }
   }
 }
