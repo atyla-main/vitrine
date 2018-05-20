@@ -1,0 +1,89 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+$color-chambray: #31538f;
+
+.login {
+  display: table;
+  margin: 0 auto;
+}
+
+.login-container {
+  background-color: white;
+  display: block;
+  height: 362px;
+  width: 300px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+
+  @include sm {
+    width: 455px;
+  }
+}
+
+.login-form {
+  margin: 0 20px 0 20px;
+}
+
+.login-header {
+  position: relative;
+  padding-top: 20px;
+  margin: 20px 20px 20px 20px;
+  font-size: 30px;
+  font-weight: 200;
+  border-bottom: 1px solid gray;
+  line-height: 1.7;
+}
+
+.login-label {
+  display: grid;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  background-image: none;
+  background-color: black;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  margin-bottom: 25px;
+
+  &:hover {
+    background-color: black;
+  }
+
+  &:active {
+    background-color: black;
+  }
+
+  &:focus:active {
+    background-color: black;
+  }
+
+  &:focus {
+    background-color: black;
+  }
+}
+
+.login-inputs {
+  margin-bottom: 40px;
+}
+
+.login-errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
