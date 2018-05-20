@@ -1,0 +1,54 @@
+.ico {
+}
+
+.ico-headerBar {
+  border-bottom: 1px solid black;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.ico-title {
+  padding-top: 10px;
+  margin: auto;
+  display: flex;
+  max-width: 1170px;
+  font-size: 40px;
+  font-weight: 200;
+  color: red;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ico-card {
+  max-width: 1170px;
+  border: 1px solid black;
+  padding: 20px;
+  font-size: 15px;
+  margin: 0 20px 50px 20px;
+
+  @include lg {
+    margin: 0 auto 50px auto;
+  }
+}
+
+.ico-form {
+  display: grid;
+}
+
+.ico-cardTitle {
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.ico-cardInput {
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  border: 1px solid #cfd7d8;
+}
+
+.ico-cardLabel {
+  font-weight: 200;
+  margin-bottom: 20px;
+}
