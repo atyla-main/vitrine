@@ -20,5 +20,15 @@
     "error": "Something went wrong. Please reload the page.",
     "userNotFound": "No such user found.",
     "errorInformation": "Wrong email or password."
+  },
+  "ico": {
+    "informations": "Informations",
+    "labels": {
+      "name": "Name:",
+      "link": "Link:",
+      "blockchain": "Blockchain:",
+      "descriptionEn": "Description (En):",
+      "descriptionFr": "Description (Fr):"
+    }
   }
 }
