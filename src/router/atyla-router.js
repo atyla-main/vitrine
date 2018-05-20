@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import NotFound from '../components/not-found/not-found';
 import HomePage from '../components/homepage';
 import Login from '../components/login/Login';
+import Icos from '../components/icos/Icos';
 import Auth from '../services/Auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -61,6 +62,7 @@ class AtylaRouter extends React.Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse className="atylaNavBar-navLinks">
+            <NavLink to="/icos" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Icos</NavLink>
             <NavLink to="/login" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Login</NavLink>
             <NavLink to="/protected" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Protected</NavLink>
             <NavLink to="/logout" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Logout</NavLink>
@@ -68,8 +70,9 @@ class AtylaRouter extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <Switch>
-          <Route exact path='/' component={HomePage}/>
-          <Route exact path='/login' component={Login}/>
+          <Route exact path='/icos' component={Icos} />
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/login' component={Login} />
           <PrivateRoute path="/protected" component={NotFound} />
           <LogOut path="/logout" component={LogOut} />
           <Route component={NotFound}/>

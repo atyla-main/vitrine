@@ -1,14 +1,32 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+$color-chambray: #31538f;
+$color-linkWater: #d8e2f3;
+
 .icos {
-  margin: 100px 20px 0 20px;
+  margin: 50px 20px 20px 20px;
   max-width: 100%;
 
   @include sm {
-    margin: 100px 20px 0 20px;
+    margin: 50px 20px 20px 20px;
     max-width: 100%;
   }
 
   @include lg {
-    margin: 100px auto 0 auto;
+    margin: 50px auto 20px auto;
     max-width: 1170px;
   }
 }

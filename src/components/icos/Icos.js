@@ -1,9 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
-
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI2MzM5NzE3LCJleHAiOjE1MjYzNDMzMTd9.BcjDptv6OUQPAx-KgRcFAEjrdaqBDp8IBMfxn2fOPt0'
 
 class Icos extends React.Component {
   constructor(props) {
@@ -15,15 +12,17 @@ class Icos extends React.Component {
   }
 
   async componentDidMount() {
-    await fetch(`${process.env.REACT_APP_APIV1_URL}api/icos`, {
+    await fetch(`${process.env.REACT_APP_APIV1_URL}icos`, {
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `JWT ${token}`
+        'Accept': 'application/json'
       }}).then(res => res.json())
       .then(data => {
         this.setState({ icos: data })
       })
+      .catch(err => {
+        window.location.href = '/';
+      });
   }
 
   render()  {
@@ -33,7 +32,7 @@ class Icos extends React.Component {
           (t, { i18n }) => (
             <div className="icos">
               <div className="icos-cards">
-                {this.state.icos.data.map(ico => {
+                {this.state.icos.data && this.state.icos.data.map(ico => {
                   return (
                     <div key={ico.id} className="icos-card">
                       <div className="icos-cardHeader">
