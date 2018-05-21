@@ -3,28 +3,34 @@
 }
 
 .atylaNavBar-navLinks {
-  text-align: right;
-  padding-top: 15px;
+  position: absolute !important;
+  text-align: right !important;
+  padding-top: 15px !important;
+  right: 3% !important;
+  font-size: 16px;
 }
 
 .atylaNavBar-activeLink {
-  margin-right: 10px;
-
+  color: black !important;
+  font-family: "Courier New", Courier, monospace !important;
+  text-decoration: underline red !important;
   &.mod-last {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 }
 
 .atylaNavBar-normalLink {
-  margin-right: 10px;
-
+  margin-right: 20px !important;
+  color: black !important;
+  font-family: "Courier New", Courier, monospace !important;
   &.mod-last {
-    margin-right: 0;
+    margin-right: 0% !important;
   }
 }
 
 .navbar-default {
-  .navbar-brand {
+  navbar-brand {
      color: red;
   }
+  margin-bottom: 0px;
 }

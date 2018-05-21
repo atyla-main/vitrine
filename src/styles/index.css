@@ -1,79 +1,128 @@
-body, html {
-  height: 100%;
-  margin: 0; }
+body,
+html {
+  margin: 0;
+}
 
-.bgImg:last-of-type {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../background.jpeg");
-  background-size: cover; }
-
-.bgImg {
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 25px; }
-
-.bottomRight {
-  position: absolute;
-  bottom: 5%;
-  right: 2%;
-  display: flex; }
-
-.bottomRightText {
-  position: absolute;
-  bottom: 15%;
-  right: 2%; }
-
-.bottomRight > input {
-  box-sizing: border-box;
-  background-color: #00000099;
-  font-size: 20px;
-  padding: 5px;
-  border: 5px solid red;
-  border-width: 0 0 5px 0;
-  outline: none;
-  color: white; }
-
-.bottomRight > button {
-  font-size: 15px;
-  border: none;
-  color: white;
-  background-color: red;
-  margin-top: 10px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 2px; }
-
-.bottomRight > button:disabled {
-  background-color: #eceff1;
-  cursor: not-allowed;
-  color: white; }
+.homepageContainer {
+  min-height: 100vh;
+  position: relative;
+}
 
 h1 {
-  padding: 0 0 10px;
-  font-size: 60px; }
+  margin: 0px 0px 0px 0px;
+  font-size: 60px;
+}
 
 hr {
   margin: auto;
-  width: 40%; }
-
-.middle {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  text-shadow: 0 0 6px #000000; }
-
-.middle > p {
-  font-size: 24px;
-  padding-top: 30px; }
+  width: 40%;
+}
 
 .topLeft {
   position: absolute;
-  color: red;
+  color: red !important;
   top: 2%;
-  left: 16px; }
+  font-size: 25px;
+  left: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.homepageBody {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  min-height: 63vh;
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 2px #000000;
+  background-color: #4472c5;
+  font-size: 24px;
+}
+.homepageBody p {
+  margin: 0% 15% 0% 15%;
+}
+.homepageBody div {
+  width: 100%;
+  display: black;
+}
+@media (min-width: 768px) {
+  .homepageBody div {
+    display: inline-block;
+    width: 50%;
+  }
+}
+.homepageBody h2 {
+  padding: 0 0 0 0;
+  margin: 0% 15% 0% 15%;
+  font-size: 45px;
+  font-weight: bold;
+}
+.homepageBody ul {
+  padding: 0 0 0 0;
+  margin: 0 0 10% 27%;
+}
+
+.leftSide {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .leftSide {
+    float: left;
+    width: 50%;
+  }
+}
+
+.rightSide {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .rightSide {
+    float: right;
+    width: 50%;
+  }
+}
+
+.searchIcos {
+  border: 2px solid red;
+  height: 38px;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  padding-left: 3px;
+  color: black;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .searchIcos {
+    width: 40%;
+    margin-left: 17%;
+  }
+}
+.searchIcos.mod-error {
+  color: red;
+}
+.searchIcos.mod-sucess {
+  color: green;
+}
+
+.icos-button {
+  background: red;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+@media (min-width: 768px) {
+  .icos-button {
+    margin-right: auto;
+  }
+}
+.icos-button:hover {
+  background-color: red;
+}
+.icos-button:active {
+  background-color: red;
+}
+.icos-button:focus {
+  background-color: red;
+}

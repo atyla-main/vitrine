@@ -17,8 +17,8 @@ $color-chambray: #31538f;
 $color-linkWater: #d8e2f3;
 
 .newsletter {
-  align-items: center;
   border-top: 2px solid $color-chambray;
+  align-items: center;
   display: flex;
   justify-content: center;
   padding: 20px 0 20px 0;
@@ -31,7 +31,7 @@ $color-linkWater: #d8e2f3;
   border-radius: 0;
   height: 40px;
   margin-right: 10px;
-  vertical-align: unset;
+  vertical-align: top;
 
   @include sm {
     margin-right: auto;
