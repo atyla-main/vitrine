@@ -1,0 +1,249 @@
+.atylaNavBar-navLinks {
+  position: absolute !important;
+  text-align: right !important;
+  padding-top: 15px !important;
+  right: 3% !important;
+  font-size: 16px;
+}
+
+.atylaNavBar-activeLink {
+  color: black !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  text-decoration: underline red !important;
+}
+.atylaNavBar-activeLink.mod-last {
+  margin-right: 0 !important;
+}
+
+.atylaNavBar-normalLink {
+  margin-right: 20px !important;
+  color: black !important;
+  font-family: 'Courier New', Courier, monospace !important;
+}
+.atylaNavBar-normalLink.mod-last {
+  margin-right: 0% !important;
+}
+
+.navbar-default {
+  margin-bottom: 0px;
+}
+.navbar-default navbar-brand {
+  color: red;
+}
+
+.footer {
+  border-top: 2px solid #31538f;
+  background-color: #d8e2f3;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-container {
+  padding-top: 20px;
+  text-align: center;
+  max-width: 300px;
+}
+@media (min-width: 768px) {
+  .footer-container {
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+.footer-element {
+  padding-top: 10px;
+}
+
+.footer-elementTitle {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.footer-link {
+  display: block;
+  text-decoration: none;
+}
+
+.footer-credentials {
+  text-align: center;
+}
+
+.newsletter {
+  border-top: 2px solid #31538f;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+.newsletter-button {
+  background: red;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+@media (min-width: 768px) {
+  .newsletter-button {
+    margin-right: auto;
+  }
+}
+.newsletter-button:hover {
+  background-color: red;
+}
+.newsletter-button:active {
+  background-color: red;
+}
+.newsletter-button:focus {
+  background-color: red;
+}
+
+.newsletter-input {
+  width: 180px;
+  border: 2px solid red;
+  height: 40px;
+  margin-left: 10px;
+}
+@media (min-width: 768px) {
+  .newsletter-input {
+    width: 500px;
+    margin-left: auto;
+  }
+}
+.newsletter-input.mod-error {
+  color: red;
+}
+.newsletter-input.mod-sucess {
+  color: green;
+}
+
+body,
+html {
+  margin: 0;
+}
+
+.homepageContainer {
+  min-height: 100vh;
+  position: relative;
+}
+
+h1 {
+  margin: 0px 0px 0px 0px;
+  font-size: 60px;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
+}
+
+.topLeft {
+  position: absolute;
+  color: red !important;
+  top: 2%;
+  font-size: 25px;
+  left: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.homepageBody {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  min-height: 63vh;
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 2px #000000;
+  background-color: #4472c5;
+  font-size: 24px;
+}
+.homepageBody p {
+  margin: 0% 15% 0% 15%;
+}
+.homepageBody div {
+  width: 100%;
+  display: black;
+}
+@media (min-width: 768px) {
+  .homepageBody div {
+    display: inline-block;
+    width: 50%;
+  }
+}
+.homepageBody h2 {
+  padding: 0 0 0 0;
+  margin: 0% 15% 0% 15%;
+  font-size: 45px;
+  font-weight: bold;
+}
+.homepageBody ul {
+  padding: 0 0 0 0;
+  margin: 0 0 10% 27%;
+}
+
+.leftSide {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .leftSide {
+    float: left;
+    width: 50%;
+  }
+}
+
+.rightSide {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .rightSide {
+    float: right;
+    width: 50%;
+  }
+}
+
+.searchIcos {
+  border: 2px solid red;
+  height: 38px;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  padding-left: 3px;
+  color: black;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .searchIcos {
+    width: 40%;
+    margin-left: 17%;
+  }
+}
+.searchIcos.mod-error {
+  color: red;
+}
+.searchIcos.mod-sucess {
+  color: green;
+}
+
+.icos-button {
+  background: red;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+@media (min-width: 768px) {
+  .icos-button {
+    margin-right: auto;
+  }
+}
+.icos-button:hover {
+  background-color: red;
+}
+.icos-button:active {
+  background-color: red;
+}
+.icos-button:focus {
+  background-color: red;
+}
