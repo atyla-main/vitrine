@@ -1,11 +1,6 @@
 import React from 'react';
 import i18n from '../services/i18n';
-
-
-var countDownDate = new Date('Jun 30, 2018 20:00:00').getTime();
-var now = new Date().getTime();
-var distance = countDownDate - now;
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+import { Button } from 'react-bootstrap';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -14,54 +9,48 @@ class HomePage extends React.Component {
     this.state = {
       response: ''
     };
-    this.postEmail = this.postEmail.bind(this);
+    this.getIcos = this.getIcos.bind(this);
   }
-
-  postEmail(event) {
+  getIcos(event) {
     event.preventDefault();
-    fetch(`${process.env.REACT_APP_APIV1_URL}newsletters`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        'data': {
-          'attributes': {
-            'email': `${this.email.value}`
-          }
+    fetch(
+      `${process.env.REACT_APP_APIV1_URL}icos?search=${this.search.value}`,
+      {
+        method: 'Get',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
         }
-      })
-    }).then(res => res.json())
-    .then(res => {
-      if (res.name && res.name === 'SequelizeValidationError') {
-        this.setState({
-          response: i18n.t('homepage.emailError')});
-      } else {
-        this.setState({
-          response: i18n.t('homepage.emailSuccess')});
       }
-    })
-    .catch(err => {
-      this.setState({ response: i18n.t('homepage.emailError')});
-    });
+    ).then(res => res.json());
   }
-
   render() {
     return (
       <div>
-        <div className="middle">
-          <h1>COMING SOON</h1>
-          <hr />
-          <p>{days} days left</p>
+        <div className="homepageBody">
+          <div className="leftSide">
+            <h2>The easiest way to participate in ICO's</h2>
+            <br />
+            <ul>
+              <li>Browse projects</li>
+              <li>Pay those you stand for</li>
+              <li>Get your token</li>
+            </ul>
+            <form onSubmit={this.getIcos}>
+              <input
+                ref={search => (this.search = search)}
+                className="searchIcos"
+                placeholder="Search an ICO"
+                name="search"
+              />
+              <Button bsStyle="danger" type="submit" className="icos-button">
+                Search
+              </Button>
+              <div className="resIcos">{this.res}</div>
+            </form>
+          </div>
+          <div className="rightSide" />
         </div>
-          <form onSubmit={this.postEmail}>
-            <p className='bottomRightText'>{this.state.response}</p>
-            <div className='bottomRight'>
-              <input ref={(email) => this.email = email} placeholder='Email' type='text' name='email'/><br />
-              <button type='Submit'>Newsletter</button>
-            </div>
-          </form>
       </div>
     );
   }

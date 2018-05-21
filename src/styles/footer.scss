@@ -19,8 +19,8 @@ $color-linkWater: #d8e2f3;
 .footer {
   border-top: 2px solid $color-chambray;
   background-color: $color-linkWater;
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  width:100%;
 }
 
 .footer-container {
