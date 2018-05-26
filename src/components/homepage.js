@@ -1,8 +1,6 @@
 import React from 'react';
-import i18n from '../services/i18n';
 import { Button } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Async } from 'react-select';
 import CustomAsync from './custom-async/Custom-async';
 
 class HomePage extends React.Component {
