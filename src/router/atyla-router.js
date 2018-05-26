@@ -8,6 +8,8 @@ import Icos from '../components/icos/Icos';
 import Ico from '../components/ico/Ico';
 import Auth from '../services/Auth';
 import User from '../components/user/User';
+import HowItWorks from '../components/how-it-works/How-it-works';
+import AboutUs from '../components/about-us/About-us';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -75,7 +77,7 @@ class AtylaRouter extends React.Component {
                 activeClassName="atylaNavBar-activeLink"
                 exact
               >
-                Explore ICO's
+                Explore ICOs
               </NavLink>
               <NavLink
                 to="/howitworks"
@@ -83,7 +85,7 @@ class AtylaRouter extends React.Component {
                 activeClassName="atylaNavBar-activeLink"
                 exact
               >
-                How it works
+                How it works
               </NavLink>
               <NavLink
                 to="/about"
@@ -91,7 +93,7 @@ class AtylaRouter extends React.Component {
                 activeClassName="atylaNavBar-activeLink"
                 exact
               >
-                About us
+                About us
               </NavLink>
               <NavLink
                 to="/users/1"
@@ -116,16 +118,8 @@ class AtylaRouter extends React.Component {
           <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/users/:id" component={User} />
           <Route path="/icos/:id" component={Ico} />
-          <Route
-            exact
-            path="/howitworks"
-            component={HomePage} /*change {Homepage}*/
-          />
-          <Route
-            exact
-            path="/about"
-            component={HomePage} /*change {Homepage}*/
-          />
+          <Route exact path="/howitworks" component={HowItWorks} />
+          <Route exact path="/about" component={AboutUs} />
           <Route exact path="/icos" component={Icos} />
           <Route exact path="/login" component={Login} />
           <LogOut path="/logout" component={LogOut} />

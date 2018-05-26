@@ -31,6 +31,7 @@ hr {
 }
 
 .homepageBody {
+    display: flex;
     padding-top: 5%;
     padding-bottom: 5%;
     min-height: 63vh;
@@ -80,16 +81,9 @@ hr {
 
 .searchIcos {
     border: 2px solid red;
-    height: 38px;
-    margin-left: 10%;
-    margin-bottom: 10%;
-    padding-left: 3px;
+    height: 40px;
     color: black;
     font-size: 16px;
-    @include sm {
-    width: 40%;
-    margin-left: 17%;
-    }
 
     &.mod-error {
     color: red;
