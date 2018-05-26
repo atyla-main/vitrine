@@ -1,30 +1,59 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .atylaNavBar {
 
 }
 
 .atylaNavBar-navLinks {
-  text-align: right;
-  padding-top: 15px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute !important;
+  text-align: right !important;
+  top: 50px !important;
+  right: 3% !important;
+  font-size: 16px;
+
+  @include sm {
+    top: 15px !important;
+  }
 }
 
 .atylaNavBar-activeLink {
-  margin-right: 10px;
-
+  color: black !important;
+  font-family: "Courier New", Courier, monospace !important;
+  text-decoration: underline red !important;
   &.mod-last {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 }
 
 .atylaNavBar-normalLink {
-  margin-right: 10px;
-
+  margin-right: 20px !important;
+  color: black !important;
+  font-family: "Courier New", Courier, monospace !important;
   &.mod-last {
-    margin-right: 0;
+    margin-right: 0% !important;
   }
 }
 
 .navbar-default {
-  .navbar-brand {
+  navbar-brand {
      color: red;
   }
+  margin-bottom: 0px;
 }

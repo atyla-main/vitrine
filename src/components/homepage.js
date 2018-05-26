@@ -1,11 +1,7 @@
 import React from 'react';
-import i18n from '../services/i18n';
-
-
-var countDownDate = new Date('Jun 30, 2018 20:00:00').getTime();
-var now = new Date().getTime();
-var distance = countDownDate - now;
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+import { Button } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import CustomAsync from './custom-async/Custom-async';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -14,55 +10,131 @@ class HomePage extends React.Component {
     this.state = {
       response: ''
     };
-    this.postEmail = this.postEmail.bind(this);
+    this.getIcos = this.getIcos.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.gotoIco = this.gotoIco.bind(this);
   }
 
-  postEmail(event) {
-    event.preventDefault();
-    fetch(`${process.env.REACT_APP_APIV1_URL}newsletters`, {
-      method: 'POST',
+  getIcos(input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`${process.env.REACT_APP_APIV1_URL}icos?search=${input}`, {
+      method: 'Get',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        'data': {
-          'attributes': {
-            'email': `${this.email.value}`
-          }
-        }
-      })
-    }).then(res => res.json())
-    .then(res => {
-      if (res.name && res.name === 'SequelizeValidationError') {
-        this.setState({
-          response: i18n.t('homepage.emailError')});
-      } else {
-        this.setState({
-          response: i18n.t('homepage.emailSuccess')});
+        Accept: 'application/json'
       }
     })
-    .catch(err => {
-      this.setState({ response: i18n.t('homepage.emailError')});
+      .then(res => res.json())
+      .then(json => {
+        let options = [];
+        json.data.forEach(ico => {
+          options.push({ value: ico.id, label: ico.attributes.name });
+        });
+        return { options: options };
+      });
+  }
+
+  onChange(value) {
+    this.setState({
+      value: value
     });
+  }
+
+  gotoIco(value, event) {
+    window.location.href = `icos/${value.value}`;
   }
 
   render() {
     return (
-      <div>
-        <div className="middle">
-          <h1>COMING SOON</h1>
-          <hr />
-          <p>{days} days left</p>
-        </div>
-          <form onSubmit={this.postEmail}>
-            <p className='bottomRightText'>{this.state.response}</p>
-            <div className='bottomRight'>
-              <input ref={(email) => this.email = email} placeholder='Email' type='text' name='email'/><br />
-              <button type='Submit'>Newsletter</button>
+      <Grid>
+        <Row className="homepage-header">
+          <Col sm={6}>
+            <h2 className="homepage-sectionTitle">
+              The easiest way to participate in ICO s
+            </h2>
+            <br />
+            <ul>
+              <li>Browse projects</li>
+              <li>Pay those you stand for</li>
+              <li>Get your token</li>
+            </ul>
+          </Col>
+          <Col sm={6}>
+            <div className="homepage-calculator">
+              <p>Calculettes tokens</p>
+              <p>Page des workflow de paiement</p>
+              <Button
+                bsStyle="danger"
+                className="icos-button homepage-calculatorButton"
+              >
+                Buy now
+              </Button>
             </div>
-          </form>
-      </div>
+          </Col>
+        </Row>
+        <Row className="homepage-searchBar">
+          <CustomAsync
+            value={this.state.value}
+            onChange={this.onChange}
+            className="homepage-searchInput"
+            loadOptions={this.getIcos}
+            onValueClick={this.gotoIco}
+            placeholder="Search for an Ico…"
+          />
+        </Row>
+        <Row className="homepage-section">
+          <h2 className="homepage-sectionTitle">Advantages</h2>
+          <Grid className="homepage-advantages">
+            <Row className="homepage-advantagesRow">
+              <Col sm={4}>
+                <p>1. Simple</p>
+                <ul>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                </ul>
+              </Col>
+              <Col sm={4}>
+                <p>1. Compte unique</p>
+                <ul>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                </ul>
+              </Col>
+              <Col sm={4}>
+                <p>1. Anti-scam</p>
+                <ul>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                  <li>Xxxx</li>
+                </ul>
+              </Col>
+            </Row>
+          </Grid>
+        </Row>
+        <Row className="homepage-section">
+          <h2 className="homepage-sectionTitle">Presentation du produit</h2>
+          <div className="homepage-product">
+            <p>1. Teasing: How it works</p>
+            <p>2. Teasing: About us</p>
+          </div>
+        </Row>
+        <Row className="homepage-section">
+          <h2 className="homepage-sectionTitle">Social proof</h2>
+        </Row>
+        <Row className="homepage-section mod-last">
+          <Col sm={6}>
+            <h2>KPIS</h2>
+          </Col>
+          <Col sm={6}>
+            <h2>Twitter field</h2>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

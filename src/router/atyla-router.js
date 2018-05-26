@@ -8,6 +8,8 @@ import Icos from '../components/icos/Icos';
 import Ico from '../components/ico/Ico';
 import Auth from '../services/Auth';
 import User from '../components/user/User';
+import HowItWorks from '../components/how-it-works/How-it-works';
+import AboutUs from '../components/about-us/About-us';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -18,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: '/login',
             state: { from: props.location }
           }}
         />
@@ -30,18 +32,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const LogOut = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-      render={props => {
-        Auth.deauthenticateUser();
-        return (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    }
+    render={props => {
+      Auth.deauthenticateUser();
+      return (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: props.location }
+          }}
+        />
+      );
+    }}
   />
 );
 
@@ -49,8 +50,7 @@ class AtylaRouter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
@@ -59,25 +59,71 @@ class AtylaRouter extends React.Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              atyla
+              <div className="topLeft">atyla</div>
             </Navbar.Brand>
             <Navbar.Toggle />
+            <Navbar.Collapse className="atylaNavBar-navLinks">
+              <NavLink
+                to="/"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/icos"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                Explore ICOs
+              </NavLink>
+              <NavLink
+                to="/howitworks"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                How it works
+              </NavLink>
+              <NavLink
+                to="/about"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                About us
+              </NavLink>
+              <NavLink
+                to="/users/1"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                Account
+              </NavLink>
+              <NavLink
+                to="/logout"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink mod-last"
+                exact
+              >
+                Logout
+              </NavLink>
+            </Navbar.Collapse>
           </Navbar.Header>
-          <Navbar.Collapse className="atylaNavBar-navLinks">
-            <NavLink to="/users/1" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Account</NavLink>
-            <NavLink to="/icos" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Icos</NavLink>
-            <NavLink to="/logout" className="atylaNavBar-normalLink" activeClassName="atylaNavBar-activeLink" exact>Logout</NavLink>
-            <NavLink to="/" className="atylaNavBar-normalLink mod-last" activeClassName="atylaNavBar-activeLink mod-last" exact>Home</NavLink>
-          </Navbar.Collapse>
         </Navbar>
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/users/:id" component={User} />
           <Route path="/icos/:id" component={Ico} />
-          <Route exact path='/icos' component={Icos} />
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/login' component={Login} />
+          <Route exact path="/howitworks" component={HowItWorks} />
+          <Route exact path="/about" component={AboutUs} />
+          <Route exact path="/icos" component={Icos} />
+          <Route exact path="/login" component={Login} />
           <LogOut path="/logout" component={LogOut} />
-          <Route component={NotFound}/>
+          <Route component={NotFound} />
         </Switch>
       </div>
     );
