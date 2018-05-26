@@ -1,13 +1,36 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .atylaNavBar {
 
 }
 
 .atylaNavBar-navLinks {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
   position: absolute !important;
   text-align: right !important;
-  padding-top: 15px !important;
+  top: 50px !important;
   right: 3% !important;
   font-size: 16px;
+
+  @include sm {
+    top: 15px !important;
+  }
 }
 
 .atylaNavBar-activeLink {

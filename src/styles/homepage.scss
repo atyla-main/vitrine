@@ -1,0 +1,91 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+$color-chambray: #31538f;
+$color-linkWater: #d8e2f3;
+
+.homepage-header {
+  margin: 50px -15px 50px -15px;
+  border-bottom: 1px solid $color-chambray;
+}
+
+.homepage-calculator {
+  border: 1px solid $color-chambray;
+  height: 200px;
+  text-align: center;
+  font-size: 22px;
+  padding-top: 10px;
+  margin-bottom: 50px;
+
+  @include sm {
+    font-size: 22px;
+  }
+  @include md {
+    font-size: 30px;
+  }
+}
+
+.homepage-calculatorButton {
+  margin-top: 30px;
+}
+
+.homepage-searchBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.homepage-searchForm {
+  display: flex;
+}
+
+.homepage-searchInput {
+  width: 500px;
+}
+
+.homepage-searchButton {
+  width: 200px;
+}
+
+.homepage-section {
+  border-top: 1px solid $color-chambray;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.homepage-advantages {
+  position: relative;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-product {
+  text-align: left;
+  margin-left: 20px;
+
+  @include sm {
+    margin-left: 0px;
+  }
+}
+
+.homepage-advantagesRow {
+  width: 100%;
+}
+
+.homepage-sectionTitle {
+  margin-bottom: 50px;
+}
