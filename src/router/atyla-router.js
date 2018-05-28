@@ -106,6 +106,14 @@ class AtylaRouter extends React.Component {
                 Account
               </NavLink>
               <NavLink
+                to="/login"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                Sign-in
+              </NavLink>
+              <NavLink
                 to="/register"
                 className="atylaNavBar-normalLink"
                 activeClassName="atylaNavBar-activeLink"
