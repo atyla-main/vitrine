@@ -31,13 +31,29 @@
       "descriptionFr": "Description (Fr):"
     }
   },
+  "register": {
+    "error": "Les informations sont incorrectes!"
+  },
   "user": {
     "informations": "Informations",
     "labels": {
       "email": "Email:",
       "firstName": "Prénom:",
-      "lastName": "Nom de famille:",
-      "token": "Token:"
+      "lastName": "Nom de famille:",
+      "token": "Token:",
+      "password": "Mot de passe:",
+      "source": "Source:",
+      "gender": "Genre:",
+      "birthDate": "Date de naissance:",
+      "birthCity": "Lieu de naissance:",
+      "phone": "Téléphone:",
+      "citizenship": "Citoyenneté:",
+      "country": "Pays:",
+      "address": "Adresse:",
+      "zipCode": "Code postale:",
+      "city": "Ville:",
+      "state": "État:",
+      "optIn": "Recevoir les newsletters:"
     }
   }
 }

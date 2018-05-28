@@ -10,6 +10,8 @@ import Auth from '../services/Auth';
 import User from '../components/user/User';
 import HowItWorks from '../components/how-it-works/How-it-works';
 import AboutUs from '../components/about-us/About-us';
+import Register from '../components/register/Register';
+import RegisterValidation from '../components/register-validation/Register-validation';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -104,6 +106,14 @@ class AtylaRouter extends React.Component {
                 Account
               </NavLink>
               <NavLink
+                to="/register"
+                className="atylaNavBar-normalLink"
+                activeClassName="atylaNavBar-activeLink"
+                exact
+              >
+                Sign-up
+              </NavLink>
+              <NavLink
                 to="/logout"
                 className="atylaNavBar-normalLink"
                 activeClassName="atylaNavBar-activeLink mod-last"
@@ -123,6 +133,12 @@ class AtylaRouter extends React.Component {
           <Route exact path="/icos" component={Icos} />
           <Route exact path="/login" component={Login} />
           <LogOut path="/logout" component={LogOut} />
+          <Route exact path="/register" component={Register} />
+          <Route
+            exact
+            path="/register-validation"
+            component={RegisterValidation}
+          />
           <Route component={NotFound} />
         </Switch>
       </div>
