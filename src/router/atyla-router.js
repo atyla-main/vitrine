@@ -12,6 +12,7 @@ import HowItWorks from '../components/how-it-works/How-it-works';
 import AboutUs from '../components/about-us/About-us';
 import Register from '../components/register/Register';
 import RegisterValidation from '../components/register-validation/Register-validation';
+import EmailConfirmation from '../components/email-confirmation/Email-confirmation';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -146,6 +147,11 @@ class AtylaRouter extends React.Component {
             exact
             path="/register-validation"
             component={RegisterValidation}
+          />
+          <Route
+            exact
+            path="/sign-up/confirmation/:id"
+            component={EmailConfirmation}
           />
           <Route component={NotFound} />
         </Switch>

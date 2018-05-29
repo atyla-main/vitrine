@@ -40,7 +40,7 @@ class Register extends React.Component {
             address: `${this.address.value}`,
             zipCode: `${this.zipCode.value}`,
             city: `${this.city.value}`,
-            state: `${this.state.value}`,
+            state: `${this.userState.value}`,
             optIn: `${this.optIn.value}`
           }
         }
@@ -214,7 +214,7 @@ class Register extends React.Component {
                 <label className="ico-cardLabel">
                   {t('user.labels.state')}
                   <input
-                    ref={state => (this.state = state)}
+                    ref={state => (this.userState = state)}
                     placeholder=""
                     type="text"
                     className="ico-cardInput"
