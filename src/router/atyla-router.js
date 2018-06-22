@@ -14,6 +14,8 @@ import Register from '../components/register/Register';
 import RegisterValidation from '../components/register-validation/Register-validation';
 import EmailConfirmation from '../components/email-confirmation/Email-confirmation';
 import 'font-awesome/css/font-awesome.min.css';
+import PasswordForgotten from '../components/password-forgotten/Password-forgotten';
+import ResetPassword from '../components/reset-password/Reset-password';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -229,6 +231,12 @@ class AtylaRouter extends React.Component {
           <Route exact path="/about" component={AboutUs} />
           <Route exact path="/icos" component={Icos} />
           <Route exact path="/login" component={Login} />
+          <Route
+            exact
+            path="/password-forgotten"
+            component={PasswordForgotten}
+          />
+          <Route exact path="/reset-password/:id" component={ResetPassword} />
           <LogOut path="/logout" component={LogOut} />
           <Route exact path="/register" component={Register} />
           <Route
@@ -241,6 +249,7 @@ class AtylaRouter extends React.Component {
             path="/sign-up/confirmation/:id"
             component={EmailConfirmation}
           />
+          <Route exact path="/not-found" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </div>

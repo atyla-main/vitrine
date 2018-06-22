@@ -41,6 +41,15 @@ class HomePage extends React.Component {
     });
   }
 
+  componentDidMount() {
+    let script = document.createElement('script');
+
+    script.src = 'http://127.0.0.1:3300/javascripts/atyla.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+  }
+
   getIcos(input) {
     if (!input) {
       return Promise.resolve({ options: [] });
