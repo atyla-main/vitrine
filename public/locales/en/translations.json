@@ -55,5 +55,21 @@
       "state": "State:",
       "optIn": "Receive newsletters:"
     }
+  },
+  "passwordForgotten": {
+    "label": "Email",
+    "button": "Send password reset link",
+    "placeholder": "Your account email",
+    "title": "Forgot your password ?",
+    "validationMessage": "An email has been sent with a link to reset your password"
+  },
+  "resetPassword": {
+    "errorPassword": "Password did not match",
+    "label1": "Password",
+    "label2": "Verify password",
+    "button": "Reset your password",
+    "placeholder": "password",
+    "title": "Reset your password !",
+    "validationMessage": "Your password has been reset !"
   }
 }

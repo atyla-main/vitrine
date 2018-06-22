@@ -55,5 +55,21 @@
       "state": "État:",
       "optIn": "Recevoir les newsletters:"
     }
+  },
+  "passwordForgotten": {
+    "label": "Email",
+    "button": "Réinitialiser le mot de passe",
+    "placeholder": "Email de votre compte",
+    "title": "Mot de passe oublié",
+    "validationMessage": "Un email vous a été envoyé contenant un lien pour réinitialiser votre mot de passe."
+  },
+  "resetPassword": {
+    "errorPassword": "Les mots de passe sont différents !",
+    "label1": "Mot de passe",
+    "label2": "Verifier le mot de passe",
+    "button": "Réinitialiser le mot de passe",
+    "placeholder": "mot de passe",
+    "title": "Réinitialiser votre mot de passe !",
+    "validationMessage": "Votre mot de passe a été réinitialisé !"
   }
 }
