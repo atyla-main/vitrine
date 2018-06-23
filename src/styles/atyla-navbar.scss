@@ -59,6 +59,10 @@
   &.mod-last {
     margin-right: 0 !important;
   }
+
+  &.mod-private {
+    border-bottom: 1px solid #0070BA !important;
+  }
 }
 
 .atylaNavBar-normalLink {
@@ -78,4 +82,63 @@
   border-radius: 0;
   height: 60px;
   margin-bottom: 0px;
+}
+
+.navbar-private {
+  width: 100%;
+  position: absolute;
+  background-image: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  height: 60px;
+  margin-bottom: 0px;
+  background-color: #F2F2F2;
+}
+
+.atylaNavBar-privateNormalLink {
+  margin-right: 20px !important;
+  color: black !important;
+  &.mod-last {
+    margin-right: 0% !important;
+  }
+
+  &.mod-icon {
+    font-size: 30px;
+  }
+}
+
+.atylaNavBar-privateNavLinks {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute !important;
+  top: 50px !important;
+  font-size: 16px;
+
+  @include sm {
+    top: 15px !important;
+  }
+}
+
+.atylaNavBar-privateBrand {
+  font-size: 30px;
+  color: #0070BA !important;
+}
+
+.atylaNavBar-privateLogoutLink {
+  background-color: white;
+  color: #0070BA !important;
+  border: 2px solid #0070BA;
+  border-radius: 8px;
+  padding: 12px;
+  margin-right: 20px !important;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.atylaNavBar-privateIconText {
+  margin-top: 5px;
 }
