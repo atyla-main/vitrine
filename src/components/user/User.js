@@ -8,19 +8,21 @@ class User extends React.Component {
 
     this.state = {
       id: props.match.params.id,
-      user: {},
-    }
+      user: {}
+    };
   }
 
   componentDidMount() {
     fetch(`${process.env.REACT_APP_APIV1_URL}api/users/${this.state.id}`, {
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `JWT ${Auth.getToken()}`
-      }}).then(res => res.json())
+        Accept: 'application/json',
+        Authorization: `JWT ${Auth.getToken()}`
+      }
+    })
+      .then(res => res.json())
       .then(data => {
-        this.setState({ user: data.data })
+        this.setState({ user: data.data });
       })
       .catch(err => {
         window.location.href = '/';
@@ -30,52 +32,65 @@ class User extends React.Component {
   render() {
     return (
       <I18n ns="translations">
-        {
-          (t, { i18n }) => (
-            <div className="ico">
-              <div className="ico-headerBar">
-                { this.state.user.id &&
-                  <p className="ico-title">{this.state.user.attributes.lastName}</p>
-                }
-              </div>
-              <div className="ico-card">
-                <p className="ico-cardTitle">{t("ico.informations")}</p>
-                { this.state.user.id &&
-                  <form className="ico-form">
-                    <label className="ico-cardLabel">
-                      {t("user.labels.firstName")}
-                      <input
-                        className="ico-cardInput"
-                        type="text"
-                        defaultValue={this.state.user.attributes.firstName} />
-                    </label>
-                    <label className="ico-cardLabel">
-                      {t("user.labels.lastName")}
-                      <input
-                        className="ico-cardInput"
-                        type="text"
-                        defaultValue={this.state.user.attributes.lastName} />
-                    </label>
-                    <label className="ico-cardLabel">
-                      {t("user.labels.email")}
-                      <input
-                        className="ico-cardInput"
-                        type="text"
-                        defaultValue={this.state.user.attributes.email} />
-                    </label>
-                    <label className="ico-cardLabel">
-                      {t("user.labels.token")}
-                      <textarea
-                        className="ico-cardInput"
-                        rows={4}
-                        defaultValue={this.state.user.attributes.token}></textarea>
-                    </label>
-                  </form>
-                }
+        {(t, { i18n }) => (
+          <div className="user">
+            <div className="user-headerBar">
+              <div className="user-title">
+                <div className="user-titleTriangle" />
+                {this.state.user.id && (
+                  <p>Bonjour {this.state.user.attributes.lastName}</p>
+                )}
               </div>
             </div>
-          )
-        }
+            <div className="user-section">
+              <div className="user-switcherSection">
+                <p className="user-switcherSectionTitle">
+                  Nouvel acteur de la Token Economy?
+                </p>
+                <div>
+                  <input
+                    className="user-switcherSectionSearch"
+                    placeholder="Nom do token"
+                  />
+                  <i className="fa fa-check user-switcherSectionValidate" />
+                  <div className="user-switcherSectionValidateLegend">
+                    <p className="user-switcherSectionAtylaValid">
+                      Validé par atyla
+                    </p>
+                    <p className="user-switcherSectionAtylaValid mod-bottom">
+                      En savoir plus
+                    </p>
+                  </div>
+                </div>
+                <div className="user-switcherSectionCalc">
+                  <div className="user-switcherSectionInput">
+                    <input
+                      className="user-switcherSectionCoinInput"
+                      placeholder="0.00"
+                    />
+                    <span className="user-switcherSectionCrypto">EUR</span>
+                  </div>
+                  <i className="fa fa-exchange user-switcherSectionExhangeIcon" />
+                  <div className="user-switcherSectionInput">
+                    <input
+                      className="user-switcherSectionCoinInput"
+                      placeholder="0.00"
+                    />
+                    <span className="user-switcherSectionCrypto">ETH</span>
+                  </div>
+                </div>
+                <button className="user-switcherAtylaButton">
+                  <span className="user-switcherAtylaButtonContent">
+                    <span className="user-switcherAtylaButtonBrand">atyla</span>
+                    <span className="user-switcherAtylaButtonText">
+                      Achetez maintenant
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </I18n>
     );
   }

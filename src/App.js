@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Footer from './components/footer/Footer';
-import Newsletter from './components/newsletter/Newsletter';
 import AtylaRouter from './router/atyla-router';
 import { BrowserRouter } from 'react-router-dom';
 import 'react-select/dist/react-select.css';
@@ -12,7 +11,6 @@ class App extends Component {
         <BrowserRouter>
           <AtylaRouter />
         </BrowserRouter>
-        <Newsletter />
         <Footer />
       </div>
     );
