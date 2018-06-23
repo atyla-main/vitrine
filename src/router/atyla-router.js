@@ -59,10 +59,12 @@ class AtylaRouter extends React.Component {
   render() {
     return (
       <div>
-        <Navbar>
+        <Navbar className="atylaNavBar">
           <Navbar.Header>
             <Navbar.Brand>
-              <div className="topLeft">atyla</div>
+              <div className="topLeft">
+                <p>atyla</p>
+              </div>
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="atylaNavBar-navLinks">
@@ -108,7 +110,7 @@ class AtylaRouter extends React.Component {
               </NavLink>
               <NavLink
                 to="/login"
-                className="atylaNavBar-normalLink"
+                className="atylaNavBar-signInLink"
                 activeClassName="atylaNavBar-activeLink"
                 exact
               >
@@ -116,19 +118,11 @@ class AtylaRouter extends React.Component {
               </NavLink>
               <NavLink
                 to="/register"
-                className="atylaNavBar-normalLink"
+                className="atylaNavBar-signUpLink"
                 activeClassName="atylaNavBar-activeLink"
                 exact
               >
                 Sign-up
-              </NavLink>
-              <NavLink
-                to="/logout"
-                className="atylaNavBar-normalLink"
-                activeClassName="atylaNavBar-activeLink mod-last"
-                exact
-              >
-                Logout
               </NavLink>
             </Navbar.Collapse>
           </Navbar.Header>
