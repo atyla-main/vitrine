@@ -9,7 +9,7 @@ class Login extends React.Component {
     super(props, context);
 
     this.state = {
-      errors: '',
+      errors: ''
     };
     this.processForm = this.processForm.bind(this);
   }
@@ -21,74 +21,79 @@ class Login extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       },
       body: JSON.stringify({
-        'data': {
-          'attributes': {
-            'email': `${this.email.value}`,
-            'password': `${this.password.value}`
+        data: {
+          attributes: {
+            email: `${this.email.value}`,
+            password: `${this.password.value}`
           }
         }
       })
-    }).then(res => res.json())
-    .then(res => {
-      if (res.name && res.name === 'SequelizeValidationError') {
-        this.setState({errors: i18n.t('login.errorInformation')});
-      } else {
-        if (res.message === 'ok') {
-          this.setState({errors: ''});
-          Auth.authenticateUser(res.token, res.id);
-          window.location.href = `/users/${res.id}`;
-        } else {
-          this.setState({errors: i18n.t('login.userNotFound')});
-        }
-      }
     })
-    .catch(err => {
-      this.setState({errors: i18n.t('login.error')});
-    });
+      .then(res => res.json())
+      .then(res => {
+        if (res.name && res.name === 'SequelizeValidationError') {
+          this.setState({ errors: i18n.t('login.errorInformation') });
+        } else {
+          if (res.message === 'ok') {
+            this.setState({ errors: '' });
+            Auth.authenticateUser(res.token, res.id);
+            window.location.href = `/users/${res.id}`;
+          } else {
+            this.setState({ errors: i18n.t('login.userNotFound') });
+          }
+        }
+      })
+      .catch(err => {
+        this.setState({ errors: i18n.t('login.error') });
+      });
   }
 
   render() {
     return (
       <I18n ns="translations">
-        {
-          (t, { i18n }) => (
-            <div className='login'>
-              <div className='login-container'>
-                <p className='login-header' >{t('login.title')}</p>
-                <form className='login-form' onSubmit={this.processForm}>
-                  <div className='login-inputs'>
-                    <label className='login-label'>
-                      {t('login.username.label')}
-                      <input
-                        ref={(email) => this.email = email }
-                        placeholder={t('login.username.placeholder')}
-                        type='text'
-                        name='email'/>
-                    </label>
-                    <label className='login-label'>
-                      {t('login.password.label')}
-                      <input
-                        ref={(password) => this.password= password }
-                        placeholder={t('login.password.placeholder')}
-                        type='password'
-                        name='password'/>
-                    </label>
-                  </div>
-                  <Button
-                    className='login-button'
-                    bsStyle='success'
-                    type='submit'>
-                    {t('login.button')}
-                  </Button>
-                  <p className="login-errorMessage">{this.state.errors}</p>
-                </form>
-              </div>
+        {(t, { i18n }) => (
+          <div className="login">
+            <div className="login-container">
+              <p className="login-header">atyla</p>
+              <form className="login-form" onSubmit={this.processForm}>
+                <div className="login-inputs">
+                  <input
+                    className="login-loginInput mod-intern"
+                    ref={email => (this.email = email)}
+                    placeholder="Email"
+                    type="text"
+                    name="email"
+                  />
+                  <input
+                    className="login-loginInput mod-last"
+                    ref={password => (this.password = password)}
+                    placeholder="Mot de passe"
+                    type="password"
+                    name="password"
+                  />
+                </div>
+                <Button
+                  className="login-button"
+                  bsStyle="success"
+                  type="submit"
+                >
+                  Se connecter
+                </Button>
+                <p className="login-connectionImpossible">
+                  Vous n’arrivez pas à vous connectez?
+                </p>
+                <p className="login-errorMessage">{this.state.errors}</p>
+                <p className="login-ctaLimit">  Ou  </p>
+                <Button className="login-button mod-signup" bsStyle="success">
+                  Ouvrir un compte
+                </Button>
+              </form>
             </div>
-          )
-        }
+          </div>
+        )}
       </I18n>
     );
   }
