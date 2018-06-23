@@ -16,78 +16,53 @@
 $color-chambray: #31538f;
 $color-linkWater: #d8e2f3;
 
-.newsletterContainer {
-  background-color: #F2F2F2;
-  text-align: center;
-  padding-bottom: 10px;
-  padding-top: 30px;
-}
-
 .newsletter {
+  border-top: 2px solid $color-chambray;
   align-items: center;
   display: flex;
   justify-content: center;
-}
-
-.newsletter-footer {
-  margin: 0;
-  font-size: 12px;
-}
-
-.newsletter-form {
-  margin-bottom: 10px;
+  padding: 20px 0 20px 0;
 }
 
 .newsletter-button {
-  background: #DD4B39;
+  background: red;
   background-image: none;
   border: none;
-  border-radius: 6px;
-  height: 50px;
+  border-radius: 0;
+  height: 40px;
   margin-right: 10px;
-  left: -10px;
   vertical-align: top;
-  z-index: 1;
-  position: relative;
-  width: 200px;
-  font-size: 20px;
 
   @include sm {
     margin-right: auto;
   }
 
   &:hover {
-    background-color: #DD4B39;
+    background-color: red;
   }
 
   &:active {
-    background-color: #DD4B39;
+    background-color: red;
   }
 
   &:focus {
-    background-color: #DD4B39;
+    background-color: red;
   }
 }
 
 .newsletter-input {
   width: 180px;
-  border: 3px solid #DD4B39;
-  height: 50px;
+  border: 2px solid red;
+  height: 40px;
   margin-left: 10px;
-  border-radius: 6px;
-  position: relative;
-  z-index: 30;
-  font-style: italic;
-  font-size: 20px;
-  padding: 10px;
 
   @include sm {
-    width: 800px;
+    width: 500px;
     margin-left: auto;
   }
 
   &.mod-error {
-    color: #DD4B39;
+    color: red;
   }
 
   &.mod-sucess {

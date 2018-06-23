@@ -15,8 +15,7 @@
 }
 
 .atylaNavBar {
-  background-color: transparent;
-  z-index: 10;
+
 }
 
 .atylaNavBar-navLinks {
@@ -34,28 +33,10 @@
   }
 }
 
-.atylaNavBar-signInLink {
-  background-color: white;
-  color: black !important;
-  border: 3px solid #DD4B39;
-  border-radius: 8px;
-  padding: 12px;
-  margin-right: 5px !important;
-}
-
-.atylaNavBar-signUpLink {
-  background-color: #DD4B39;
-  color: white !important;
-  border: 2px solid #DD4B39;
-  border-radius: 8px;
-  padding: 12px;
-  margin-right: 20px !important;
-}
-
 .atylaNavBar-activeLink {
   color: black !important;
-  border-bottom: 1px solid #DD4B39 !important;
-  padding-bottom: 10px;
+  font-family: "Courier New", Courier, monospace !important;
+  text-decoration: underline red !important;
   &.mod-last {
     margin-right: 0 !important;
   }
@@ -63,19 +44,16 @@
 
 .atylaNavBar-normalLink {
   margin-right: 20px !important;
-  color: white !important;
+  color: black !important;
+  font-family: "Courier New", Courier, monospace !important;
   &.mod-last {
     margin-right: 0% !important;
   }
 }
 
 .navbar-default {
-  width: 100%;
-  position: absolute;
-  background-image: none;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-  height: 60px;
+  navbar-brand {
+     color: red;
+  }
   margin-bottom: 0px;
 }
