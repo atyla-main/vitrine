@@ -9,7 +9,7 @@ class Newsletter extends React.Component {
 
     this.state = {
       response: '',
-      emailError: '',
+      emailError: ''
     };
     this.postEmail = this.postEmail.bind(this);
   }
@@ -20,52 +20,66 @@ class Newsletter extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       },
       body: JSON.stringify({
-        'data': {
-          'attributes': {
-            'email': `${this.email.value}`
+        data: {
+          attributes: {
+            email: `${this.email.value}`
           }
         }
       })
-    }).then(res => res.json())
-    .then(res => {
-      if (res.name && res.name === 'SequelizeValidationError') {
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.name && res.name === 'SequelizeValidationError') {
+          this.setState({
+            emailError: 'mod-error',
+            response: i18n.t('homepage.emailError')
+          });
+        } else {
+          this.setState({
+            emailError: 'mod-sucess',
+            response: i18n.t('homepage.emailSuccess')
+          });
+        }
+      })
+      .catch(err => {
         this.setState({
           emailError: 'mod-error',
-          response: i18n.t('homepage.emailError')});
-      } else {
-        this.setState({
-          emailError: 'mod-sucess',
-          response: i18n.t('homepage.emailSuccess')});
-      }
-    })
-    .catch(err => {
-      this.setState({
-        emailError: 'mod-error',
-        response: i18n.t('homepage.emailError')});
-    });
+          response: i18n.t('homepage.emailError')
+        });
+      });
   }
 
-  render()  {
+  render() {
     return (
       <I18n ns="translations">
-        {
-          (t, { i18n }) => (
-            <div className='newsletter'>
-              <form onSubmit={this.postEmail}>
+        {(t, { i18n }) => (
+          <div className="newsletterContainer">
+            <div className="newsletter">
+              <form className="newsletter-form" onSubmit={this.postEmail}>
                 <input
-                  ref={(email) => this.email = email}
-                  className={'newsletter-input ' + (this.state.emailError)}
+                  ref={email => (this.email = email)}
+                  className={'newsletter-input ' + this.state.emailError}
                   placeholder={t('newsletter.placeholder')}
-                  type='text'
-                  name='email'/>
-                <Button bsStyle='danger' type='submit' className='newsletter-button' >Subscribe now</Button>
+                  type="text"
+                  name="email"
+                />
+                <Button
+                  bsStyle="danger"
+                  type="submit"
+                  className="newsletter-button"
+                >
+                  Subscribe now
+                </Button>
               </form>
             </div>
-          )
-        }
+            <p className="newsletter-footer">
+              Vous êtes un entrepreneur? Ouvrir un compte professionnel
+            </p>
+          </div>
+        )}
       </I18n>
     );
   }

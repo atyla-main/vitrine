@@ -17,21 +17,19 @@ $color-chambray: #31538f;
 $color-linkWater: #d8e2f3;
 
 .footer {
-  border-top: 2px solid $color-chambray;
-  background-color: $color-linkWater;
+  color: #fff;
+  background-color: #009cde;
+  background-image: radial-gradient(circle farthest-side at center bottom,#009cde,#003087 125%);
   position: absolute;
   width:100%;
+  padding: 10px;
 }
 
 .footer-container {
-  padding-top: 20px;
-  text-align: center;
-  max-width: 300px;
-
-  @include sm {
-    max-width: 100%;
-    text-align: left;
-  }
+  display: flex;
+  border-bottom: 1px dotted white;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .footer-element {
@@ -44,10 +42,19 @@ $color-linkWater: #d8e2f3;
 }
 
 .footer-link {
-  display: block;
+  display: flex;
   text-decoration: none;
+  color: white;
+  margin-right: 40px;
+  font-size: 12px;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .footer-credentials {
-  text-align: center;
+  color: white;
+  font-size: 12px;
+  margin: 0;
 }
