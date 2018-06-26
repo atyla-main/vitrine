@@ -26,10 +26,18 @@ $color-linkWater: #d8e2f3;
 }
 
 .footer-container {
-  display: flex;
+  display: block;
   border-bottom: 1px dotted white;
   padding-bottom: 5px;
   margin-bottom: 5px;
+
+  @include sm {
+    display: flex;
+  }
+}
+
+.footer-linkContainer {
+  display: flex;
 }
 
 .footer-element {

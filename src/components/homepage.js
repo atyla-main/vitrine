@@ -1,8 +1,9 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
-import Emlyon from '../img/emlyon.png';
-import TheFamily from '../img/the_family.png';
+import Emlyon from '../img/emlyon.jpg';
+import TheFamily from '../img/the_family.jpeg';
+import Ey from '../img/ey.jpeg';
 import Newsletter from '../components/newsletter/Newsletter';
 
 class HomePage extends React.Component {
@@ -39,15 +40,6 @@ class HomePage extends React.Component {
     this.setState({
       isClient: false
     });
-  }
-
-  componentDidMount() {
-    let script = document.createElement('script');
-
-    script.src = 'http://127.0.0.1:3300/javascripts/atyla.js';
-    script.async = true;
-
-    document.body.appendChild(script);
   }
 
   getIcos(input) {
@@ -94,62 +86,71 @@ class HomePage extends React.Component {
     return (
       <div>
         <Grid className="homepage">
-          <Row className="homepage-header">
+          <Row className="homepage-header homepage-rowOverride">
             <div className="homepage-buySection">
               <p className="homepage-buySectionTitle">
-                L’achat de token{' '}
+                L’achat de tokens{' '}
                 <span className="homepage-buySectionTitleText">simple</span> et{' '}
-                <span className="homepage-buySectionTitleText">sécurisée</span>
+                <span className="homepage-buySectionTitleText">sécurisé</span>
               </p>
-              <div id="atylaDiv" />
+              <a href="/login">
+                <div className="homepage-atylaDiv" id="atylaDiv" />
+              </a>
               <p className="homepage-buySectionFootText">
-                Vous êtes un entrepreneur? Ouvrir un compte professionnel
+                Vous êtes un entrepreneur?{' '}
+                <a href="/register-pro" className="homepage-openProLinkWhite">
+                  Ouvrir un compte professionnel
+                </a>
               </p>
             </div>
           </Row>
-          <Row className="homepage-sectionPresentation">
+          <Row className="homepage-sectionPresentation homepage-rowOverride">
             <p className="homepage-sectionInvestTitle">
-              atyla: la solution de paiement la plus{' '}
+              atyla: la solution la plus{' '}
               <span className="homepage-buySectionTitleText">simple</span> et{' '}
               <span className="homepage-buySectionTitleText">sécurisée</span>{' '}
               pour investir dans les ICOs
             </p>
             <Grid className="homepage-buySection">
-              <Row className="homepage-advantagesRow">
-                <Col sm={4}>
+              <Row className="homepage-advantagesRow homepage-rowOverride homepage-sectionSimpleAndSecure">
+                <Col className="homepage-advantagesSection" sm={4}>
                   <i className="fa fa-check-square-o homepage-sectionPresentationIcons" />
                   <p className="homepage-sectionInvestFooterTitle">
                     Simplicité
                   </p>
                   <p className="homepage-sectionInvestFooterText">
-                    Investissez en 1 clic dans l’ICO de votre choix sans
-                    pré-requis techniques
+                    Vos achats de tokens en 1 seul clic et sans pré-requis
+                    techniques
                   </p>
                 </Col>
-                <Col sm={4}>
+                <Col className="homepage-advantagesSection" sm={4}>
                   <i className="fa fa-key homepage-sectionPresentationIcons" />
                   <p className="homepage-sectionInvestFooterTitle">
                     Tiers de confiance
                   </p>
                   <p className="homepage-sectionInvestFooterText">
-                    Vos investissements sont 100% sécurisés et intégralement
-                    gérés par atyla
+                    Vos investissements 100% sécurisés et intégralement gérés
+                    par atyla
                   </p>
                 </Col>
-                <Col sm={4}>
+                <Col
+                  className="homepage-advantagesSection"
+                  id="solution"
+                  sm={4}
+                >
                   <i className="fa fa-thumbs-o-up homepage-sectionPresentationIcons" />
                   <p className="homepage-sectionInvestFooterTitle">
                     Accessibilité
                   </p>
                   <p className="homepage-sectionInvestFooterText">
-                    Vous avez accès à l’ensemble des ICOs vérifiées du moment
+                    Votre accès à l’ensemble des ICOs vérifiées du moment
                   </p>
                 </Col>
               </Row>
             </Grid>
           </Row>
-          <Row className="homepage-sectionExperience">
-            <p className="homepage-sectionExperienceTitle">
+          <Row className="homepage-sectionExperience homepage-rowOverride">
+            <p className="homepage-sectionExperienceTitle mod-underline">
               L’expérience atyla en{' '}
               <span className="homepage-buySectionTitleText">trois étapes</span>
             </p>
@@ -158,276 +159,266 @@ class HomePage extends React.Component {
                 Particulier
               </button>
               <button onClick={this.onProClick} className={proClases}>
-                Entrepreneur
+                Professionnel
               </button>
             </div>
-            {isClient ? (
-              <Grid className="homepage-buySection">
-                <Row
-                  className="homepage-sectionExperienceFooter"
-                  style={{ height: '300px' }}
-                >
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionTitle">
-                        Nouvel acteur de la Token Economy?
-                      </p>
-                      <div>
-                        <input
-                          className="homepage-switcherSectionSearch"
-                          placeholder="Dans quelle ICO souhaitez-vous investir?"
-                        />
-                        <i className="fa fa-check homepage-switcherSectionValidate" />
-                        <span className="homepage-switcherSectionAtylaValid">
-                          Validé par atyla
-                        </span>
-                      </div>
-                      <div>
-                        <input
-                          className="homepage-switcherSectionCoinInput"
-                          placeholder="0.00"
-                        />
-                        <span className="homepage-switcherSectionBuyMax">
-                          EUR
-                        </span>
-                        <i className="fa fa-exchange homepage-switcherSectionExhangeIcon" />
-                        <input
-                          className="homepage-switcherSectionCoinInput"
-                          placeholder="0.00"
-                        />
-                        <span className="homepage-switcherSectionCrypto">
-                          ETH
-                        </span>
-                      </div>
-                      <button className="homepage-switcherAtylaButton">
-                        <span className="homepage-switcherAtylaButtonContent">
-                          <span className="homepage-switcherAtylaButtonBrand">
-                            atyla
+            <div id="experience" />
+            <Grid className="homepage-buySection">
+              {isClient ? (
+                <Row className="homepage-sectionExperienceFooter homepage-rowOverride">
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionTitle">
+                          Dans quelle ICO souhaitez vous invesitr ?
+                        </p>
+                        <div>
+                          <input
+                            className="homepage-switcherSectionSearch"
+                            placeholder="EOS"
+                          />
+                          <i className="fa fa-check homepage-switcherSectionValidate" />
+                          <span className="homepage-switcherSectionAtylaValid">
+                            Validé par atyla
                           </span>
-                          <span className="homepage-switcherAtylaButtonText">
-                            Achetez maintenant
+                        </div>
+                        <div>
+                          <input
+                            className="homepage-switcherSectionCoinInput"
+                            placeholder="0.00"
+                          />
+                          <i className="fa fa-exchange homepage-switcherSectionExhangeIcon" />
+                          <input
+                            className="homepage-switcherSectionCoinInput"
+                            placeholder="0.00"
+                          />
+                        </div>
+                        <button className="homepage-switcherAtylaButton">
+                          <span className="homepage-switcherAtylaButtonContent">
+                            <span className="homepage-switcherAtylaButtonBrand">
+                              atyla
+                            </span>
+                            <span className="homepage-switcherAtylaButtonText">
+                              Achetez maintenant
+                            </span>
                           </span>
-                        </span>
-                      </button>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionBrand">atyla</p>
-                      <p className="homepage-switcherSectionTitle">
-                        Enregistrer un moyen de paiement
-                      </p>
-                      <div className="homepage-switcherSectionBrandLogoContainer">
-                        <div className="homepage-switcherSectionBrandLogoBox">
-                          <i className="fa fa-university homepage-switcherSectionBrandLogo" />
+                        </button>
+                      </div>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">1</span>
                         </div>
-                        <div className="homepage-switcherSectionBrandLogoBox">
-                          <i className="fa fa-credit-card homepage-switcherSectionBrandLogo" />
-                        </div>
-                        <div className="homepage-switcherSectionBrandLogoBox last">
-                          <i className="fa fa-btc homepage-switcherSectionBrandLogo" />
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Inscrivez l’ICO de votre choix
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Indiquez le montant de l’investissement
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Nous calculons le nombre de tokens équivalent
+                          </p>
                         </div>
                       </div>
                     </div>
                   </Col>
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionBrand">atyla</p>
-                      <p className="homepage-switcherSectionTitle no-margin">
-                        <span className="homepage-buySectionTitleText">
-                          Félicitation!
-                        </span>
-                      </p>
-                      <p className="homepage-switcherSectionSubTitle">
-                        Votre investissement dans l’ICO ’’atyla’’ est validé
-                      </p>
-                      <p className="homepage-switcherSectionFooterText">
-                        atyla reviens vers vous rapidement pour l’émission de
-                        Token
-                      </p>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="homepage-sectionExperienceFooter">
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">1</span>
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionBrand">atyla</p>
+                        <p className="homepage-switcherSectionTitle">
+                          Enregistrer un moyen de paiement
+                        </p>
+                        <div className="homepage-switcherSectionBrandLogoContainer">
+                          <div className="homepage-switcherSectionBrandLogoBox">
+                            <i className="fa fa-university homepage-switcherSectionBrandLogo" />
+                          </div>
+                          <div className="homepage-switcherSectionBrandLogoBox">
+                            <i className="fa fa-credit-card homepage-switcherSectionBrandLogo" />
+                          </div>
+                          <div className="homepage-switcherSectionBrandLogoBox last">
+                            <i className="fa fa-btc homepage-switcherSectionBrandLogo" />
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Inscrivez l’ICO de votre choix Indiquez le montant de
-                          l’investissement
-                        </p>
-                        <p className="home-switcherFooter">
-                          Nous calculons le montant de tokens que vous recevrez
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">2</span>
-                      </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Enregistrez de manière sécurisée votre moyen de
-                          paiement
-                        </p>
-                        <p className="home-switcherFooter">
-                          - Prélèvement automatique
-                        </p>
-                        <p className="home-switcherFooter">
-                          - Virement bancaire
-                        </p>
-                        <p className="home-switcherFooter">
-                          - Virement en cryptoactif
-                        </p>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">2</span>
+                        </div>
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Choix du moyen de paiement
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Prélèvement ou virement bancaire
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Virement en cryptoactif
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </Col>
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">3</span>
-                      </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Validez votre investissement, atyla s’occupe du reste
-                          !
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionBrand">atyla</p>
+                        <p className="homepage-switcherSectionTitle no-margin">
+                          <span className="homepage-buySectionTitleText">
+                            Félicitations !
+                          </span>
                         </p>
-                        <p className="home-switcherFooter">
-                          Nous vous remettrons les tokens sur notre plateforme
-                          après la validation de votre KYC
+                        <p className="homepage-switcherSectionSubTitle">
+                          Votre investissement dans l’ICO EOS est validé
                         </p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Grid>
-            ) : (
-              <Grid className="homepage-buySection">
-                <Row
-                  className="homepage-sectionExperienceFooter"
-                  style={{ height: '300px' }}
-                >
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionBrand">atyla</p>
-                      <p>
-                        <input
-                          className="homepage-switcherSectionCoinInput mod-alone"
-                          placeholder="Adresse email"
-                        />
-                      </p>
-                      <p>
-                        <input
-                          className="homepage-switcherSectionCoinInput mod-alone"
-                          placeholder="Mot de passe"
-                        />
-                      </p>
-                      <button className="homepage-switcherProCreateButton">
-                        Créer un compte professionel
-                      </button>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionBrand">atyla</p>
-                      <div className="homepage-switcherSectionValidationLogoContainer">
-                        <i className="fa fa-phone homepage-switcherSectionBrandLogo mod-margin" />
-                        <i className="fa fa-long-arrow-right homepage-switcherSectionBrandLogo mod-margin" />
-                        <i className="fa fa-hourglass-start homepage-switcherSectionBrandLogo mod-margin" />
-                        <i className="fa fa-long-arrow-right homepage-switcherSectionBrandLogo mod-margin" />
-                        <i className="fa fa-check-circle-o homepage-switcherSectionBrandLogo" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-switcherSection">
-                      <p className="homepage-switcherSectionBrand">atyla</p>
-                      <textarea cols={40} rows={5}>
-                        &lt;script
-                        src="http://cdn.atyla.io/javascripts/atyla.js"&gt;&lt;/script&gt;
-                        &lt;div id="atylaDiv" /&gt;
-                      </textarea>
-                      <button className="homepage-switcherProCreateButton">
-                        Copier
-                      </button>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="homepage-sectionExperienceFooter">
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">1</span>
-                      </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Créer un compte professionnel
-                        </p>
-                        <p className="home-switcherFooter">
-                          Vous êtes un entrepreneur?
-                          Ouvrir un compte professionnel
+                        <p className="homepage-switcherSectionFooterText">
+                          atyla reviens vers vous rapidement pour l’émission de
+                          Token
                         </p>
                       </div>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">2</span>
-                      </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Un conseiller vous recontacte dans la journée
-                        </p>
-                        <p className="home-switcherFooter">
-                          Une procédure de validation de votre ICO se tiendra
-                          pour pouvoir ajouter notre bouton
-                        </p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col sm={4}>
-                    <div className="homepage-sectionExperienceFooter">
-                      <div className="homepage-cicle">
-                        <span className="homepage-cicleNumber">3</span>
-                      </div>
-                      <div>
-                        <p className="home-switcherFooterLegend">
-                          Intégrez le bouton atyla sur votre site en moins d’1
-                          heure
-                        </p>
-                        <p className="home-switcherFooter">
-                          Rajoutez notre div à l’endroit où vous souhaitez la
-                          positionner et notre tag
-                        </p>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">3</span>
+                        </div>
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Validez votre investissement
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            atyla s’occupe du reste !
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Réception des tokens après KYC
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </Col>
                 </Row>
-              </Grid>
-            )}
+              ) : (
+                <Row className="homepage-sectionExperienceFooter homepage-rowOverride">
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionBrand">atyla</p>
+                        <p>
+                          <input
+                            className="homepage-switcherSectionCoinInput mod-alone"
+                            placeholder="Adresse email"
+                          />
+                        </p>
+                        <p>
+                          <input
+                            className="homepage-switcherSectionCoinInput mod-alone"
+                            placeholder="Mot de passe"
+                          />
+                        </p>
+                        <button className="homepage-switcherProCreateButton">
+                          Créer un compte professionel
+                        </button>
+                      </div>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">1</span>
+                        </div>
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Créer un compte professionnel
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Vous êtes un entrepreneur ?
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            <a
+                              href="/register-pro"
+                              className="homepage-openProLink"
+                            >
+                              Ouvrir un compte professionnel
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionBrand">atyla</p>
+                        <div className="homepage-switcherSectionValidationLogoContainer">
+                          <i className="fa fa-phone homepage-switcherSectionBrandLogo mod-margin" />
+                          <i className="fa fa-long-arrow-right homepage-switcherSectionBrandLogo mod-margin" />
+                          <i className="fa fa-hourglass-start homepage-switcherSectionBrandLogo mod-margin" />
+                          <i className="fa fa-long-arrow-right homepage-switcherSectionBrandLogo mod-margin" />
+                          <i className="fa fa-check-circle-o homepage-switcherSectionBrandLogo" />
+                        </div>
+                      </div>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">2</span>
+                        </div>
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Un conseiller va vous recontacter
+                          </p>
+                          <p className="home-switcherFooter mod-normargin">
+                            Une procédure de validation de votre ICO se tiendra
+                            pour pouvoir ajouter notre bouton
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col lg={4} className=" homepage-rowOverrideCol">
+                    <div className="homepage-cardAndFooterSection">
+                      <div className="homepage-switcherSection">
+                        <p className="homepage-switcherSectionBrand">atyla</p>
+                        <textarea cols={40} rows={5}>
+                          &lt;script
+                          src="http://cdn.atyla.io/javascripts/atyla.js"&gt;&lt;/script&gt;
+                          &lt;div id="atylaDiv" /&gt;
+                        </textarea>
+                        <button className="homepage-switcherProCreateButton">
+                          Copier
+                        </button>
+                      </div>
+                      <div className="homepage-sectionExperienceFooter mod-bottom">
+                        <div className="homepage-cicle">
+                          <span className="homepage-cicleNumber">3</span>
+                        </div>
+                        <div>
+                          <p className="home-switcherFooterLegend">
+                            Intégrez notre bouton sur votre site
+                          </p>
+                          <p className="home-switcherFooter mod-nomargin">
+                            Rajoutez en quelques minutes notre div à l’endroit
+                            où vous souhaitez la positionner et notre tag
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              )}
+            </Grid>
           </Row>
-          <Row className="homepage-sectionTechno">
+          <Row className="homepage-sectionTechno homepage-rowOverride">
             <p className="homepage-sectionTechnoTitle">
               Avec atyla, entrez dans une nouvelle ère technologique
             </p>
             <Grid className="homepage-buySection">
-              <Row className="homepage-advantagesRow">
+              <Row
+                id="ecosystem"
+                className="homepage-advantagesRow homepage-rowOverride homepage-sectionSimpleAndSecure"
+              >
                 <Col sm={4}>
                   <p className="homepage-sectionTechnoSectionTitle">
-                    Faites vos premiers pas dans la Token economy
+                    Entrez dans la Token economy
                   </p>
                   <p className="homepage-sectionTechnoSectionText">
                     atyla vous permet d’acheter des tokens de la manière la plus
                     simple possible. Vous devenez ainsi acteur d’un écosystème
                     ou les règles de l’économie numériques sont bouleversées au
-                    profit d’un nouveau paradigme fondé sur la
-                    désintermédiation.
+                    profit d’un nouveau paradigme fondé sur la désintermédiation
                   </p>
                 </Col>
                 <Col sm={4}>
@@ -444,29 +435,47 @@ class HomePage extends React.Component {
                 </Col>
                 <Col sm={4}>
                   <p className="homepage-sectionTechnoSectionTitle">
-                    Investissez dans l’ensemble des ICOs de votre choix
+                    Investissez dans les ICOs de votre choix
                   </p>
                   <p className="homepage-sectionTechnoSectionText">
-                    atyla peut vous accompagnez dans n’importe quelle ICO. Plus
-                    encore, on vérifie pour vous, selon des critères bien
-                    définis, la fiabilité du projet. atyla vous permet ainsi
-                    d’investir sereinement dans la Token economy auprès de
-                    projets répertoriés et vérifiés par nos équipes.
+                    atyla peut vous accompagnez dans n’importe quelle ICO. La
+                    fiabilité des projets est analysés selon des critères bien
+                    définis. Investissez sereinement dans la Token economy
+                    auprès de projets répertoriés et vérifiés par nos équipes.
                   </p>
                 </Col>
               </Row>
             </Grid>
           </Row>
-          <Row className="homepage-sectionPartner">
-            <p className="homepage-sectionPartnerTitle">Ils nous aiment</p>
-            <div className="homepage-sectionPartnerLogos">
-              <img
-                alt={'Em lyon'}
-                className="homepage-sectionPartnerLogo"
-                src={Emlyon}
-              />
-              <img alt={'The Family'} src={TheFamily} />
-            </div>
+          <Row className="homepage-sectionPartner homepage-rowOverride">
+            <p id="love" className="homepage-sectionPartnerTitle">
+              Ils nous aiment
+            </p>
+            <Grid className="homepage-buySection">
+              <Row className="homepage-loveLogos homepage-rowOverride">
+                <Col className="homepage-rowOverrideCol" sm={4}>
+                  <img
+                    className="homepage-loveLogo mod-ey"
+                    alt={'Ey'}
+                    src={Ey}
+                  />
+                </Col>
+                <Col className="homepage-rowOverrideCol" sm={4}>
+                  <img
+                    className="homepage-loveLogo"
+                    alt={'The Family'}
+                    src={TheFamily}
+                  />
+                </Col>
+                <Col className="homepage-rowOverrideCol" sm={4}>
+                  <img
+                    className="homepage-loveLogo"
+                    alt={'Em lyon'}
+                    src={Emlyon}
+                  />
+                </Col>
+              </Row>
+            </Grid>
           </Row>
         </Grid>
         <Newsletter />

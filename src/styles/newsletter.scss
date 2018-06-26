@@ -35,16 +35,17 @@ $color-linkWater: #d8e2f3;
 }
 
 .newsletter-form {
-  margin-bottom: 10px;
+  display: flex;
+  width: 1170px;
+  margin: auto;
 }
 
 .newsletter-button {
-  background: #DD4B39;
+  background: #00AA5B;
   background-image: none;
   border: none;
   border-radius: 6px;
   height: 50px;
-  margin-right: 10px;
   left: -10px;
   vertical-align: top;
   z-index: 1;
@@ -52,42 +53,34 @@ $color-linkWater: #d8e2f3;
   width: 200px;
   font-size: 20px;
 
-  @include sm {
-    margin-right: auto;
-  }
-
   &:hover {
-    background-color: #DD4B39;
+    background-color: #00AA5B;
   }
 
   &:active {
-    background-color: #DD4B39;
+    background-color: #00AA5B;
   }
 
   &:focus {
-    background-color: #DD4B39;
+    background-color: #00AA5B;
   }
 }
 
 .newsletter-input {
-  width: 180px;
-  border: 3px solid #DD4B39;
+  border: 3px solid #00AA5B;
   height: 50px;
-  margin-left: 10px;
   border-radius: 6px;
   position: relative;
   z-index: 30;
   font-style: italic;
   font-size: 20px;
   padding: 10px;
-
-  @include sm {
-    width: 800px;
-    margin-left: auto;
-  }
+  width: 100%;
+  margin-left: 10px;
+  margin-bottom: 10px;
 
   &.mod-error {
-    color: #DD4B39;
+    color: #00AA5B;
   }
 
   &.mod-sucess {

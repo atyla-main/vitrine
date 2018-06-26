@@ -9,7 +9,8 @@ class PasswordForgotten extends React.Component {
 
     this.state = {
       errors: '',
-      id: props.match.params.id
+      id: props.match.params.id,
+      passwordValid: false
     };
     this.processForm = this.processForm.bind(this);
   }
@@ -62,8 +63,10 @@ class PasswordForgotten extends React.Component {
           this.setState({ errors: i18n.t('login.errorInformation') });
         } else {
           if (res.message === 'ok') {
-            this.setState({ errors: '' });
-            window.location.href = '/login';
+            this.setState({
+              errors: '',
+              passwordValid: true
+            });
           } else {
             this.setState({ errors: i18n.t('login.userNotFound') });
           }
@@ -75,43 +78,66 @@ class PasswordForgotten extends React.Component {
   }
 
   render() {
+    let isValid = this.state.passwordValid;
+
     return (
       <I18n ns="translations">
         {(t, { i18n }) => (
           <div className="login">
             <div className="login-container">
-              <p className="login-header">{t('resetPassword.title')}</p>
-              <form className="login-form" onSubmit={this.processForm}>
-                <div className="login-inputs">
-                  <label className="login-label">
-                    {t('resetPassword.label1')}
-                    <input
-                      ref={password1 => (this.password1 = password1)}
-                      placeholder={t('resetPassword.placeholder')}
-                      type="password"
-                      name="password1"
-                    />
-                  </label>
-                  <label className="login-label">
-                    {t('resetPassword.label2')}
-                    <input
-                      ref={password2 => (this.password2 = password2)}
-                      placeholder={t('resetPassword.placeholder')}
-                      type="password"
-                      name="password2"
-                    />
-                  </label>
+              <p className="login-header">atyla</p>
+              {isValid ? (
+                <div className="passwordForgotten-section">
+                  <i className="fa fa-check-circle-o passwordForgotten-mail mod-success" />
+                  <p className="passwordForgotten-lastSection">
+                    Vous pouvez maintenant vous connecter avec votre
+                    <span className="passwordForgotten-emphasis">
+                      {' '}
+                      nouveau mot de passe.
+                    </span>
+                  </p>
+                  <p className="passwordForgotten-footer">
+                    <a href="/login">Retournez à la page de connexion atyla</a>
+                  </p>
                 </div>
-                <Button
-                  className="login-button"
-                  bsStyle="success"
-                  type="submit"
-                >
-                  {t('resetPassword.button')}
-                </Button>
-                <p className="login-errorMessage">{this.state.errors}</p>
-                <p className="">{this.state.emailSent}</p>
-              </form>
+              ) : (
+                <div>
+                  <p className="passwordForgotten-subtitle">
+                    Créez un nouveau mot de passe
+                  </p>
+                  <p className="passwordForgotten-contentText mod-margin">
+                    Choisissez un mot de passe difficile à deviner et unique
+                    pour ce compte
+                  </p>
+                  <form className="login-form" onSubmit={this.processForm}>
+                    <div className="login-inputs">
+                      <input
+                        className="login-loginInput mod-intern mod-center"
+                        ref={password1 => (this.password1 = password1)}
+                        placeholder="Entrez votre mot de passe"
+                        type="password"
+                        name="password1"
+                      />
+                      <input
+                        className="login-loginInput mod-last mod-center"
+                        ref={password2 => (this.password2 = password2)}
+                        placeholder="Confirmez votre mot de passe"
+                        type="password"
+                        name="password2"
+                      />
+                    </div>
+                    <Button
+                      className="login-button"
+                      bsStyle="success"
+                      type="submit"
+                    >
+                      Enregistrez
+                    </Button>
+                    <p className="login-errorMessage">{this.state.errors}</p>
+                    <p className="">{this.state.emailSent}</p>
+                  </form>
+                </div>
+              )}
             </div>
           </div>
         )}

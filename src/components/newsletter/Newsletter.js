@@ -62,7 +62,7 @@ class Newsletter extends React.Component {
                 <input
                   ref={email => (this.email = email)}
                   className={'newsletter-input ' + this.state.emailError}
-                  placeholder={t('newsletter.placeholder')}
+                  placeholder="Saisissez votre email pour avoir des nouvelles d’atyla"
                   type="text"
                   name="email"
                 />
@@ -71,12 +71,15 @@ class Newsletter extends React.Component {
                   type="submit"
                   className="newsletter-button"
                 >
-                  Subscribe now
+                  S’inscrire
                 </Button>
               </form>
             </div>
             <p className="newsletter-footer">
-              Vous êtes un entrepreneur? Ouvrir un compte professionnel
+              Vous êtes un entrepreneur?{' '}
+              <a href="/register-pro" className="homepage-openProLink">
+                Ouvrir un compte professionnel
+              </a>
             </p>
           </div>
         )}

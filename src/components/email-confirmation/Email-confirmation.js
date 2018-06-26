@@ -35,13 +35,25 @@ class EmailConfirmation extends React.Component {
     return (
       <div>
         {userId && (
-          <div
-            style={{ marginTop: '50px', height: '100vh', textAlign: 'center' }}
-          >
-            <p>Your email has been verified</p>
-            <p>
-              Please go to the <a href="/">Homepage</a>
-            </p>
+          <div className="login">
+            <div className="login-container">
+              <p className="login-header">atyla</p>
+              <div className="passwordForgotten-section">
+                <i className="fa fa-check-circle-o passwordForgotten-mail mod-success" />
+                <p>
+                  Votre compte est<span className="passwordForgotten-emphasis">
+                    {' '}
+                    désormais activé
+                  </span>
+                </p>
+                <p className="passwordForgotten-lastSection">
+                  Vous pouvez maintenant vous y connecter pour gérer vos tokens
+                </p>
+              </div>
+              <p className="passwordForgotten-footer">
+                <a href="/login">Retournez à la page de connexion atyla</a>
+              </p>
+            </div>
           </div>
         )}
       </div>

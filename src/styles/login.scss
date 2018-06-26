@@ -19,7 +19,11 @@ $color-chambray: #31538f;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 82px);
+
+  @include sm {
+    height: calc(100vh - 65px);
+  }
 }
 
 .login-container {
@@ -116,6 +120,10 @@ $color-chambray: #31538f;
   text-align: center;
   font-size: 20px;
   font-weight: 500;
+
+  &.mod-forgotten {
+    height: 50px;
+  }
 }
 
 .login-loginInput {
@@ -130,6 +138,14 @@ $color-chambray: #31538f;
 
   &.mod-last {
     margin-bottom: 30px;
+  }
+
+  &.mod-center {
+    text-align: center;
+  }
+
+  &.mod-checkBox {
+    margin-right: 20px;
   }
 }
 

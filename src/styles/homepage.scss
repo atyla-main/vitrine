@@ -23,8 +23,8 @@ $color-linkWater: #d8e2f3;
 
 .homepage-header {
   position: relative;
-  background-image: url("./img/image_homepage.png");
-  background-size: 100% 100%;
+  background: url("./img/image_homepage_v2.png") no-repeat center;
+  background-size: cover;
 }
 
 .homepage-calculator {
@@ -47,14 +47,20 @@ $color-linkWater: #d8e2f3;
   text-align: center;
   display: table;
   margin: 0 auto;
+  padding: 0;
 }
 
 .homepage-buySectionTitle {
-  max-width: 500px;
-  font-size: 50px;
+  max-width: 750px;
+  font-size: 30px;
   margin: auto;
   margin-bottom: 30px;
-  margin-top: 500px;
+  margin-top: 200px;
+
+  @include sm {
+    margin-top: 390px;
+    font-size: 80px;
+  }
 }
 
 .homepage-buySectionTitleText {
@@ -63,7 +69,7 @@ $color-linkWater: #d8e2f3;
 
 .homepage-buySectionFootText {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 16px;
   margin-bottom: 30px;
   color: white;
 }
@@ -92,36 +98,50 @@ $color-linkWater: #d8e2f3;
 
 .homepage-sectionInvestTitle {
   margin-top: 30px;
-  font-size: 30px;
+  font-size: 25px;
   margin-bottom: 50px;
-  line-height: 60px;
+  line-height: 40px;
+
+  @include sm {
+    font-size: 30px;
+    line-height: 60px;
+  }
 }
 
 .homepage-sectionTechnoTitle {
   margin-top: 30px;
-  font-size: 30px;
+  font-size: 20px;
   margin-bottom: 50px;
-  line-height: 60px;
+  line-height: 40px;
   color: white;
+
+  @include sm {
+    font-size: 30px;
+    line-height: 60px;
+  }
 }
 
 .homepage-sectionInvestFooterTitle {
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 5px;
-  border-bottom: 1px solid #DD4B39;
+  border-bottom: 1px solid #0070BA;
   width: 230px;
   margin: 0 auto 20px auto;
 }
 
 .homepage-sectionTechnoSectionTitle {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 700;
   max-width: 280px;
   margin: auto;
   margin-bottom: 20px;
   color: white;
   text-align: justify;
+
+  @include lg {
+    font-size: 25px;
+  }
 }
 
 .homepage-sectionTechnoSectionText {
@@ -129,11 +149,17 @@ $color-linkWater: #d8e2f3;
   text-align: justify;
   max-width: 280px;
   margin: auto;
+  margin-bottom: 20px;
+
+  @include sm {
+    margin-bottom: auto;
+  }
 }
 
 .homepage-sectionInvestFooterText {
-  max-width: 200px;
+  max-width: 300px;
   margin: auto;
+  font-size: 16px;
 }
 
 .homepage-section {
@@ -161,7 +187,11 @@ $color-linkWater: #d8e2f3;
 }
 
 .homepage-sectionPartnerLogos {
-  margin-bottom: 50px;
+  width: 1170px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  align-items: center;
 }
 
 .homepage-sectionPartnerLogo {
@@ -176,7 +206,7 @@ $color-linkWater: #d8e2f3;
 
 .homepage-sectionPresentationIcons {
   font-size: 40px !important;
-  color: #4D6C9C;
+  color: #0070BA;
   margin-bottom: 30px;
 }
 
@@ -211,9 +241,26 @@ $color-linkWater: #d8e2f3;
 }
 
 .homepage-sectionExperienceTitle {
-  font-size: 30px;
+  font-size: 25px;
   margin-bottom: 20px;
-  line-height: 60px;
+  line-height: 40px;
+
+  @include sm {
+    font-size: 30px;
+    line-height: 60px;
+  }
+
+  &.mod-underline {
+    border-bottom: 1px solid #0070BA;
+    width: 80%;
+    padding: 0 10px 0 10px;
+    margin: 30px auto 20px auto;
+
+    @include sm {
+      padding: 0;
+      width: 500px;
+    }
+  }
 }
 
 .homepage-cicle {
@@ -244,9 +291,12 @@ $color-linkWater: #d8e2f3;
 }
 
 .homepage-sectionExperienceFooter {
-  display: flex;
-  align-items: start;
   margin-bottom: 50px;
+
+  &.mod-bottom {
+    display: flex;
+    align-items: start;
+  }
 }
 
 .homepage-sectionExperienceSwitcher {
@@ -299,15 +349,30 @@ $color-linkWater: #d8e2f3;
   }
 }
 
+.homepage-cardAndFooterSection {
+  display: table;
+  margin: auto;
+
+  @include lg {
+    margin: auto;
+  }
+}
+
 .homepage-switcherSection {
   background-color: white;
   height: 300px;
   border: 1px solid #EAECED;
   margin-right: 1px;
   padding: 5px;
+  margin-bottom: 30px;
   -webkit-box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
   -moz-box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
   box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
+  width: auto;
+
+  @include sm {
+    width: 360px;
+  }
 }
 
 .homepage-switcherSectionTitle {
@@ -360,16 +425,18 @@ $color-linkWater: #d8e2f3;
 }
 
 .homepage-switcherSectionBuyMax {
-  position: absolute;
-  top: 132px;
-  right: 218px;
   color: #D9D9D9;
+  &:before {
+    content: "EUR";
+    position: relative;
+    top: 0;
+  }
 }
 
 .homepage-switcherSectionCrypto {
-  position: absolute;
-  top: 132px;
-  right: 64px;
+  position: relative;
+  top: 0;
+  right: 35px;
   color: #D9D9D9;
 }
 
@@ -380,8 +447,12 @@ $color-linkWater: #d8e2f3;
   color: white;
   border: none;
   outline: none;
-  background-color: #CD5542;
+  background-color: #00AA5B;
   border-radius: 12px;
+
+  &.mod-register {
+    margin: 0 auto 20px auto;
+  }
 }
 
 .homepage-switcherAtylaButtonContent {
@@ -405,7 +476,7 @@ $color-linkWater: #d8e2f3;
 .homepage-switcherSectionBrand {
   margin: 25px 0 21px 0;
   font-size: 30px;
-  color: #CD5542;
+  color: #0070BA;
 }
 
 .homepage-switcherSectionBrandLogoContainer {
@@ -427,7 +498,7 @@ $color-linkWater: #d8e2f3;
 
 .homepage-switcherSectionBrandLogo {
   font-size: 40px !important;
-  color: #009cde;
+  color: #0070BA;
 
   &.mod-margin {
     margin-right: 20px;
@@ -462,9 +533,94 @@ $color-linkWater: #d8e2f3;
 
 .home-switcherFooterLegend {
   text-align: left;
+  font-size: 20px;
 }
 
 .home-switcherFooter {
-  font-size: 11px;
+  font-size: 14px;
   text-align: left;
+  max-width: 330px;
+
+  &.mod-nomargin {
+    margin-bottom: 0;
+  }
+}
+
+.homepage-openProLink {
+  font-weight: 700;
+  color: black;
+
+  &:hover {
+    color: black;
+    text-decoration: none;
+    border-bottom: 2px solid;
+  }
+}
+
+.homepage-openProLinkWhite {
+  font-weight: 700;
+  color: white;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid;
+  }
+}
+
+.homepage-atylaDiv {
+  width: 300px;
+  height: 50px;
+  margin: auto;
+  font-size: 20px;
+
+  @include sm {
+    width: 400px;
+    height: 70px;
+    margin: auto;
+    font-size: 30px;
+  }
+}
+
+.homepage-loveLogo {
+  height: 150px;
+
+  &.mod-em {
+    height: 125px;
+    width: 200px;
+
+    @include md {
+      height: 150px;
+      width: 300px;
+    }
+  }
+
+  &.mod-ey {
+    margin-bottom: 20px;
+
+    @include sm {
+      margin-bottom: auto;
+    }
+  }
+}
+
+.homepage-loveLogos {
+  margin-bottom: 50px;
+}
+
+.homepage-rowOverride {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.homepage-sectionSimpleAndSecure {
+  margin-bottom: 30px;
+}
+
+.homepage-rowOverrideCol {
+  padding: 0;
+}
+
+.homepage-advantagesSection {
+  margin-bottom: 30px;
 }

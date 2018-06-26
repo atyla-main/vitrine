@@ -83,7 +83,9 @@ class Login extends React.Component {
                   Se connecter
                 </Button>
                 <p className="login-connectionImpossible">
-                  Vous n’arrivez pas à vous connectez?
+                  <a href="/password-forgotten">
+                    Vous n’arrivez pas à vous connectez?
+                  </a>
                 </p>
                 <p className="login-errorMessage">{this.state.errors}</p>
                 <p className="login-ctaLimit">  Ou  </p>
