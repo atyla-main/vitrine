@@ -6,22 +6,22 @@ class Footer extends React.Component {
       <div className="footer">
         <div className="footer-container">
           <div className="footer-linkContainer">
+            <a className="footer-link" href="/">
+              Home
+            </a>
             <a className="footer-link" href="/login">
               Connexion
             </a>
             <a className="footer-link" href="/register">
               Ouvrir un compte
             </a>
+          </div>
+          <div className="footer-linkContainer">
             <a className="footer-link" href="/register-pro">
               Accès professionnel
             </a>
-          </div>
-          <div className="footer-linkContainer">
             <a className="footer-link" href="#">
               Respect de la vie privée
-            </a>
-            <a className="footer-link" href="#">
-              A propos
             </a>
             <a className="footer-link" href="#">
               Contact

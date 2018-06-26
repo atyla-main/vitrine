@@ -53,11 +53,15 @@ $color-linkWater: #d8e2f3;
   display: flex;
   text-decoration: none;
   color: white;
-  margin-right: 40px;
+  margin-right: 10px;
   font-size: 12px;
 
   &:hover {
     color: white;
+  }
+
+  @include sm {
+    margin-right: 40px;
   }
 }
 

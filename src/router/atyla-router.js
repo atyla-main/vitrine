@@ -154,7 +154,7 @@ const Public = ({ match }) => (
         <NavHashLink
           smooth
           to="/#solution"
-          className="atylaNavBar-normalLink"
+          className="atylaNavBar-normalLink mod-hidden"
           activeClassName="atylaNavBar-activeLink"
           exact
         >
@@ -163,7 +163,7 @@ const Public = ({ match }) => (
         <NavHashLink
           smooth
           to="/#experience"
-          className="atylaNavBar-normalLink"
+          className="atylaNavBar-normalLink mod-hidden"
           activeClassName="atylaNavBar-activeLink"
           exact
         >
@@ -172,7 +172,7 @@ const Public = ({ match }) => (
         <NavHashLink
           smooth
           to="/#ecosystem"
-          className="atylaNavBar-normalLink"
+          className="atylaNavBar-normalLink mod-hidden"
           activeClassName="atylaNavBar-activeLink"
           exact
         >
@@ -181,7 +181,7 @@ const Public = ({ match }) => (
         <NavHashLink
           smooth
           to="/#love"
-          className="atylaNavBar-normalLink"
+          className="atylaNavBar-normalLink mod-hidden"
           activeClassName="atylaNavBar-activeLink"
           exact
         >

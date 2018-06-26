@@ -61,6 +61,14 @@ $color-linkWater: #d8e2f3;
     margin-top: 390px;
     font-size: 80px;
   }
+
+  &.mod-secondLine {
+    margin-top: 0;
+  }
+
+  &.mod-firstLine {
+    margin-bottom: 0;
+  }
 }
 
 .homepage-buySectionTitleText {
@@ -183,7 +191,7 @@ $color-linkWater: #d8e2f3;
   line-height: 60px;
   width: 250px;
   margin: 30px auto 50px auto;
-  border-bottom: 1px solid #CD5542;
+  border-bottom: 1px solid #0070BA;
 }
 
 .homepage-sectionPartnerLogos {
@@ -276,6 +284,7 @@ $color-linkWater: #d8e2f3;
   box-sizing: content-box;
   white-space: nowrap;
   margin-right: 20px;
+
   &:before {
     content: "";
     display: inline-block;
@@ -285,7 +294,7 @@ $color-linkWater: #d8e2f3;
   }
 }
 
-.homepage-cicleNumber {
+.homepage-circleNumber {
   display: inline-block;
   vertical-align: middle;
 }
@@ -369,9 +378,11 @@ $color-linkWater: #d8e2f3;
   -moz-box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
   box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
   width: auto;
+  max-width: 320px;
 
   @include sm {
     width: 360px;
+    max-width: auto;
   }
 }
 

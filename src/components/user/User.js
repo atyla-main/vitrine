@@ -13,6 +13,11 @@ class User extends React.Component {
   }
 
   componentDidMount() {
+    if (this.state.id !== Auth.getId()) {
+      window.location.href = '/';
+      return;
+    }
+
     fetch(`${process.env.REACT_APP_APIV1_URL}api/users/${this.state.id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +43,7 @@ class User extends React.Component {
               <div className="user-title">
                 <div className="user-titleTriangle" />
                 {this.state.user.id && (
-                  <p>Bonjour {this.state.user.attributes.lastName}</p>
+                  <p>Bonjour {this.state.user.attributes.firstName}</p>
                 )}
               </div>
             </div>

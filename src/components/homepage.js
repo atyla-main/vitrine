@@ -88,8 +88,10 @@ class HomePage extends React.Component {
         <Grid className="homepage">
           <Row className="homepage-header homepage-rowOverride">
             <div className="homepage-buySection">
-              <p className="homepage-buySectionTitle">
+              <p className="homepage-buySectionTitle mod-firstLine">
                 L’achat de tokens{' '}
+              </p>
+              <p className="homepage-buySectionTitle mod-secondLine">
                 <span className="homepage-buySectionTitleText">simple</span> et{' '}
                 <span className="homepage-buySectionTitleText">sécurisé</span>
               </p>
@@ -206,7 +208,7 @@ class HomePage extends React.Component {
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">1</span>
+                          <span className="homepage-circleNumber">1</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
@@ -227,7 +229,7 @@ class HomePage extends React.Component {
                       <div className="homepage-switcherSection">
                         <p className="homepage-switcherSectionBrand">atyla</p>
                         <p className="homepage-switcherSectionTitle">
-                          Enregistrer un moyen de paiement
+                          Enregistrez un moyen de paiement
                         </p>
                         <div className="homepage-switcherSectionBrandLogoContainer">
                           <div className="homepage-switcherSectionBrandLogoBox">
@@ -243,7 +245,7 @@ class HomePage extends React.Component {
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">2</span>
+                          <span className="homepage-circleNumber">2</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
@@ -278,7 +280,7 @@ class HomePage extends React.Component {
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">3</span>
+                          <span className="homepage-circleNumber">3</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
@@ -314,16 +316,16 @@ class HomePage extends React.Component {
                           />
                         </p>
                         <button className="homepage-switcherProCreateButton">
-                          Créer un compte professionel
+                          Créez un compte professionel
                         </button>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">1</span>
+                          <span className="homepage-circleNumber">1</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
-                            Créer un compte professionnel
+                            Créez un compte professionnel
                           </p>
                           <p className="home-switcherFooter mod-nomargin">
                             Vous êtes un entrepreneur ?
@@ -354,7 +356,7 @@ class HomePage extends React.Component {
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">2</span>
+                          <span className="homepage-circleNumber">2</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
@@ -383,7 +385,7 @@ class HomePage extends React.Component {
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
                         <div className="homepage-cicle">
-                          <span className="homepage-cicleNumber">3</span>
+                          <span className="homepage-circleNumber">3</span>
                         </div>
                         <div>
                           <p className="home-switcherFooterLegend">
@@ -438,10 +440,10 @@ class HomePage extends React.Component {
                     Investissez dans les ICOs de votre choix
                   </p>
                   <p className="homepage-sectionTechnoSectionText">
-                    atyla peut vous accompagnez dans n’importe quelle ICO. La
-                    fiabilité des projets est analysés selon des critères bien
-                    définis. Investissez sereinement dans la Token economy
-                    auprès de projets répertoriés et vérifiés par nos équipes.
+                    atyla peut vous accompagner dans n’importe quelle ICO. La
+                    fiabilité des projets est analysée selon des critères bien
+                    définis. Investissez sereinement dans la Token economy dans
+                    des projets répertoriés et vérifiés par nos équipes.
                   </p>
                 </Col>
               </Row>

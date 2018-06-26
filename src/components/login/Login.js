@@ -89,9 +89,11 @@ class Login extends React.Component {
                 </p>
                 <p className="login-errorMessage">{this.state.errors}</p>
                 <p className="login-ctaLimit">  Ou  </p>
-                <Button className="login-button mod-signup" bsStyle="success">
-                  Ouvrir un compte
-                </Button>
+                <a href="/register">
+                  <Button className="login-button mod-signup" bsStyle="success">
+                    Ouvrir un compte
+                  </Button>
+                </a>
               </form>
             </div>
           </div>
