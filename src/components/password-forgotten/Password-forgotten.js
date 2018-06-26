@@ -9,7 +9,8 @@ class PasswordForgotten extends React.Component {
 
     this.state = {
       errors: '',
-      emailSent: ''
+      emailSent: false,
+      email: ''
     };
     this.processForm = this.processForm.bind(this);
   }
@@ -36,7 +37,8 @@ class PasswordForgotten extends React.Component {
           if (res.message === 'ok') {
             this.setState({ errors: '' });
             this.setState({
-              emailSent: i18n.t('passwordForgotten.validationMessage')
+              emailSent: true,
+              email: this.email.value
             });
           } else {
             this.setState({ errors: i18n.t('login.userNotFound') });
@@ -50,34 +52,68 @@ class PasswordForgotten extends React.Component {
   }
 
   render() {
+    let isSent = this.state.emailSent;
+
     return (
       <I18n ns="translations">
         {(t, { i18n }) => (
           <div className="login">
             <div className="login-container">
-              <p className="login-header">{t('passwordForgotten.title')}</p>
-              <form className="login-form" onSubmit={this.processForm}>
-                <div className="login-inputs">
-                  <label className="login-label">
-                    {t('passwordForgotten.label')}
-                    <input
-                      ref={email => (this.email = email)}
-                      placeholder={t('passwordForgotten.placeholder')}
-                      type="text"
-                      name="email"
-                    />
-                  </label>
+              <p className="login-header">atyla</p>
+              {isSent ? (
+                <div className="passwordForgotten-section">
+                  <i className="fa fa-envelope-o passwordForgotten-mail" />
+                  <p>
+                    Un email vient de vous être envoyé à l’adresse suivant : <span className="passwordForgotten-emphasis">
+                      {this.state.email}
+                    </span>
+                  </p>
+                  <p className="passwordForgotten-lastSection">
+                    Vous devez cliquer sur le
+                    <span className="passwordForgotten-emphasis">
+                      {' '}
+                      lien de confirmation{' '}
+                    </span>
+                    afin de pouvoir réinitialiser votre mot de passe
+                  </p>
                 </div>
-                <Button
-                  className="login-button"
-                  bsStyle="success"
-                  type="submit"
-                >
-                  {t('passwordForgotten.button')}
-                </Button>
-                <p className="login-errorMessage">{this.state.errors}</p>
-                <p className="">{this.state.emailSent}</p>
-              </form>
+              ) : (
+                <div>
+                  <p className="passwordForgotten-subtitle">
+                    Besoin d’un nouveau mot de passe ?
+                  </p>
+                  <p className="passwordForgotten-contentText">
+                    Entrez l’adresse mail de votre compte atyla pour commencer
+                  </p>
+                  <form className="login-form" onSubmit={this.processForm}>
+                    <div className="login-inputs">
+                      <input
+                        className="login-loginInput mod-last"
+                        ref={email => (this.email = email)}
+                        placeholder="Email"
+                        type="text"
+                        name="email"
+                      />
+                    </div>
+                    <Button
+                      className="login-button"
+                      bsStyle="success"
+                      type="submit"
+                    >
+                      Suivant
+                    </Button>
+                    <p className="passwordForgotten-emailLost">
+                      Adresse email oubliée
+                    </p>
+                    <p className="login-errorMessage mod-forgotten">
+                      {this.state.errors}
+                    </p>
+                  </form>
+                </div>
+              )}
+              <p className="passwordForgotten-footer">
+                <a href="/login">Retournez à la page de connexion atyla</a>
+              </p>
             </div>
           </div>
         )}

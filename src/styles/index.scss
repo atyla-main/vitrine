@@ -3,95 +3,96 @@
 }
 
 body, html {
-    margin: 0;
+  margin: 0;
 }
 
 .homepageContainer {
-    min-height: 100vh;
-    position: relative;
+  min-height: 100vh;
+  position: relative;
 }
 
 h1 {
-    margin: 0px 0px 0px 0px;
-    font-size: 60px;
+  margin: 0px 0px 0px 0px;
+  font-size: 60px;
 }
 
 hr {
-    margin: auto;
-    width: 40%;
+  margin: auto;
+  width: 40%;
 }
 
 .topLeft {
-    position: absolute;
-    color:#DD4B39 !important;
-    top: 2%;
-    font-size: 30px;
-    left: 16px;
-    margin-left: 60px !important;
+  text-shadow: none;
+  position: absolute;
+  color:#0070BA !important;
+  top: 2%;
+  font-size: 30px;
+  left: 16px;
+  margin-left: 40px !important;
 }
 
 .homepageBody {
-    display: flex;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    min-height: 63vh;
-    text-align: left;
-    color: white;
-    text-shadow:0 0 2px #000000;
-    background-color: #4472c5;
-    font-size : 24px;
-    p {
-        margin: 0% 15% 0% 15%;
+  display: flex;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  min-height: 63vh;
+  text-align: left;
+  color: white;
+  text-shadow:0 0 2px #000000;
+  background-color: #4472c5;
+  font-size : 24px;
+  p {
+    margin: 0% 15% 0% 15%;
+  }
+  div {
+  width: 100%;
+  display: black;
+  @include sm{
+    display: inline-block;
+    width: 50%;
     }
-    div {
-    width: 100%;
-    display: black;
-    @include sm{
-        display: inline-block;
-        width: 50%;
-        }
-    }
-    h2 {
-        padding: 0 0 0 0;
-        margin: 0% 15% 0% 15%;
-        font-size : 45px;
-        font-weight: bold;
-    }
-    ul {
-        padding: 0 0 0 0;
-        margin: 0 0 10% 27%;
-    }
+  }
+  h2 {
+    padding: 0 0 0 0;
+    margin: 0% 15% 0% 15%;
+    font-size : 45px;
+    font-weight: bold;
+  }
+  ul {
+    padding: 0 0 0 0;
+    margin: 0 0 10% 27%;
+  }
 }
 
 .leftSide {
-    width: 100%;
-    @include sm{
-        float:left;
-        width:50%;
-    }
+  width: 100%;
+  @include sm{
+    float:left;
+    width:50%;
+  }
 }
 
 .rightSide {
-    width: 100%;
-    @include sm{
-        float: right;
-        width: 50%;
-    }
+  width: 100%;
+  @include sm{
+    float: right;
+    width: 50%;
+  }
 }
 
 .searchIcos {
-    border: 2px solid red;
-    height: 40px;
-    color: black;
-    font-size: 16px;
+  border: 2px solid red;
+  height: 40px;
+  color: black;
+  font-size: 16px;
 
-    &.mod-error {
-    color: red;
-    }
+  &.mod-error {
+  color: red;
+  }
 
-    &.mod-sucess {
-    color: green;
-    }
+  &.mod-sucess {
+  color: green;
+  }
 }
 
 .icos-button {
@@ -104,18 +105,18 @@ hr {
   vertical-align: top;
 
   @include sm {
-    margin-right: auto;
+  margin-right: auto;
   }
 
   &:hover {
-    background-color: red;
+  background-color: red;
   }
 
   &:active {
-    background-color: red;
+  background-color: red;
   }
 
   &:focus {
-    background-color: red;
+  background-color: red;
   }
 }

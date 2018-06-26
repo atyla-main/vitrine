@@ -11,11 +11,13 @@ import User from '../components/user/User';
 import HowItWorks from '../components/how-it-works/How-it-works';
 import AboutUs from '../components/about-us/About-us';
 import Register from '../components/register/Register';
+import RegisterPro from '../components/register-pro/Register-pro';
 import RegisterValidation from '../components/register-validation/Register-validation';
 import EmailConfirmation from '../components/email-confirmation/Email-confirmation';
 import 'font-awesome/css/font-awesome.min.css';
 import PasswordForgotten from '../components/password-forgotten/Password-forgotten';
 import ResetPassword from '../components/reset-password/Reset-password';
+import { NavHashLink } from 'react-router-hash-link';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -54,15 +56,15 @@ const LogOut = ({ component: Component, ...rest }) => (
 
 const Private = ({ match }) => (
   <div>
-    <Navbar style={{ paddingTop: '5px' }}>
+    <Navbar className="atylaNavBar mod-user">
       <Navbar.Header>
         <Navbar.Brand className="atylaNavBar-privateBrand">atyla</Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
-      <Navbar.Collapse>
+      <Navbar.Collapse className="atylaNavBar-navLinks mod-user">
         <Navbar.Text>
           <NavLink
-            to="/users/1"
+            to={`/users/${match.params.id}`}
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -72,7 +74,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="/icos"
+            to="#"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -82,7 +84,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="/howitworks"
+            to="#"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -92,7 +94,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="/about"
+            to="#"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -102,7 +104,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text pullRight>
           <NavLink
-            to="/register"
+            to="/logout"
             className="atylaNavBar-privateLogoutLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -113,7 +115,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text className="atylaNavBar-privateIconText" pullRight>
           <NavLink
-            to="/users/1"
+            to="#"
             className="atylaNavBar-privateNormalLink mod-icon"
             exact
           >
@@ -122,7 +124,7 @@ const Private = ({ match }) => (
         </Navbar.Text>
         <Navbar.Text className="atylaNavBar-privateIconText" pullRight>
           <NavLink
-            to="/users/1"
+            to="#"
             className="atylaNavBar-privateNormalLink mod-icon"
             exact
           >
@@ -147,65 +149,61 @@ const Public = ({ match }) => (
           </div>
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse className="atylaNavBar-navLinks">
-          <NavLink
-            to="/"
-            className="atylaNavBar-normalLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/icos"
-            className="atylaNavBar-normalLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            Explore ICOs
-          </NavLink>
-          <NavLink
-            to="/howitworks"
-            className="atylaNavBar-normalLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            How it works
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="atylaNavBar-normalLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            About us
-          </NavLink>
-          <NavLink
-            to="/users/1"
-            className="atylaNavBar-normalLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            Account
-          </NavLink>
-          <NavLink
-            to="/login"
-            className="atylaNavBar-signInLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            Sign-in
-          </NavLink>
-          <NavLink
-            to="/register"
-            className="atylaNavBar-signUpLink"
-            activeClassName="atylaNavBar-activeLink"
-            exact
-          >
-            Sign-up
-          </NavLink>
-        </Navbar.Collapse>
       </Navbar.Header>
+      <Navbar.Collapse className="atylaNavBar-navLinks">
+        <NavHashLink
+          smooth
+          to="/#solution"
+          className="atylaNavBar-normalLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Solution
+        </NavHashLink>
+        <NavHashLink
+          smooth
+          to="/#experience"
+          className="atylaNavBar-normalLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Expérience
+        </NavHashLink>
+        <NavHashLink
+          smooth
+          to="/#ecosystem"
+          className="atylaNavBar-normalLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Ecosystème
+        </NavHashLink>
+        <NavHashLink
+          smooth
+          to="/#love"
+          className="atylaNavBar-normalLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Ils nous aiment
+        </NavHashLink>
+        <NavLink
+          to="/login"
+          className="atylaNavBar-signInLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Connexion
+        </NavLink>
+        <NavLink
+          to="/register"
+          className="atylaNavBar-signUpLink"
+          activeClassName="atylaNavBar-activeLink"
+          exact
+        >
+          Ouvrir un compte
+        </NavLink>
+      </Navbar.Collapse>
     </Navbar>
     <Switch>
       <Route exact path="/" component={HomePage} />
@@ -239,6 +237,7 @@ class AtylaRouter extends React.Component {
           <Route exact path="/reset-password/:id" component={ResetPassword} />
           <LogOut path="/logout" component={LogOut} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/register-pro" component={RegisterPro} />
           <Route
             exact
             path="/register-validation"
