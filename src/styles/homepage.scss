@@ -379,10 +379,11 @@ $color-linkWater: #d8e2f3;
   box-shadow: -1px -12px 1px 3px rgba(234,236,237,1);
   width: auto;
   max-width: 320px;
+  margin: 0 auto 30px auto;
 
-  @include sm {
+  @include lg {
     width: 360px;
-    max-width: auto;
+    max-width: none;
   }
 }
 
