@@ -455,21 +455,14 @@ class HomePage extends React.Component {
             </p>
             <Grid className="homepage-buySection">
               <Row className="homepage-loveLogos homepage-rowOverride">
-                <Col className="homepage-rowOverrideCol" sm={4}>
+                <Col className="homepage-rowOverrideCol" sm={6}>
                   <img
                     className="homepage-loveLogo mod-ey"
                     alt={'Ey'}
                     src={Ey}
                   />
                 </Col>
-                <Col className="homepage-rowOverrideCol" sm={4}>
-                  <img
-                    className="homepage-loveLogo"
-                    alt={'The Family'}
-                    src={TheFamily}
-                  />
-                </Col>
-                <Col className="homepage-rowOverrideCol" sm={4}>
+                <Col className="homepage-rowOverrideCol" sm={6}>
                   <img
                     className="homepage-loveLogo"
                     alt={'Em lyon'}
