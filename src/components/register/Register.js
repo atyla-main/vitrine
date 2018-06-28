@@ -125,47 +125,47 @@ class Register extends React.Component {
                     possible
                   </p>
                 </div>
-                <form className="ico-form" onSubmit={this.registerUser}>
+                <form className="" onSubmit={this.registerUser}>
                   <input
                     ref={country => (this.country = country)}
                     placeholder="Pays"
                     type="text"
-                    className="login-loginInput mod-intern"
+                    className="login-loginInput mod-intern mod-register"
                     name="country"
                   />
                   <input
                     ref={firstName => (this.firstName = firstName)}
                     placeholder="Prénom"
                     type="text"
-                    className="login-loginInput mod-intern"
+                    className="login-loginInput mod-intern mod-register"
                     name="firstName"
                   />
                   <input
                     ref={lastName => (this.lastName = lastName)}
                     placeholder="Nom"
                     type="text"
-                    className="login-loginInput mod-intern"
+                    className="login-loginInput mod-intern mod-register"
                     name="lastName"
                   />
                   <input
                     ref={email => (this.email = email)}
                     placeholder="Email"
                     type="text"
-                    className="login-loginInput mod-intern"
+                    className="login-loginInput mod-intern mod-register"
                     name="email"
                   />
                   <input
                     ref={password => (this.password = password)}
                     placeholder="Mot de passe"
                     type="password"
-                    className="login-loginInput mod-intern"
+                    className="login-loginInput mod-intern mod-register"
                     name="password"
                   />
                   <input
                     ref={password1 => (this.password1 = password1)}
                     placeholder="Choisissez votre mot de passe"
                     type="password"
-                    className="login-loginInput mod-last"
+                    className="login-loginInput mod-last mod-register"
                     name="password"
                   />
                   <div className="register-checkBoxes">

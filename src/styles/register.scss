@@ -1,3 +1,7 @@
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
 .register-container {
   width: auto;
   margin: auto 10px auto 10px;

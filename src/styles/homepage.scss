@@ -271,8 +271,10 @@ $color-linkWater: #d8e2f3;
   }
 }
 
-.homepage-cicle {
+.homepage-circle {
   display: inline-block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
   min-width: 30px;
   min-height: 20px;
@@ -463,6 +465,7 @@ $color-linkWater: #d8e2f3;
   border-radius: 12px;
 
   &.mod-register {
+    display: flex;
     margin: 0 auto 20px auto;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
 import Emlyon from '../img/emlyon.jpg';
-import TheFamily from '../img/the_family.jpeg';
+// import TheFamily from '../img/the_family.jpeg';
 import Ey from '../img/ey.jpeg';
 import Newsletter from '../components/newsletter/Newsletter';
 
@@ -207,7 +207,7 @@ class HomePage extends React.Component {
                         </button>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">1</span>
                         </div>
                         <div>
@@ -244,7 +244,7 @@ class HomePage extends React.Component {
                         </div>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">2</span>
                         </div>
                         <div>
@@ -279,7 +279,7 @@ class HomePage extends React.Component {
                         </p>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">3</span>
                         </div>
                         <div>
@@ -320,7 +320,7 @@ class HomePage extends React.Component {
                         </button>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">1</span>
                         </div>
                         <div>
@@ -355,7 +355,7 @@ class HomePage extends React.Component {
                         </div>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">2</span>
                         </div>
                         <div>
@@ -384,7 +384,7 @@ class HomePage extends React.Component {
                         </button>
                       </div>
                       <div className="homepage-sectionExperienceFooter mod-bottom">
-                        <div className="homepage-cicle">
+                        <div className="homepage-circle">
                           <span className="homepage-circleNumber">3</span>
                         </div>
                         <div>
@@ -429,7 +429,7 @@ class HomePage extends React.Component {
                   </p>
                   <p className="homepage-sectionTechnoSectionText">
                     atyla vous facilite l’accès aux ICOs grâce à sa solution
-                    d’achat rapide et sécurisée. Il paraît aujourd’hui de
+                    d’achat rapide et sécurisée. Il permet aujourd’hui de
                     soutenir ces technologies de rupture en faisant passer des
                     projets du stade expérimental à l’industrialisation de
                     solutions compétitives.
