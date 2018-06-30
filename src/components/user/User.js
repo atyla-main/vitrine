@@ -52,10 +52,10 @@ class User extends React.Component {
                 <p className="user-switcherSectionTitle">
                   Nouvel acteur de la Token Economy?
                 </p>
-                <div>
+                <div className="user-inputSection">
                   <input
                     className="user-switcherSectionSearch"
-                    placeholder="Nom do token"
+                    placeholder="Nom du token"
                   />
                   <i className="fa fa-check user-switcherSectionValidate" />
                   <div className="user-switcherSectionValidateLegend">

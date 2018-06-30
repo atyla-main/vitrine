@@ -276,8 +276,8 @@ $color-linkWater: #d8e2f3;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  min-width: 30px;
-  min-height: 20px;
+  width: 30px;
+  height: 30px;
   padding: 5px;
   background: #0070BA;
   color: white;
@@ -424,6 +424,9 @@ $color-linkWater: #d8e2f3;
 
 .homepage-switcherSectionExhangeIcon {
   margin: 0 10px 0 10px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .homepage-switcherSectionCoinInput {
@@ -448,9 +451,9 @@ $color-linkWater: #d8e2f3;
 }
 
 .homepage-switcherSectionCrypto {
-  position: relative;
-  top: 0;
-  right: 35px;
+  position: absolute;
+  top: 5px;
+  right: 8px;
   color: #D9D9D9;
 }
 
@@ -638,4 +641,17 @@ $color-linkWater: #d8e2f3;
 
 .homepage-advantagesSection {
   margin-bottom: 30px;
+}
+
+.homepage-disabledInput {
+  background-color: white;
+}
+
+.homepage-switcherInputWithCrypto {
+  position: relative;
+}
+
+.homepage-switcherCurrencySection {
+  display: flex;
+  justify-content: center;
 }

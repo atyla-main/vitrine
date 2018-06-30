@@ -36,7 +36,6 @@ $color-linkWater: #d8e2f3;
 
 .newsletter-form {
   display: flex;
-  width: 1170px;
   margin: auto;
 }
 
@@ -50,7 +49,7 @@ $color-linkWater: #d8e2f3;
   vertical-align: top;
   z-index: 1;
   position: relative;
-  width: 200px;
+  width: 110px;
   font-size: 20px;
 
   &:hover {
@@ -64,6 +63,10 @@ $color-linkWater: #d8e2f3;
   &:focus {
     background-color: #00AA5B;
   }
+
+  @include sm {
+    width: 200px;
+  }
 }
 
 .newsletter-input {
@@ -73,9 +76,9 @@ $color-linkWater: #d8e2f3;
   position: relative;
   z-index: 30;
   font-style: italic;
-  font-size: 20px;
+  font-size: 15px;
   padding: 10px;
-  width: 100%;
+  width: 190px;
   margin-left: 10px;
   margin-bottom: 10px;
 
@@ -85,5 +88,9 @@ $color-linkWater: #d8e2f3;
 
   &.mod-sucess {
     color: green;
+  }
+
+  @include sm {
+    width: 500px
   }
 }

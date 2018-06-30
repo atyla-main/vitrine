@@ -176,24 +176,37 @@ class HomePage extends React.Component {
                         </p>
                         <div>
                           <input
-                            className="homepage-switcherSectionSearch"
+                            className="homepage-switcherSectionSearch homepage-disabledInput"
                             placeholder="EOS"
+                            disabled
                           />
                           <i className="fa fa-check homepage-switcherSectionValidate" />
                           <span className="homepage-switcherSectionAtylaValid">
                             Validé par atyla
                           </span>
                         </div>
-                        <div>
-                          <input
-                            className="homepage-switcherSectionCoinInput"
-                            placeholder="0.00"
-                          />
+                        <div className="homepage-switcherCurrencySection">
+                          <div className="homepage-switcherInputWithCrypto">
+                            <input
+                              className="homepage-switcherSectionCoinInput homepage-disabledInput"
+                              placeholder="0.00"
+                              disabled
+                            />
+                            <span className="homepage-switcherSectionCrypto">
+                              EUR
+                            </span>
+                          </div>
                           <i className="fa fa-exchange homepage-switcherSectionExhangeIcon" />
-                          <input
-                            className="homepage-switcherSectionCoinInput"
-                            placeholder="0.00"
-                          />
+                          <div className="homepage-switcherInputWithCrypto">
+                            <input
+                              className="homepage-switcherSectionCoinInput homepage-disabledInput"
+                              placeholder="0.00"
+                              disabled
+                            />
+                            <span className="homepage-switcherSectionCrypto">
+                              EOS
+                            </span>
+                          </div>
                         </div>
                         <button className="homepage-switcherAtylaButton">
                           <span className="homepage-switcherAtylaButtonContent">
@@ -305,14 +318,16 @@ class HomePage extends React.Component {
                         <p className="homepage-switcherSectionBrand">atyla</p>
                         <p>
                           <input
-                            className="homepage-switcherSectionCoinInput mod-alone"
+                            className="homepage-switcherSectionCoinInput mod-alone homepage-disabledInput"
                             placeholder="Adresse email"
+                            disabled
                           />
                         </p>
                         <p>
                           <input
-                            className="homepage-switcherSectionCoinInput mod-alone"
+                            className="homepage-switcherSectionCoinInput mod-alone homepage-disabledInput"
                             placeholder="Mot de passe"
+                            disabled
                           />
                         </p>
                         <button className="homepage-switcherProCreateButton">
@@ -374,7 +389,12 @@ class HomePage extends React.Component {
                     <div className="homepage-cardAndFooterSection">
                       <div className="homepage-switcherSection">
                         <p className="homepage-switcherSectionBrand">atyla</p>
-                        <textarea cols={40} rows={5}>
+                        <textarea
+                          className="homepage-disabledInput"
+                          cols={40}
+                          rows={5}
+                          disabled
+                        >
                           &lt;script
                           src="http://cdn.atyla.io/javascripts/atyla.js"&gt;&lt;/script&gt;
                           &lt;div id="atylaDiv" /&gt;
