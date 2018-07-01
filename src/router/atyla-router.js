@@ -23,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      Auth.isUserAuthenticated() ? (
+      Auth.isUserAuthenticated(props) ? (
         <Component {...props} />
       ) : (
         <Redirect
@@ -108,27 +108,26 @@ const Private = ({ match }) => (
             className="atylaNavBar-privateLogoutLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
-            pullRight
           >
             Déconnexion
           </NavLink>
         </Navbar.Text>
-        <Navbar.Text className="atylaNavBar-privateIconText" pullRight>
+        <Navbar.Text pullRight className="atylaNavBar-privateIconText">
           <NavLink
             to="#"
             className="atylaNavBar-privateNormalLink mod-icon"
             exact
           >
-            <i className="fa fa-user-circle" ariaHidden="true" />
+            <i className="fa fa-user-circle" />
           </NavLink>
         </Navbar.Text>
-        <Navbar.Text className="atylaNavBar-privateIconText" pullRight>
+        <Navbar.Text pullRight className="atylaNavBar-privateIconText">
           <NavLink
             to="#"
             className="atylaNavBar-privateNormalLink mod-icon"
             exact
           >
-            <i className="fa fa-bell-o" ariaHidden="true" />
+            <i className="fa fa-bell-o" />
           </NavLink>
         </Navbar.Text>
       </Navbar.Collapse>

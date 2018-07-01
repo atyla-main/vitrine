@@ -1,11 +1,14 @@
 class Auth {
   static authenticateUser(token, id) {
     localStorage.setItem('token', token);
-    localStorage.setItem('userId', id)
+    localStorage.setItem('userId', id);
   }
 
-  static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+  static isUserAuthenticated(props) {
+    return (
+      localStorage.getItem('token') !== null &&
+      props.match.params.id === this.getId()
+    );
   }
 
   static deauthenticateUser() {

@@ -13,11 +13,6 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.id !== Auth.getId()) {
-      window.location.href = '/';
-      return;
-    }
-
     fetch(`${process.env.REACT_APP_APIV1_URL}api/users/${this.state.id}`, {
       headers: {
         'Content-Type': 'application/json',
