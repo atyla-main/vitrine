@@ -2,6 +2,7 @@ import React from 'react';
 import ReactFlagsSelect from 'react-flags-select';
 import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
+import _ from 'lodash';
 
 class Register extends React.Component {
   constructor(props) {
@@ -13,23 +14,40 @@ class Register extends React.Component {
       isChecked: false,
       isOptIn: false,
       isRegistered: false,
-      email: ''
+      email: '',
+      firstNameError: '',
+      lastNameError: '',
+      emailError: '',
+      passwordError: '',
+      legalError: ''
     };
     this.registerUser = this.registerUser.bind(this);
   }
 
   registerUser(event) {
     event.preventDefault();
+    this.setState({
+      firstNameError: '',
+      lastNameError: '',
+      emailError: '',
+      passwordError: '',
+      legalError: '',
+      errors: ''
+    });
 
     if (!this.state.isChecked) {
       this.setState({
+        legalError: 'form-hasError',
         errors: "Il vous faut accepter les conditions d'utilisation."
       });
       return;
     }
 
     if (this.password.value !== this.password1.value) {
-      this.setState({ errors: 'Mot de passe incorrect.' });
+      this.setState({
+        passwordError: 'has-error',
+        errors: 'Les mots de passe ne correspondent pas.'
+      });
       return;
     }
 
@@ -55,7 +73,17 @@ class Register extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.name && res.name === 'SequelizeValidationError') {
-          this.setState({ errors: i18n.t('register.error') });
+          res.errors.forEach(error => {
+            this.setState({ [error.path + 'Error']: 'has-error' });
+            this.setState({ errors: 'Les champs sont obligatoires.' });
+            if (error.path === 'email' && !_.isEmpty(this.email.value)) {
+              if (error.validatorKey === 'isEmail') {
+                this.setState({ errors: 'Format de l’email invalid.' });
+              } else if (error.validatorKey === 'isUnique') {
+                this.setState({ errors: 'Email déjà utilisé.' });
+              }
+            }
+          });
         } else {
           this.setState({
             errors: '',
@@ -65,7 +93,7 @@ class Register extends React.Component {
         }
       })
       .catch(err => {
-        this.setState({ errors: i18n.t('login.error') });
+        this.setState({ errors: 'Erreur serveur merci de recharger la page.' });
       });
   }
 
@@ -89,6 +117,11 @@ class Register extends React.Component {
 
   render() {
     let isRegister = this.state.isRegistered;
+    let firstNameError = this.state.firstNameError;
+    let lastNameError = this.state.lastNameError;
+    let emailError = this.state.emailError;
+    let passwordError = this.state.passwordError;
+    let legalError = this.state.legalError;
 
     return (
       <I18n ns="translations">
@@ -138,21 +171,29 @@ class Register extends React.Component {
                     ref={firstName => (this.firstName = firstName)}
                     placeholder="Prénom"
                     type="text"
-                    className="login-loginInput mod-intern mod-register"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      firstNameError
+                    }
                     name="firstName"
                   />
                   <input
                     ref={lastName => (this.lastName = lastName)}
                     placeholder="Nom"
                     type="text"
-                    className="login-loginInput mod-intern mod-register"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      lastNameError
+                    }
                     name="lastName"
                   />
                   <input
                     ref={email => (this.email = email)}
                     placeholder="Email"
                     type="text"
-                    className="login-loginInput mod-intern mod-register"
+                    className={
+                      'login-loginInput mod-intern mod-register ' + emailError
+                    }
                     name="email"
                   />
                   <ReactFlagsSelect
@@ -165,14 +206,20 @@ class Register extends React.Component {
                     ref={password => (this.password = password)}
                     placeholder="Mot de passe"
                     type="password"
-                    className="login-loginInput mod-intern mod-register"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      passwordError
+                    }
                     name="password"
                   />
                   <input
                     ref={password1 => (this.password1 = password1)}
                     placeholder="Choisissez votre mot de passe"
                     type="password"
-                    className="login-loginInput mod-last mod-register"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      passwordError
+                    }
                     name="password"
                   />
                   <div className="register-checkBoxes">
@@ -198,7 +245,7 @@ class Register extends React.Component {
                       className="login-loginInput mod-last mod-checkBox"
                       name="legalAge"
                     />
-                    <p>
+                    <p className={legalError}>
                       Je certifie avoir l’âge légal et avoir lu et accepté les{' '}
                       <a>Conditions d’utilisation</a> de atyla
                     </p>

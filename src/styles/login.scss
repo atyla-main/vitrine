@@ -120,7 +120,9 @@ $color-chambray: #31538f;
   color: red;
   text-align: center;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 350;
+  font-style: italic;
+  margin-bottom: 30px;
 
   &.mod-forgotten {
     height: 50px;
@@ -151,6 +153,10 @@ $color-chambray: #31538f;
 
   &.mod-register {
     width: 100%;
+  }
+
+  &.has-error {
+    border: 1px solid red;
   }
 }
 
@@ -190,4 +196,8 @@ $color-chambray: #31538f;
     content: '\a0';
     background-color: #D9D9D9;
   }
+}
+
+.form-hasError {
+  color: red;
 }
