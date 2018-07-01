@@ -33,3 +33,37 @@
   display: flex;
   margin: 0 10px 0 20px;
 }
+
+.flag-select.country-flag>img {
+  top: 0;
+  width: 19px;
+}
+
+.selected--flag--option {
+  &:before {
+    right: 0;
+  }
+}
+
+.country-flag {
+  display: contents;
+}
+
+.country-flag>img {
+  top: -1px;
+}
+
+.arrow-down {
+  padding: 0 !important;
+  float: right;
+  color: #7F7F7F !important;
+}
+
+.flag-options {
+  width: 98%;
+}
+
+.flag-select {
+  font-size: 14px;
+  color: #7F7F7F;
+}

@@ -7,7 +7,7 @@ class User extends React.Component {
     super(props);
 
     this.state = {
-      id: props.match.params.id,
+      id: props.rest.userId,
       user: {}
     };
   }

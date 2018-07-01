@@ -23,8 +23,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      Auth.isUserAuthenticated(props) ? (
-        <Component {...props} />
+      Auth.isUserAuthenticated(Auth.getId()) ? (
+        <Component {...props} rest={rest} />
       ) : (
         <Redirect
           to={{
@@ -64,7 +64,7 @@ const Private = ({ match }) => (
       <Navbar.Collapse className="atylaNavBar-navLinks mod-user">
         <Navbar.Text>
           <NavLink
-            to={`/users/${match.params.id}`}
+            to={`/account`}
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
@@ -133,7 +133,7 @@ const Private = ({ match }) => (
       </Navbar.Collapse>
     </Navbar>
     <Switch>
-      <PrivateRoute path="/users/:id" component={User} />
+      <PrivateRoute path="/account" component={User} userId={Auth.getId()} />
     </Switch>
   </div>
 );
@@ -222,7 +222,7 @@ class AtylaRouter extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" component={Public} />
-          <PrivateRoute path="/users/:id" component={Private} />
+          <PrivateRoute path="/account" component={Private} />
           <Route path="/icos/:id" component={Ico} />
           <Route exact path="/howitworks" component={HowItWorks} />
           <Route exact path="/about" component={AboutUs} />

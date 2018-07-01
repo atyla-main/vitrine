@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactFlagsSelect from 'react-flags-select';
 import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
 
@@ -8,6 +9,7 @@ class Register extends React.Component {
 
     this.state = {
       errors: '',
+      countryCode: '',
       isChecked: false,
       isOptIn: false,
       isRegistered: false,
@@ -44,7 +46,7 @@ class Register extends React.Component {
             lastName: `${this.lastName.value}`,
             email: `${this.email.value}`,
             password: `${this.password.value}`,
-            country: `${this.country.value}`,
+            country: `${this.state.countryCode}`,
             optIn: `${this.state.isOptIn}`
           }
         }
@@ -76,6 +78,12 @@ class Register extends React.Component {
   toggleConditionsChange = () => {
     this.setState({
       isChecked: !this.state.isChecked
+    });
+  };
+
+  onSelectFlag = countryCode => {
+    this.setState({
+      countryCode: countryCode
     });
   };
 
@@ -127,13 +135,6 @@ class Register extends React.Component {
                 </div>
                 <form className="" onSubmit={this.registerUser}>
                   <input
-                    ref={country => (this.country = country)}
-                    placeholder="Pays"
-                    type="text"
-                    className="login-loginInput mod-intern mod-register"
-                    name="country"
-                  />
-                  <input
                     ref={firstName => (this.firstName = firstName)}
                     placeholder="Prénom"
                     type="text"
@@ -153,6 +154,12 @@ class Register extends React.Component {
                     type="text"
                     className="login-loginInput mod-intern mod-register"
                     name="email"
+                  />
+                  <ReactFlagsSelect
+                    searchable={true}
+                    defaultCountry="FR"
+                    className="login-loginInput mod-intern mod-register"
+                    onSelect={this.onSelectFlag}
                   />
                   <input
                     ref={password => (this.password = password)}
