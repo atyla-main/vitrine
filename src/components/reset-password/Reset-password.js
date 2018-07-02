@@ -68,7 +68,7 @@ class PasswordForgotten extends React.Component {
               passwordValid: true
             });
           } else {
-            this.setState({ errors: i18n.t('login.userNotFound') });
+            this.setState({ errors: 'Aucun utilisateur trouvé.' });
           }
         }
       })

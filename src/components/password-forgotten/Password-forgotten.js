@@ -41,7 +41,7 @@ class PasswordForgotten extends React.Component {
               email: this.email.value
             });
           } else {
-            this.setState({ errors: i18n.t('login.userNotFound') });
+            this.setState({ errors: 'Aucun utilisateur trouvé.' });
           }
         }
       })

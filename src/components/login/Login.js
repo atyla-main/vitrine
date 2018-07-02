@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import Auth from '../../services/Auth';
 import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
+import _ from 'lodash';
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -16,6 +17,11 @@ class Login extends React.Component {
 
   processForm(event) {
     event.preventDefault();
+
+    if (_.isEmpty(this.password.value)) {
+      this.setState({ errors: 'Le mot de passe ne peux pas être vide.' });
+      return;
+    }
 
     fetch(`${process.env.REACT_APP_APIV1_URL}login`, {
       method: 'POST',
@@ -42,7 +48,7 @@ class Login extends React.Component {
             Auth.authenticateUser(res.token, res.id);
             window.location.href = `/account`;
           } else {
-            this.setState({ errors: i18n.t('login.userNotFound') });
+            this.setState({ errors: 'Aucun utilisateur trouvé.' });
           }
         }
       })
