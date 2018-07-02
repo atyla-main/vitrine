@@ -53,6 +53,11 @@ class Newsletter extends React.Component {
   }
 
   render() {
+    let placeholder = 'Saisissez votre email pour avoir des nouvelles d’atyla';
+
+    if (window.screen.width < 768) {
+      placeholder = '@ Votre email';
+    }
     return (
       <I18n ns="translations">
         {(t, { i18n }) => (
@@ -61,8 +66,8 @@ class Newsletter extends React.Component {
               <form className="newsletter-form" onSubmit={this.postEmail}>
                 <input
                   ref={email => (this.email = email)}
+                  placeholder={placeholder}
                   className={'newsletter-input ' + this.state.emailError}
-                  placeholder="Saisissez votre email pour avoir des nouvelles d’atyla"
                   type="text"
                   name="email"
                 />
