@@ -49,6 +49,12 @@ class Register extends React.Component {
         errors: 'Les mots de passe ne correspondent pas.'
       });
       return;
+    } else if (this.password.value.length < 8) {
+      this.setState({
+        passwordError: 'has-error',
+        errors: 'Le mot de passe doit faire au minimum 8 charactères.'
+      });
+      return;
     }
 
     fetch(`${process.env.REACT_APP_APIV1_URL}users`, {
