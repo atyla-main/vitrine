@@ -95,9 +95,7 @@ class HomePage extends React.Component {
                 <span className="homepage-buySectionTitleText">simple</span> et{' '}
                 <span className="homepage-buySectionTitleText">sécurisé</span>
               </p>
-              <a href="/login">
-                <div className="homepage-atylaDiv" id="atylaDiv" />
-              </a>
+              <div className="homepage-atylaDiv" id="atylaDiv" />
               <p className="homepage-buySectionFootText">
                 Vous êtes un entrepreneur?{' '}
                 <a href="/register-pro" className="homepage-openProLinkWhite">
