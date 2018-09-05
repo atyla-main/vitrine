@@ -13,7 +13,6 @@ class App extends Component {
           <BrowserRouter>
             <AtylaRouter />
           </BrowserRouter>
-          <Footer />
         </HttpsRedirect>
       </div>
     );

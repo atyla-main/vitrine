@@ -18,6 +18,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import PasswordForgotten from '../components/password-forgotten/Password-forgotten';
 import ResetPassword from '../components/reset-password/Reset-password';
 import { NavHashLink } from 'react-router-hash-link';
+import InProgress from '../components/work-in-progress/InProgress';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -219,38 +220,38 @@ class AtylaRouter extends React.Component {
 
   render() {
     return (
-      <div>
-        <Switch>
-          <Route exact path="/" component={Public} />
-          <PrivateRoute path="/account" component={Private} />
-          <Route path="/icos/:id" component={Ico} />
-          <Route exact path="/howitworks" component={HowItWorks} />
-          <Route exact path="/about" component={AboutUs} />
-          <Route exact path="/icos" component={Icos} />
-          <Route exact path="/login" component={Login} />
-          <Route
-            exact
-            path="/password-forgotten"
-            component={PasswordForgotten}
-          />
-          <Route exact path="/reset-password/:id" component={ResetPassword} />
-          <LogOut path="/logout" component={LogOut} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/register-pro" component={RegisterPro} />
-          <Route
-            exact
-            path="/register-validation"
-            component={RegisterValidation}
-          />
-          <Route
-            exact
-            path="/sign-up/confirmation/:id"
-            component={EmailConfirmation}
-          />
-          <Route exact path="/not-found" component={NotFound} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+      // <div>
+      // <Switch>
+      <Route exact path="/" component={InProgress} />
+      // <PrivateRoute path="/account" component={Private} />
+      //           <Route path="/icos/:id" component={Ico} />
+      //           <Route exact path="/howitworks" component={HowItWorks} />
+      //           <Route exact path="/about" component={AboutUs} />
+      //           <Route exact path="/icos" component={Icos} />
+      //           <Route exact path="/login" component={Login} />
+      //           <Route
+      //             exact
+      //             path="/password-forgotten"
+      //             component={PasswordForgotten}
+      //           />
+      //           <Route exact path="/reset-password/:id" component={ResetPassword} />
+      //           <LogOut path="/logout" component={LogOut} />
+      //           <Route exact path="/register" component={Register} />
+      //           <Route exact path="/register-pro" component={RegisterPro} />
+      //           <Route
+      //             exact
+      //             path="/register-validation"
+      //             component={RegisterValidation}
+      //           />
+      //           <Route
+      //             exact
+      //             path="/sign-up/confirmation/:id"
+      //             component={EmailConfirmation}
+      //           />
+      //           <Route exact path="/not-found" component={NotFound} />
+      //           <Route component={NotFound} />
+      // </Switch>
+      // </div>
     );
   }
 }

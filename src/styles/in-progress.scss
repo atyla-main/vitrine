@@ -1,0 +1,59 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
+.inProgress-container {
+  height: 100vh;
+  position: relative;
+  background: url("./img/Fond.png") no-repeat center;
+  background-size: cover;
+}
+
+.inProgress-text {
+  font-size: 25px;
+  font-family: helvetica;
+  color: white;
+  font-weight: 200;
+  font-style: italic;
+
+  @include sm {
+    font-size: 32px;
+  }
+}
+
+.inProgress-img {
+  height: 100px;
+  width: 250px;
+  margin-bottom: 80px;
+
+  @include sm {
+    height: 150px;
+    width: 375px;
+  }
+
+  @include lg {
+    height: 300px;
+    width: 750px;
+  }
+}
+
+.inProgress-content {
+  padding-top: 30vh;
+  padding-left: 5%;
+
+  @include sm {
+    padding-left: 20%;
+  }
+}
