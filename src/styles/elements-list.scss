@@ -1,0 +1,30 @@
+.elementsList-line {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.elementsList-element1 {
+  width: 500px;
+}
+
+.elementsList-element2 {
+  width: 500px;
+}
+
+.elementsList-element3 {
+  width: 500px;
+}
+
+.elementsList-header {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+}
+
+.elementsList-emptyMessage {
+  text-align: center;
+}

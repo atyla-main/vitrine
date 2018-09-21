@@ -19,6 +19,11 @@ import PasswordForgotten from '../components/password-forgotten/Password-forgott
 import ResetPassword from '../components/reset-password/Reset-password';
 import { NavHashLink } from 'react-router-hash-link';
 import InProgress from '../components/work-in-progress/InProgress';
+import Parameters from '../containers/Parameters';
+import Offices from '../containers/Offices';
+import Contacts from '../containers/Contacts';
+import Properties from '../containers/Properties';
+import Contracts from '../containers/Contracts';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -65,42 +70,52 @@ const Private = ({ match }) => (
       <Navbar.Collapse className="atylaNavBar-navLinks mod-user">
         <Navbar.Text>
           <NavLink
-            to={`/account`}
+            to="/dashboard/contracts"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
           >
-            Accueil
+            Contrats
           </NavLink>
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="#"
+            to="/dashboard/offices"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
           >
-            ICOs
+            Agences
           </NavLink>
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="#"
+            to="/dashboard/properties"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
           >
-            Commandes
+            Biens
           </NavLink>
         </Navbar.Text>
         <Navbar.Text>
           <NavLink
-            to="#"
+            to="/dashboard/contacts"
             className="atylaNavBar-privateNormalLink"
             activeClassName="atylaNavBar-activeLink mod-private"
             exact
           >
-            Portefeuille
+            Contacts
+          </NavLink>
+        </Navbar.Text>
+        <Navbar.Text>
+          <NavLink
+            to="/dashboard/parameters"
+            className="atylaNavBar-privateNormalLink"
+            activeClassName="atylaNavBar-activeLink mod-private"
+            exact
+          >
+            Paramètres
           </NavLink>
         </Navbar.Text>
         <Navbar.Text pullRight>
@@ -135,6 +150,31 @@ const Private = ({ match }) => (
     </Navbar>
     <Switch>
       <PrivateRoute path="/account" component={User} userId={Auth.getId()} />
+      <PrivateRoute
+        path="/dashboard/parameters"
+        component={Parameters}
+        userId={Auth.getId()}
+      />
+      <PrivateRoute
+        path="/dashboard/properties"
+        component={Properties}
+        userId={Auth.getId()}
+      />
+      <PrivateRoute
+        path="/dashboard/offices"
+        component={Offices}
+        userId={Auth.getId()}
+      />
+      <PrivateRoute
+        path="/dashboard/contacts"
+        component={Contacts}
+        userId={Auth.getId()}
+      />
+      <PrivateRoute
+        path="/dashboard/contracts"
+        component={Contracts}
+        userId={Auth.getId()}
+      />
     </Switch>
   </div>
 );
@@ -220,38 +260,33 @@ class AtylaRouter extends React.Component {
 
   render() {
     return (
-      // <div>
-      // <Switch>
-      <Route exact path="/" component={InProgress} />
-      // <PrivateRoute path="/account" component={Private} />
-      //           <Route path="/icos/:id" component={Ico} />
-      //           <Route exact path="/howitworks" component={HowItWorks} />
-      //           <Route exact path="/about" component={AboutUs} />
-      //           <Route exact path="/icos" component={Icos} />
-      //           <Route exact path="/login" component={Login} />
-      //           <Route
-      //             exact
-      //             path="/password-forgotten"
-      //             component={PasswordForgotten}
-      //           />
-      //           <Route exact path="/reset-password/:id" component={ResetPassword} />
-      //           <LogOut path="/logout" component={LogOut} />
-      //           <Route exact path="/register" component={Register} />
-      //           <Route exact path="/register-pro" component={RegisterPro} />
-      //           <Route
-      //             exact
-      //             path="/register-validation"
-      //             component={RegisterValidation}
-      //           />
-      //           <Route
-      //             exact
-      //             path="/sign-up/confirmation/:id"
-      //             component={EmailConfirmation}
-      //           />
-      //           <Route exact path="/not-found" component={NotFound} />
-      //           <Route component={NotFound} />
-      // </Switch>
-      // </div>
+      <div>
+        <Switch>
+          <Route exact path="/" component={InProgress} />
+          <PrivateRoute path="/dashboard" component={Private} />
+          <Route exact path="/login" component={Login} />
+          <Route
+            exact
+            path="/password-forgotten"
+            component={PasswordForgotten}
+          />
+          <Route exact path="/reset-password/:id" component={ResetPassword} />
+          <LogOut path="/logout" component={LogOut} />
+          <Route exact path="/register" component={Register} />
+          <Route
+            exact
+            path="/register-validation"
+            component={RegisterValidation}
+          />
+          <Route
+            exact
+            path="/sign-up/confirmation/:id"
+            component={EmailConfirmation}
+          />
+          <Route exact path="/not-found" component={NotFound} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "atyla-public-website",
+  "name": "vitrine",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "ajv": "^6.4.0",
     "ajv-keywords": "^3.2.0",
     "bootstrap": "^3.3.7",
+    "cross-fetch": "^2.2.2",
     "font-awesome": "^4.7.0",
     "husky": "^0.14.3",
     "i": "^0.3.6",
@@ -27,12 +28,17 @@
     "react-flags-select": "^1.1.8",
     "react-https-redirect": "^1.0.10",
     "react-i18next": "^7.6.1",
+    "react-modal": "^3.5.1",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-hash-link": "^1.2.0",
     "react-scripts": "1.1.4",
     "react-scrollable-anchor": "^0.6.1",
     "react-select": "^1.2.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^3.3.0"
   },
   "lint-staged": {

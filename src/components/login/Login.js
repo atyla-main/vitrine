@@ -46,7 +46,7 @@ class Login extends React.Component {
           if (res.message === 'ok') {
             this.setState({ errors: '' });
             Auth.authenticateUser(res.token, res.id);
-            window.location.href = `/account`;
+            window.location.href = `/dashboard/parameters`;
           } else {
             this.setState({ errors: 'Aucun utilisateur trouvé.' });
           }
