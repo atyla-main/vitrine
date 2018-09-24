@@ -107,7 +107,7 @@ class Negociator extends Component {
           </div>
 
           <div>
-            <button>Submit</button>
+            <button name="submit">Submit</button>
           </div>
         </form>
       </div>

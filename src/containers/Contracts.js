@@ -13,6 +13,7 @@ import { createMandateActions } from '../actions/create-mandate';
 import { updateContactActions } from '../actions/update-contacts';
 import { generatePdfActions } from '../actions/generate-pdf';
 import Annex from './contract-pages/annex';
+import writtenNumber from 'written-number';
 
 class Contracts extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Contracts extends Component {
         mandateNumber: '',
         signatureDate: 0,
         saleAmount: '',
+        saleAmountText: '',
         remunerationType: 'Forfaitaire',
         percentage: 0,
         lumpSum: '',
@@ -83,6 +85,10 @@ class Contracts extends Component {
     const { name, value } = event.target;
     const { parameters } = this.state;
 
+    if (name === 'saleAmount') {
+      parameters.saleAmountText = writtenNumber(value, { lang: 'fr' });
+    }
+
     this.setState({
       parameters: {
         ...parameters,
@@ -97,15 +103,20 @@ class Contracts extends Component {
     const { parameters } = this.state;
     let attributes = parameters;
 
-    attributes.saleAmount = {
-      amount: parameters.saleAmount,
-      currency: 'EUR'
-    };
+    if (parameters.saleAmount) {
+      attributes.saleAmount = {
+        amount: parameters.saleAmount,
+        currency: 'EUR',
+        text: parameters.saleAmountText
+      };
+    }
 
-    attributes.lumpSum = {
-      amount: parameters.lumpSum,
-      currency: 'EUR'
-    };
+    if (parameters.saleAmount) {
+      attributes.lumpSum = {
+        amount: parameters.lumpSum,
+        currency: 'EUR'
+      };
+    }
 
     let body = {
       data: {

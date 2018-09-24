@@ -67,7 +67,7 @@ class Property extends Component {
           </div>
 
           <div className={'contractForm-inputLine'}>
-            <label htmlFor="postCode">Code postale</label>
+            <label htmlFor="postCode">Code postal</label>
             <input
               onChange={e => onChange(e)}
               value={parameters.postCode}
@@ -97,7 +97,7 @@ class Property extends Component {
           </div>
 
           <div>
-            <button>Submit</button>
+            <button name="submit">Submit</button>
           </div>
         </form>
       </div>

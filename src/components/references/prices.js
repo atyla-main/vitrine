@@ -17,6 +17,18 @@ class Prices extends Component {
           </div>
 
           <div className={'contractForm-inputLine'}>
+            <label htmlFor="saleAmountText">
+              Prix de vente en toute lettres
+            </label>
+            <input
+              onChange={e => onChange(e)}
+              value={parameters.saleAmountText}
+              name="saleAmountText"
+              type="text"
+            />
+          </div>
+
+          <div className={'contractForm-inputLine'}>
             <label htmlFor="propertyId">Type de rémunération</label>
             <select
               onChange={e => onChange(e)}
@@ -74,7 +86,7 @@ class Prices extends Component {
             />
           </div>
           <div>
-            <button>Submit</button>
+            <button name="submit">Submit</button>
           </div>
         </form>
       </div>

@@ -203,7 +203,9 @@ class Parameters extends Component {
           </div>
 
           <div>
-            <button>Submit</button>
+            <button id="parameterSubmit" name="submit">
+              Submit
+            </button>
           </div>
         </form>
       </div>

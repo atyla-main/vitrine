@@ -102,7 +102,7 @@ class Contacts extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { dispatch, user } = this.props;
-    const { parameters } = this.state;
+    const { parameters, toShow } = this.state;
 
     let body = {
       data: {
@@ -117,12 +117,10 @@ class Contacts extends Component {
         }
       }
     };
-    body.data.attributes.status = this.state.toShow;
+    body.data.attributes.status = toShow;
     dispatch(createContactActions.create(body));
     dispatch(
-      fetchContactsActions.fetch(
-        `userId=${Auth.getId()}&status=${this.state.toShow}`
-      )
+      fetchContactsActions.fetch(`userId=${Auth.getId()}&status=${toShow}`)
     );
     this.setState({ modalIsOpen: false });
   }
@@ -155,8 +153,9 @@ class Contacts extends Component {
     const { contacts } = this.props;
     let list = [];
 
-    if (contacts.contactsFetch === true) {
+    if (contacts && contacts.contactsFetch === true) {
       list = contacts.contacts.data;
+      console.log('IN IF LIST:', list);
     }
     return (
       <div className={'contract-tab'}>
