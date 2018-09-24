@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Footer from './components/footer/Footer';
 import AtylaRouter from './router/atyla-router';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import 'react-select/dist/react-select.css';
 import HttpsRedirect from 'react-https-redirect';
 import reducer from './reducers/index';

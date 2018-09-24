@@ -6,7 +6,7 @@ class InProgress extends Component {
     return (
       <div className={'inProgress-container'}>
         <div className={'inProgress-content'}>
-          <img className={'inProgress-img'} src={AtylaLogo} />
+          <img className={'inProgress-img'} src={AtylaLogo} alt="" />
           <p className={'inProgress-text'}>We are coming soon</p>
           <p className={'inProgress-text'}>contact@atyla.io</p>
         </div>

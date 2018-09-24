@@ -20,10 +20,10 @@ class Footer extends React.Component {
             <a className="footer-link" href="/register-pro">
               Accès professionnel
             </a>
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="/login">
               Respect de la vie privée
             </a>
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="/login">
               Contact
             </a>
           </div>

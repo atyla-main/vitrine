@@ -87,11 +87,11 @@ class Property extends Component {
           </div>
 
           <div className={'contractForm-inputLine'}>
-            <label htmlFor="coutry">Pays</label>
+            <label htmlFor="country">Pays</label>
             <input
               onChange={e => onChange(e)}
-              value={parameters.coutry}
-              name="coutry"
+              value={parameters.country}
+              name="country"
               type="text"
             />
           </div>

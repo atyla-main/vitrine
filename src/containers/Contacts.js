@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CreateButton from '../components/create-button/Create-button';
 import ElementsList from '../components/elements-list/Elements-list';
 import TabHeader from '../components/tab-header/Tab-header';
 import { connect } from 'react-redux';
@@ -9,7 +8,6 @@ import Auth from '../services/Auth';
 import Modal from 'react-modal';
 import ContactForm from '../components/forms/contacts/Contact-form.js';
 import { createContactActions } from '../actions/create-contact';
-import { history } from '../helpers/history';
 
 const customStyles = {
   content: {
@@ -37,7 +35,7 @@ class Contacts extends Component {
         address: '',
         postCode: '',
         city: '',
-        coutry: '',
+        country: '',
         phone: '',
         fax: '',
         email: '',
@@ -81,7 +79,7 @@ class Contacts extends Component {
   }
 
   componentDidMount() {
-    const { user, dispatch } = this.props;
+    const { dispatch } = this.props;
     let userId = Auth.getId();
 
     dispatch(fetchUserActions.fetch(userId));
@@ -103,7 +101,7 @@ class Contacts extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, user, setting } = this.props;
+    const { dispatch, user } = this.props;
     const { parameters } = this.state;
 
     let body = {
@@ -142,8 +140,7 @@ class Contacts extends Component {
   }
 
   handleStatusChange(event) {
-    const { name, value } = event.target;
-    const { parameters } = this.state;
+    const { value } = event.target;
     const { dispatch } = this.props;
 
     this.setState({
@@ -158,7 +155,7 @@ class Contacts extends Component {
     const { contacts } = this.props;
     let list = [];
 
-    if (contacts.contactsFetch == true) {
+    if (contacts.contactsFetch === true) {
       list = contacts.contacts.data;
     }
     return (

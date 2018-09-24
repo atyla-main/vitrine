@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactFlagsSelect from 'react-flags-select';
-import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
 import _ from 'lodash';
 
@@ -220,13 +219,13 @@ class Register extends React.Component {
                   />
                   <input
                     ref={password1 => (this.password1 = password1)}
-                    placeholder="Choisissez votre mot de passe"
+                    placeholder="Confirmez votre mot de passe"
                     type="password"
                     className={
                       'login-loginInput mod-intern mod-register ' +
                       passwordError
                     }
-                    name="password"
+                    name="passwordConfirmation"
                   />
                   <div className="register-checkBoxes">
                     <input
@@ -244,7 +243,6 @@ class Register extends React.Component {
                   </div>
                   <div className="register-checkBoxes">
                     <input
-                      placeholder="Confirmez le mot de passe"
                       type="checkbox"
                       checked={this.state.isChecked}
                       onChange={this.toggleConditionsChange}

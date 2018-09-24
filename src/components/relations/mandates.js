@@ -19,7 +19,10 @@ class Mandates extends Component {
       onSubmit
     } = this.props;
 
-    if (offices.officesFetch == true && negociators.negociatorsFetch == true) {
+    if (
+      offices.officesFetch === true &&
+      negociators.negociatorsFetch === true
+    ) {
       return (
         <div>
           <form onSubmit={e => onSubmit(e)} id="parameterForm">
@@ -53,7 +56,7 @@ class Mandates extends Component {
                 type="checkbox"
               />
             </div>
-            {parameters.negociatorOnContract == true && (
+            {parameters.negociatorOnContract === true && (
               <div className={'contractForm-inputLine'}>
                 <label htmlFor="negociatorId">
                   Selectionner le négociateur

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Auth from '../../services/Auth';
 import { connect } from 'react-redux';
 import Mandates from '../../components/relations/mandates';
 import Properties from '../../components/relations/properties';
@@ -11,11 +10,6 @@ class Relations extends Component {
     super(props);
 
     this.state = {};
-  }
-
-  componentDidMount() {
-    const { user, dispatch } = this.props;
-    let userId = Auth.getId();
   }
 
   render() {

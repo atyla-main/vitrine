@@ -67,7 +67,7 @@ class Contracts extends Component {
   }
 
   componentDidMount() {
-    const { user, dispatch } = this.props;
+    const { dispatch } = this.props;
     let userId = Auth.getId();
 
     dispatch(fetchOfficesActions.fetch(`userId=${userId}`));
@@ -171,7 +171,7 @@ class Contracts extends Component {
     let newDelegation = this.state.parameters.delegationOfPower;
     let newVal = false;
 
-    if (value == 'false' || value == false) {
+    if (value === 'false' || value === false) {
       newVal = true;
     }
     newDelegation[name] = newVal;
@@ -190,7 +190,7 @@ class Contracts extends Component {
     let newDelegation = this.state.parameters.documentsRequired;
     let newVal = false;
 
-    if (value == 'false' || value == false) {
+    if (value === 'false' || value === false) {
       newVal = true;
     }
     newDelegation[name] = newVal;
@@ -208,7 +208,7 @@ class Contracts extends Component {
     const { parameters } = this.state;
     let newVal = false;
 
-    if (value == 'false' || value == false) {
+    if (value === 'false' || value === false) {
       newVal = true;
     }
     this.setState({
@@ -222,19 +222,19 @@ class Contracts extends Component {
   render() {
     const { pdf } = this.props;
 
-    if (pdf.pdfFetch == true) {
+    if (pdf.pdfFetch === true) {
       return (
         <div>
           <a href={pdf.pdf.data.attributes.pdfUrl}>Télécharger le contrat</a>
         </div>
       );
-    } else if (pdf.fetchingPdf == true) {
+    } else if (pdf.fetchingPdf === true) {
       return <div>Loading.... le pdf se génére</div>;
     } else {
       return (
         <div className={'contract-tab'}>
           <p>Contract</p>
-          {this.state.step == 1 && (
+          {this.state.step === 1 && (
             <Relations
               onChange={this.handleChange}
               onChangeCheck={this.handleCheckBox}
@@ -242,14 +242,14 @@ class Contracts extends Component {
               parameters={this.state.parameters}
             />
           )}
-          {this.state.step == 2 && (
+          {this.state.step === 2 && (
             <References
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
               parameters={this.state.parameters}
             />
           )}
-          {this.state.step == 3 && (
+          {this.state.step === 3 && (
             <Annex
               handleCheckAnnex={this.handleCheckAnnex}
               onChange={this.handleChange}

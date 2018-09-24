@@ -10,7 +10,7 @@ class Properties extends Component {
   render() {
     const { properties, onChange, onSubmit } = this.props;
 
-    if (properties.propertiesFetch == true) {
+    if (properties.propertiesFetch === true) {
       return (
         <div>
           <form onSubmit={e => onSubmit(e)} id="parameterForm">

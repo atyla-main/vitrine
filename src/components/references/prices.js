@@ -30,7 +30,7 @@ class Prices extends Component {
             </select>
           </div>
 
-          {parameters.remunerationType == 'Forfaitaire' ? (
+          {parameters.remunerationType === 'Forfaitaire' ? (
             <div className={'contractForm-inputLine'}>
               <label htmlFor="lumpSum">Montant forfaitaire</label>
               <input

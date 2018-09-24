@@ -12,7 +12,6 @@ class Annex extends Component {
 
   render() {
     const {
-      mandate,
       parameters,
       onChange,
       onSubmit,

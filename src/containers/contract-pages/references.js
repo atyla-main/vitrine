@@ -11,7 +11,7 @@ class References extends Component {
   }
 
   render() {
-    const { mandate, parameters, onChange, onSubmit } = this.props;
+    const { parameters, onChange, onSubmit } = this.props;
 
     return (
       <div>

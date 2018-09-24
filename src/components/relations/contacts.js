@@ -10,7 +10,7 @@ class Contacts extends Component {
   render() {
     const { notaries, mediators, onChange, onSubmit } = this.props;
 
-    if (notaries.notariesFetch == true && mediators.mediatorsFetch == true) {
+    if (notaries.notariesFetch === true && mediators.mediatorsFetch === true) {
       return (
         <div>
           <form onSubmit={e => onSubmit(e)} id="parameterForm">

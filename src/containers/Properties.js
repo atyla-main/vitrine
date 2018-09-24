@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CreateButton from '../components/create-button/Create-button';
 import ElementsList from '../components/elements-list/Elements-list';
 import TabHeader from '../components/tab-header/Tab-header';
 import Modal from 'react-modal';
@@ -40,7 +39,7 @@ class Properties extends Component {
         address: '',
         postCode: '',
         city: '',
-        coutry: ''
+        country: ''
       },
       modalIsOpen: false
     };
@@ -52,7 +51,7 @@ class Properties extends Component {
   }
 
   componentDidMount() {
-    const { user, dispatch } = this.props;
+    const { dispatch } = this.props;
     let userId = Auth.getId();
 
     dispatch(fetchUserActions.fetch(userId));
@@ -61,7 +60,7 @@ class Properties extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, user, setting } = this.props;
+    const { dispatch, user } = this.props;
     const { parameters } = this.state;
 
     let body = {
@@ -110,7 +109,7 @@ class Properties extends Component {
     const { properties } = this.props;
     let list = [];
 
-    if (properties && properties.propertiesFetch == true) {
+    if (properties && properties.propertiesFetch === true) {
       list = properties.properties.data;
     }
     return (

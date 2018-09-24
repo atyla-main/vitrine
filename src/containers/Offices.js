@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CreateButton from '../components/create-button/Create-button';
 import ElementsList from '../components/elements-list/Elements-list';
 import TabHeader from '../components/tab-header/Tab-header';
 import Modal from 'react-modal';
@@ -42,7 +41,7 @@ class Offices extends Component {
         address: '',
         postCode: '',
         city: '',
-        coutry: '',
+        country: '',
         contactInformation: '',
         legalStatus: '',
         siren: '',
@@ -89,7 +88,7 @@ class Offices extends Component {
   }
 
   componentDidMount() {
-    const { user, dispatch } = this.props;
+    const { dispatch } = this.props;
     let userId = Auth.getId();
 
     dispatch(fetchUserActions.fetch(userId));
@@ -109,7 +108,7 @@ class Offices extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, user, setting } = this.props;
+    const { dispatch, user } = this.props;
     let userId = Auth.getId();
     let parameters = this.state[`${this.state.toShow}Parameters`];
     let attributes = parameters;
@@ -177,8 +176,7 @@ class Offices extends Component {
   }
 
   handleStatusChange(event) {
-    const { name, value } = event.target;
-    const { parameters } = this.state;
+    const { value } = event.target;
     const { dispatch } = this.props;
     let userId = Auth.getId();
 
@@ -196,15 +194,15 @@ class Offices extends Component {
   render() {
     const { offices, negociators } = this.props;
     let list = [];
-    let officesList = offices.officesFetch == true ? offices.offices.data : [];
+    let officesList = offices.officesFetch === true ? offices.offices.data : [];
     let negociatorsList =
-      negociators.negociatorsFetch == true ? negociators.negociators.data : [];
+      negociators.negociatorsFetch === true ? negociators.negociators.data : [];
 
-    if (this.state.toShow === 'agence' && offices.officesFetch == true) {
+    if (this.state.toShow === 'agence' && offices.officesFetch === true) {
       list = officesList;
     } else if (
       this.state.toShow === 'negociateur' &&
-      negociators.negociatorsFetch == true
+      negociators.negociatorsFetch === true
     ) {
       list = negociatorsList;
     }

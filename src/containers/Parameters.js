@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import CreateButton from '../components/create-button/Create-button';
-import ElementsList from '../components/elements-list/Elements-list';
 import TabHeader from '../components/tab-header/Tab-header';
 import ParameterForm from '../components/forms/parameters/Parameter-form.js';
 import { connect } from 'react-redux';
@@ -8,7 +6,6 @@ import { fetchUserActions } from '../actions/fetch-user';
 import { fetchSettingActions } from '../actions/fetch-setting';
 import { createSettingActions } from '../actions/create-setting';
 import { updateSettingActions } from '../actions/update-setting';
-import { fetchContactsActions } from '../actions/fetch-contacts';
 import { fetchNotariesActions } from '../actions/fetch-notaries';
 import { fetchOfficesActions } from '../actions/fetch-offices';
 import { fetchNegociatorsActions } from '../actions/fetch-negociators';
@@ -78,7 +75,7 @@ class Parameters extends Component {
       }
     };
 
-    if (this.state.settingsLoaded == true) {
+    if (this.state.settingsLoaded === true) {
       dispatch(updateSettingActions.update(body, setting.setting.data.id));
     } else {
       dispatch(createSettingActions.create(body));
@@ -147,10 +144,10 @@ class Parameters extends Component {
     const { notaries, negociators, offices } = this.props;
 
     let notariesList =
-      notaries.notariesFetch == true ? notaries.notaries.data : [];
+      notaries.notariesFetch === true ? notaries.notaries.data : [];
     let negociatorsList =
-      negociators.negociatorsFetch == true ? negociators.negociators.data : [];
-    let officesList = offices.officesFetch == true ? offices.offices.data : [];
+      negociators.negociatorsFetch === true ? negociators.negociators.data : [];
+    let officesList = offices.officesFetch === true ? offices.offices.data : [];
     return (
       <div className={'contract-tab'}>
         <TabHeader titleOnly={true} title={'Paramétres'} />

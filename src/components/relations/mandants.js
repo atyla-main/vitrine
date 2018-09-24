@@ -10,7 +10,7 @@ class Mandants extends Component {
   render() {
     const { mandants, onChange, onSubmit } = this.props;
 
-    if (mandants.mandantsFetch == true) {
+    if (mandants.mandantsFetch === true) {
       return (
         <div>
           <form onSubmit={e => onSubmit(e)} id="parameterForm">
