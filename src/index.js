@@ -10,5 +10,16 @@ import registerServiceWorker from './registerServiceWorker';
 import './services/i18n';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <img
+    src={`${process.env.PUBLIC_URL}/home.png`}
+    style={{
+      display: 'block',
+      width: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }}
+  />,
+  document.getElementById('root')
+);
 registerServiceWorker();
