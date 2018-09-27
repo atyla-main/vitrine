@@ -10,10 +10,15 @@ class App extends Component {
     return (
       <div>
         <HttpsRedirect>
-          <BrowserRouter>
-            <AtylaRouter />
-          </BrowserRouter>
-          <Footer />
+          <img
+            src={`${process.env.PUBLIC_URL}/home.png`}
+            style={{
+              display: 'block',
+              width: '100%',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}
+          />
         </HttpsRedirect>
       </div>
     );
