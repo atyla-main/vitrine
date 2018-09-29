@@ -8,9 +8,9 @@ import { fetchOfficesActions } from '../actions/fetch-offices';
 import { createOfficeActions } from '../actions/create-office';
 import { createNegociatorActions } from '../actions/create-negociator';
 import { fetchNegociatorsActions } from '../actions/fetch-negociators';
-import NegociatorForm from '../components/forms/negociators/Negociator-form';
-import OfficeForm from '../components/forms/offices/Office-form';
 import Auth from '../services/Auth';
+import OfficeForm from '../components/redux-forms/offices/office-form';
+import NegociatorForm from '../components/redux-forms/negociators/negociator-form';
 
 const customStyles = {
   content: {
@@ -33,48 +33,6 @@ class Offices extends Component {
     super(props);
 
     this.state = {
-      agenceParameters: {
-        wording: '',
-        companyName: '',
-        officeName: '',
-        logo: '',
-        address: '',
-        postCode: '',
-        city: '',
-        country: '',
-        contactInformation: '',
-        legalStatus: '',
-        siren: '',
-        siret: '',
-        rcs: '',
-        rcsCity: '',
-        socialCapital: '',
-        intercommunityTva: '',
-        headOffice: false,
-        headOfficeAddress: '',
-        nafApe: '',
-        professionalCard: '',
-        placeOfIssue: '',
-        transaction: true,
-        gestion: true,
-        activity: '',
-        perceiveFunds: true,
-        transactionGuaranteesAmount: '',
-        gestionGuaranteesAmount: '',
-        guaranteeFund: '',
-        officeId: ''
-      },
-      negociateurParameters: {
-        email: '',
-        wording: '',
-        civility: '',
-        lastName: '',
-        firstName: '',
-        commercialAgent: false,
-        rsac: '',
-        rsacPlace: '',
-        officeId: ''
-      },
       toShow: 'agence',
       status: ['agence', 'negociateur'],
       modalIsOpen: false
@@ -83,7 +41,6 @@ class Offices extends Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -106,31 +63,15 @@ class Offices extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(values) {
     const { dispatch, user } = this.props;
     let userId = Auth.getId();
     let parameters = this.state[`${this.state.toShow}Parameters`];
     let attributes = parameters;
 
-    attributes.socialCapital = {
-      amount: parameters.socialCapital,
-      currency: 'EUR'
-    };
-
-    attributes.transactionGuaranteesAmount = {
-      amount: parameters.transactionGuaranteesAmount,
-      currency: 'EUR'
-    };
-
-    attributes.gestionGuaranteesAmount = {
-      amount: parameters.gestionGuaranteesAmount,
-      currency: 'EUR'
-    };
-
     let body = {
       data: {
-        attributes: attributes,
+        attributes: values,
         relationships: {
           user: {
             data: {
@@ -145,7 +86,7 @@ class Offices extends Component {
     if (this.state.toShow === 'agence') {
       body.data.relationships['office'] = {
         data: {
-          id: this.state.agenceParameters.officeId,
+          id: values.officeId,
           type: 'offices'
         }
       };
@@ -154,25 +95,15 @@ class Offices extends Component {
     } else if (this.state.toShow === 'negociateur') {
       body.data.relationships['office'] = {
         data: {
-          id: this.state.negociateurParameters.officeId,
+          id: values.officeId,
           type: 'offices'
         }
       };
+      console.log('BODY:', body);
       dispatch(createNegociatorActions.create(body));
       dispatch(fetchNegociatorsActions.fetch(`userId=${userId}`));
     }
     this.setState({ modalIsOpen: false });
-  }
-
-  handleChange(event) {
-    const { name, value } = event.target;
-
-    this.setState({
-      [`${this.state.toShow}Parameters`]: {
-        ...this.state[`${this.state.toShow}Parameters`],
-        [name]: value
-      }
-    });
   }
 
   handleStatusChange(event) {
@@ -217,18 +148,11 @@ class Offices extends Component {
           contentLabel="Example Modal"
         >
           {this.state.toShow === 'agence' ? (
-            <OfficeForm
-              offices={officesList}
-              onSubmit={this.handleSubmit}
-              onChange={this.handleChange}
-              parameters={this.state.agenceParameters}
-            />
+            <OfficeForm offices={officesList} onSubmit={this.handleSubmit} />
           ) : (
             <NegociatorForm
               offices={officesList}
               onSubmit={this.handleSubmit}
-              onChange={this.handleChange}
-              parameters={this.state.negociateurParameters}
             />
           )}
         </Modal>

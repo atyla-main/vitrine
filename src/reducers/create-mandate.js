@@ -5,9 +5,21 @@ export function createMandate(state = {}, action) {
     case createMandateConstants.CREATE_REQUEST:
       return { ...state, creatingMandate: true };
     case createMandateConstants.CREATE_SUCCESS:
-      return { ...state, mandateCreate: true, mandate: action.mandate };
+      return {
+        ...state,
+        mandateCreate: true,
+        creatingMandate: false,
+        mandate: action.mandate
+      };
     case createMandateConstants.CREATE_FAILURE:
       return { ...state, mandateCreateError: true };
+    case createMandateConstants.UPLOAD_CREATED_MANDATE:
+      return {
+        ...state,
+        mandateCreate: true,
+        creatingMandate: false,
+        mandate: action.mandate
+      };
     default:
       return state;
   }

@@ -177,11 +177,11 @@ class ContactForm extends Component {
           </div>
 
           <div className={'contractForm-inputLine'}>
-            <label htmlFor="weddingPacsSate">Date mariage/PACS</label>
+            <label htmlFor="weddingPacsDate">Date mariage/PACS</label>
             <input
               onChange={e => onChange(e)}
-              value={parameters.weddingPacsSate}
-              name="weddingPacsSate"
+              value={parameters.weddingPacsDate}
+              name="weddingPacsDate"
               type="text"
             />
           </div>

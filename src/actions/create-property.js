@@ -3,11 +3,13 @@ import { requestService } from '../services/request';
 export const createPropertyConstants = {
   CREATE_REQUEST: 'CREATE_PROPERTIES_REQUEST',
   CREATE_SUCCESS: 'CREATE_PROPERTIES_SUCCESS',
-  CREATE_FAILURE: 'CREATE_PROPERTIES_FAILURE'
+  CREATE_FAILURE: 'CREATE_PROPERTIES_FAILURE',
+  UPLOAD_CREATED_PROPERTY: 'UPLOAD_CREATED_PROPERTY'
 };
 
 export const createPropertyActions = {
-  create
+  create,
+  upload
 };
 
 function request(property) {
@@ -27,8 +29,23 @@ function create(body) {
     dispatch(request());
 
     requestService.request('POST', 'api/properties', body).then(
-      propertys => {
-        dispatch(success(propertys));
+      property => {
+        dispatch(success(property));
+      },
+      error => {
+        dispatch(failure(error));
+      }
+    );
+  };
+}
+
+function upload(propertyId) {
+  return dispatch => {
+    dispatch(request());
+
+    requestService.request('GET', `api/properties/${propertyId}`, null).then(
+      property => {
+        dispatch(success(property));
       },
       error => {
         dispatch(failure(error));

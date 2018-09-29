@@ -1,0 +1,39 @@
+.contractElementsList-line {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.contractElementsList-element1 {
+  width: 200px;
+}
+
+.contractElementsList-element2 {
+  width: 200px;
+}
+
+.contractElementsList-element3 {
+  width: 200px;
+}
+
+.contractElementsList-element4 {
+  width: 200px;
+}
+
+.contractElementsList-element5 {
+  width: 100px;
+}
+
+
+.contractElementsList-header {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+}
+
+.contractElementsList-emptyMessage {
+  text-align: center;
+}

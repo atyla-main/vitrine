@@ -240,7 +240,7 @@ class Contracts extends Component {
         </div>
       );
     } else if (pdf.fetchingPdf === true) {
-      return <div>Loading.... le pdf se génére</div>;
+      return <div className="loader" />;
     } else {
       return (
         <div className={'contract-tab'}>

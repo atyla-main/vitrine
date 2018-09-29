@@ -16,7 +16,8 @@ import Parameters from '../containers/Parameters';
 import Offices from '../containers/Offices';
 import Contacts from '../containers/Contacts';
 import Properties from '../containers/Properties';
-import Contracts from '../containers/Contracts';
+import ContractForm from '../containers/ContractForm';
+import ContractsMenu from '../containers/ContractsMenu';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -61,56 +62,6 @@ const Private = ({ match }) => (
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse className="atylaNavBar-navLinks mod-user">
-        <Navbar.Text>
-          <NavLink
-            to="/dashboard/contracts"
-            className="atylaNavBar-privateNormalLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
-            exact
-          >
-            Contrats
-          </NavLink>
-        </Navbar.Text>
-        <Navbar.Text>
-          <NavLink
-            to="/dashboard/offices"
-            className="atylaNavBar-privateNormalLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
-            exact
-          >
-            Agences
-          </NavLink>
-        </Navbar.Text>
-        <Navbar.Text>
-          <NavLink
-            to="/dashboard/properties"
-            className="atylaNavBar-privateNormalLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
-            exact
-          >
-            Biens
-          </NavLink>
-        </Navbar.Text>
-        <Navbar.Text>
-          <NavLink
-            to="/dashboard/contacts"
-            className="atylaNavBar-privateNormalLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
-            exact
-          >
-            Contacts
-          </NavLink>
-        </Navbar.Text>
-        <Navbar.Text>
-          <NavLink
-            to="/dashboard/parameters"
-            className="atylaNavBar-privateNormalLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
-            exact
-          >
-            Paramètres
-          </NavLink>
-        </Navbar.Text>
         <Navbar.Text pullRight>
           <NavLink
             to="/logout"
@@ -164,9 +115,14 @@ const Private = ({ match }) => (
         userId={Auth.getId()}
       />
       <PrivateRoute
-        path="/dashboard/contracts"
-        component={Contracts}
+        path="/dashboard/contracts/new"
+        component={ContractForm}
         userId={Auth.getId()}
+      />
+      <PrivateRoute
+        path="/dashboard/contracts"
+        component={ContractsMenu}
+        userId={AtylaRouter}
       />
     </Switch>
   </div>

@@ -6,8 +6,8 @@ import Auth from '../services/Auth';
 import { connect } from 'react-redux';
 import { fetchUserActions } from '../actions/fetch-user';
 import { createPropertyActions } from '../actions/create-property';
-import PropertyForm from '../components/forms/properties/Property-form';
 import { fetchPropertiesActions } from '../actions/fetch-properties';
+import PropertyForm from '../components/redux-forms/properties/property-form';
 
 const customStyles = {
   content: {
@@ -30,23 +30,11 @@ class Properties extends Component {
     super(props);
 
     this.state = {
-      parameters: {
-        wording: '',
-        propertyNature: '',
-        coOwnership: '',
-        description: '',
-        rentalState: '',
-        address: '',
-        postCode: '',
-        city: '',
-        country: ''
-      },
       modalIsOpen: false
     };
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -58,14 +46,12 @@ class Properties extends Component {
     dispatch(fetchPropertiesActions.fetch(`userId=${userId}`));
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(values) {
     const { dispatch, user } = this.props;
-    const { parameters } = this.state;
 
     let body = {
       data: {
-        attributes: parameters,
+        attributes: values,
         relationships: {
           user: {
             data: {
@@ -80,18 +66,6 @@ class Properties extends Component {
     dispatch(createPropertyActions.create(body));
     dispatch(fetchPropertiesActions.fetch(`userId=${Auth.getId()}`));
     this.setState({ modalIsOpen: false });
-  }
-
-  handleChange(event) {
-    const { name, value } = event.target;
-    const { parameters } = this.state;
-
-    this.setState({
-      parameters: {
-        ...parameters,
-        [name]: value
-      }
-    });
   }
 
   openModal(e) {
@@ -122,11 +96,7 @@ class Properties extends Component {
           ariaHideApp={false}
           contentLabel="Example Modal"
         >
-          <PropertyForm
-            onSubmit={this.handleSubmit}
-            onChange={this.handleChange}
-            parameters={this.state.parameters}
-          />
+          <PropertyForm onSubmit={this.handleSubmit} />
         </Modal>
         <TabHeader openModal={this.openModal} title={'Biens'} />
         <ElementsList list={list} />

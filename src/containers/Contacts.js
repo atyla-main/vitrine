@@ -48,7 +48,7 @@ class Contacts extends Component {
         maritalState: '',
         birthName: '',
         partner: '',
-        weddingPacsSate: '',
+        weddingPacsDate: '',
         weddingPacsPlace: '',
         birthDate: '',
         birthPlace: '',
@@ -68,6 +68,7 @@ class Contacts extends Component {
       },
       toShow: 'mandant',
       status: ['mandant', 'notaire', 'mediateur'],
+      created: false,
       modalIsOpen: false
     };
     this.handleStatusChange = this.handleStatusChange.bind(this);
@@ -101,7 +102,7 @@ class Contacts extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, user } = this.props;
+    const { dispatch, user, contact } = this.props;
     const { parameters, toShow } = this.state;
 
     let body = {
@@ -119,10 +120,20 @@ class Contacts extends Component {
     };
     body.data.attributes.status = toShow;
     dispatch(createContactActions.create(body));
-    dispatch(
-      fetchContactsActions.fetch(`userId=${Auth.getId()}&status=${toShow}`)
-    );
-    this.setState({ modalIsOpen: false });
+    this.setState({ modalIsOpen: false, created: true });
+  }
+
+  componentDidUpdate() {
+    const { dispatch, user, contact } = this.props;
+    const { parameters, toShow } = this.state;
+
+    if (this.state.created === true && contact.contactCreate === true) {
+      console.log('FECTH CONTACTS');
+      dispatch(
+        fetchContactsActions.fetch(`userId=${Auth.getId()}&status=${toShow}`)
+      );
+      this.setState({ created: false });
+    }
   }
 
   handleChange(event) {
@@ -153,9 +164,8 @@ class Contacts extends Component {
     const { contacts } = this.props;
     let list = [];
 
-    if (contacts && contacts.contactsFetch === true) {
+    if (contacts.contacts) {
       list = contacts.contacts.data;
-      console.log('IN IF LIST:', list);
     }
     return (
       <div className={'contract-tab'}>
@@ -188,11 +198,12 @@ class Contacts extends Component {
 }
 
 function mapStateToProps(state) {
-  const { fetchUser, fetchContacts } = state;
+  const { fetchUser, fetchContacts, createContact } = state;
 
   return {
     user: fetchUser,
-    contacts: fetchContacts
+    contacts: fetchContacts,
+    contact: createContact
   };
 }
 
