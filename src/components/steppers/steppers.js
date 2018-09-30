@@ -9,10 +9,6 @@ let steps = [
 ];
 
 class Steppers extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { pageNumber, onPageChange } = this.props;
 

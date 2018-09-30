@@ -4,7 +4,7 @@ import 'react-flags-select/css/react-flags-select.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import './styles/index.css';
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 // import HomePage from './components/homepage';
 import './services/i18n';

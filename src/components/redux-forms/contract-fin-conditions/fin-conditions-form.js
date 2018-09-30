@@ -172,6 +172,7 @@ function mapStateToProps(state, initialProps) {
   if (updateMandate && updateMandate.mandateUpdate === true) {
     mandate = updateMandate;
   }
+
   return {
     remunerationTypeValue: selector(
       initialProps.form,

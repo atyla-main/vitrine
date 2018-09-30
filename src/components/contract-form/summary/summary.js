@@ -35,6 +35,7 @@ class Summary extends Component {
     return (
       <div>
         <SummaryForm form={'testForm'} onSubmit={this.handleSubmit} />
+        <button onClick={this.props.onPrev}>Prev</button>
         <SummaryCollapse title={'Mandant'}>
           <div>
             <h2>Hello</h2>

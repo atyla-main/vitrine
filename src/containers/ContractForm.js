@@ -12,6 +12,7 @@ import Summary from '../components/contract-form/summary/summary';
 import { history } from '../helpers/history';
 import { reduxForm, destroy } from 'redux-form';
 import MandateFormSubmit from '../components/redux-forms/submit-forms/mandate-form-submit';
+import { submit } from 'redux-form';
 
 class ContractForm extends Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class ContractForm extends Component {
 
     this.state = {
       pageNumber: 0,
+      pageIndex: 0,
+      pageChanged: false,
       formNames: [
         'initialForm',
         'propertyForm',
@@ -57,8 +60,61 @@ class ContractForm extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { updateMandate, createProperty, updateProperty } = this.props;
+
+    if (this.state.pageChanged === true) {
+      if (
+        updateMandate.mandate &&
+        prevProps.updateMandate.updatingMandate === true &&
+        updateMandate.mandateUpdate === true &&
+        updateMandate.updatingMandate === false
+      ) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (this.state.pageIndex > 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (prevState.pageIndex > 0 && this.state.pageIndex === 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      }
+      if (
+        createProperty.property &&
+        prevProps.createProperty.creatingProperty === true &&
+        createProperty.propertyCreate === true &&
+        createProperty.creatingProperty === false
+      ) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (this.state.pageIndex > 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (prevState.pageIndex > 0 && this.state.pageIndex === 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      }
+
+      if (
+        updateProperty.property &&
+        prevProps.updateProperty.updatingProperty === true &&
+        updateProperty.propertyUpdate === true &&
+        updateProperty.updatingProperty === false
+      ) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (this.state.pageIndex > 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      } else if (prevState.pageIndex > 0 && this.state.pageIndex === 0) {
+        this.setState({ pageNumber: this.state.pageIndex });
+      }
+
+      this.setState({ pageChanged: false });
+    }
+  }
+
   changePage(index) {
-    this.setState({ pageNumber: index });
+    const { dispatch } = this.props;
+    const { formNames, pageNumber } = this.state;
+
+    this.setState({ pageChanged: true });
+
+    let formName = formNames[pageNumber];
+    dispatch(submit(formName));
+    this.setState({ pageIndex: index });
   }
 
   render() {
@@ -73,24 +129,65 @@ class ContractForm extends Component {
         >
           Retour accueil
         </button>
-        <MandateFormSubmit formName={formNames[pageNumber]} />
-        <Steppers pageNumber={pageNumber} onPageChange={this.changePage} />
-        {pageNumber === 0 && <MandantNew pageNumber={pageNumber} />}
-        {pageNumber === 1 && <Property pageNumber={pageNumber} />}
-        {pageNumber === 2 && <Finance pageNumber={pageNumber} />}
-        {pageNumber === 3 && <Clause pageNumber={pageNumber} />}
-        {pageNumber === 4 && <Summary pageNumber={pageNumber} />}
+        <MandateFormSubmit text={'Submit'} formName={formNames[pageNumber]} />
+        <Steppers
+          pageNumber={pageNumber}
+          formName={formNames[pageNumber]}
+          onPageChange={this.changePage}
+        />
+        {pageNumber === 0 && (
+          <MandantNew
+            pageNumber={pageNumber}
+            onNext={() => this.changePage(pageNumber + 1)}
+          />
+        )}
+        {pageNumber === 1 && (
+          <Property
+            pageNumber={pageNumber}
+            onNext={() => this.changePage(pageNumber + 1)}
+            onPrev={() => this.changePage(pageNumber - 1)}
+          />
+        )}
+        {pageNumber === 2 && (
+          <Finance
+            pageNumber={pageNumber}
+            onNext={() => this.changePage(pageNumber + 1)}
+            onPrev={() => this.changePage(pageNumber - 1)}
+          />
+        )}
+        {pageNumber === 3 && (
+          <Clause
+            pageNumber={pageNumber}
+            onNext={() => this.changePage(pageNumber + 1)}
+            onPrev={() => this.changePage(pageNumber - 1)}
+          />
+        )}
+        {pageNumber === 4 && (
+          <Summary
+            pageNumber={pageNumber}
+            onPrev={() => this.changePage(pageNumber - 1)}
+          />
+        )}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { createMandate, loadContracts } = state;
+  const {
+    createMandate,
+    loadContracts,
+    updateMandate,
+    createProperty,
+    updateProperty
+  } = state;
 
   return {
     mandate: createMandate,
-    mandateLoaded: loadContracts
+    mandateLoaded: loadContracts,
+    updateMandate,
+    createProperty,
+    updateProperty
   };
 }
 

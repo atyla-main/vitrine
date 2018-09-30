@@ -225,6 +225,7 @@ class MandantNew extends Component {
             );
           })}
         <button onClick={this.handleNewContact}>Add new mandant</button>
+        <button onClick={this.props.onNext}>Next</button>
       </div>
     );
   }

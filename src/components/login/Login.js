@@ -4,6 +4,14 @@ import Auth from '../../services/Auth';
 import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
 import _ from 'lodash';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import { colors } from '../../styles/colors';
+import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -59,52 +67,62 @@ class Login extends React.Component {
 
   render() {
     return (
-      <I18n ns="translations">
-        {(t, { i18n }) => (
-          <div className="login">
-            <div className="login-container">
-              <p className="login-header">atyla</p>
-              <form className="login-form" onSubmit={this.processForm}>
-                <div className="login-inputs">
-                  <input
-                    className="login-loginInput mod-intern"
-                    ref={email => (this.email = email)}
-                    placeholder="Email"
-                    type="text"
-                    name="email"
-                  />
-                  <input
-                    className="login-loginInput mod-last"
-                    ref={password => (this.password = password)}
-                    placeholder="Mot de passe"
-                    type="password"
-                    name="password"
-                  />
+      <div>
+        <div className="login-logo">Atyla</div>
+        <div>
+          <I18n ns="translations">
+            {(t, { i18n }) => (
+              <div className="login">
+                <div className="login-container">
+                  <p className="login-header">Se connecter</p>
+                  <form className="login-form" onSubmit={this.processForm}>
+                    <div className="login-inputs">
+                      <MuiThemeProvider theme={AtylaInputTheme}>
+                        <AtylaInput
+                          className="login-loginInput mod-intern"
+                          inputRef={email => (this.email = email)}
+                          placeholder="Saisissez votre adresse e-mail"
+                          type="text"
+                          name="email"
+                        />
+                        <AtylaInput
+                          className="login-loginInput mod-last"
+                          inputRef={password => (this.password = password)}
+                          placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                          type="password"
+                          name="password"
+                        />
+                      </MuiThemeProvider>
+                    </div>
+                    <Button
+                      className="login-button"
+                      bsStyle="success"
+                      type="submit"
+                    >
+                      Connexion
+                    </Button>
+                    <p className="login-connectionImpossible">
+                      <a href="/password-forgotten">
+                        Vous n’arrivez pas à vous connectez?
+                      </a>
+                    </p>
+                    <p className="login-errorMessage">{this.state.errors}</p>
+                    <p className="login-ctaLimit">  Ou  </p>
+                    <a href="/register">
+                      <Button
+                        className="login-button mod-signup"
+                        bsStyle="success"
+                      >
+                        Ouvrir un compte
+                      </Button>
+                    </a>
+                  </form>
                 </div>
-                <Button
-                  className="login-button"
-                  bsStyle="success"
-                  type="submit"
-                >
-                  Se connecter
-                </Button>
-                <p className="login-connectionImpossible">
-                  <a href="/password-forgotten">
-                    Vous n’arrivez pas à vous connectez?
-                  </a>
-                </p>
-                <p className="login-errorMessage">{this.state.errors}</p>
-                <p className="login-ctaLimit">  Ou  </p>
-                <a href="/register">
-                  <Button className="login-button mod-signup" bsStyle="success">
-                    Ouvrir un compte
-                  </Button>
-                </a>
-              </form>
-            </div>
-          </div>
-        )}
-      </I18n>
+              </div>
+            )}
+          </I18n>
+        </div>
+      </div>
     );
   }
 }

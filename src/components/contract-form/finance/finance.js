@@ -33,6 +33,8 @@ class Finance extends Component {
     return (
       <div>
         <FinConditionsForm form={'testForm'} onSubmit={this.handleSubmit} />
+        <button onClick={this.props.onPrev}>Prev</button>
+        <button onClick={this.props.onNext}>Next</button>
       </div>
     );
   }

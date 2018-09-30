@@ -4,9 +4,9 @@ import { submit } from 'redux-form';
 
 class MandateFormSubmit extends Component {
   render() {
-    const { dispatch, formName } = this.props;
+    const { dispatch, formName, text } = this.props;
 
-    return <button onClick={() => dispatch(submit(formName))}>Submit</button>;
+    return <button onClick={() => dispatch(submit(formName))}>{text}</button>;
   }
 }
 

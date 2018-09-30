@@ -62,6 +62,8 @@ class Mandant extends Component {
     return (
       <div>
         <PropertyForm form={'propertyForm'} onSubmit={this.handleSubmit} />
+        <button onClick={this.props.onPrev}>Prev</button>
+        <button onClick={this.props.onNext}>Next</button>
       </div>
     );
   }

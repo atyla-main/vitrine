@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, formValueSelector, change } from 'redux-form';
+import {
+  Field,
+  FieldArray,
+  reduxForm,
+  formValueSelector,
+  change
+} from 'redux-form';
 import _ from 'lodash';
 
 const renderField = ({
@@ -25,6 +31,40 @@ const renderField = ({
           (warning && <span>{warning}</span>))}
     </div>
   </div>
+);
+
+const renderClauses = ({ fields, meta: { error, submitFailed } }) => (
+  <ul>
+    {fields.map((clause, index) => (
+      <li key={index}>
+        <button
+          type="button"
+          title="Remove Clause"
+          onClick={() => fields.remove(index)}
+        >
+          Delete
+        </button>
+        <Field
+          name={`${clause}.label`}
+          type="text"
+          component={renderField}
+          label="Label"
+        />
+        <Field
+          name={`${clause}.content`}
+          type="text"
+          component={renderField}
+          label="Clause"
+        />
+      </li>
+    ))}
+    <li>
+      <button type="button" onClick={() => fields.push({})}>
+        Add clauses
+      </button>
+      {submitFailed && error && <span>{error}</span>}
+    </li>
+  </ul>
 );
 
 class ClausesForm extends Component {
@@ -71,7 +111,7 @@ class ClausesForm extends Component {
 
   handleClauseSubmit(event) {
     event.preventDefault();
-    const { dispatch, change, form } = this.props;
+    const { dispatch, change } = this.props;
     let clauses = this.state.specialClauses;
 
     clauses.push({ label: this.state.label, content: this.state.content });
@@ -94,8 +134,9 @@ class ClausesForm extends Component {
 
     if (mandate.mandate) {
       let attributes = this.transformKey(mandate.mandate.data.attributes);
+      attributes.clause = [{ label: '', content: '' }];
       this.props.initialize(attributes);
-      this.setState({ specialClauses: attributes.specialClause });
+      this.setState({ specialClauses: attributes.specialClause || [] });
     }
   }
 
@@ -286,44 +327,7 @@ class ClausesForm extends Component {
           </div>
         </form>
         <div>
-          {this.state.specialClauses &&
-            this.state.specialClauses.map((clause, index) => {
-              return (
-                <div key={index}>
-                  <p>{clause.label}</p>
-                  <p>{clause.content}</p>
-                  <button
-                    onClick={event => this.handleClauseRemove(event, index)}
-                  >
-                    Delete clause
-                  </button>
-                </div>
-              );
-            })}
-        </div>
-        <div>
-          <form onSubmit={this.handleClauseSubmit}>
-            <div>
-              <input
-                onChange={this.handleClauseChange}
-                value={this.state.label}
-                type="text"
-                name="label"
-                placeholder="Libellé"
-              />
-            </div>
-            <div>
-              <textarea
-                onChange={this.handleClauseChange}
-                value={this.state.content}
-                name="content"
-                placeholder="Contenu"
-              />
-            </div>
-            <div>
-              <button type="submit">Ajouter la clause</button>
-            </div>
-          </form>
+          <FieldArray name="specialClause" component={renderClauses} />
         </div>
       </div>
     );
@@ -332,7 +336,8 @@ class ClausesForm extends Component {
 
 ClausesForm = reduxForm({
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true
+  forceUnregisterOnUnmount: true,
+  initialValues: { specialClause: [{ label: '', content: '' }] }
 })(ClausesForm);
 
 const selector = (form, ...other) => formValueSelector(form)(...other);
