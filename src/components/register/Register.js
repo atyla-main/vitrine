@@ -172,6 +172,7 @@ class Register extends React.Component {
                       </a>
                     </p>
                   </div>
+
                 </div>
               ) : (
                 <div className="login">
@@ -257,6 +258,116 @@ class Register extends React.Component {
                         </p>
                       </div>
                       <button type="submit" className="login-button">
+                  <p className="passwordForgotten-footer">
+                    <a href="/login">Retournez à la page de connexion atyla</a>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="register-container">
+                <div className="register-title">
+                  <p>
+                    Découvrez atyla : la solution
+                    <span className="passwordForgotten-emphasis"> simple </span>
+                    et{' '}
+                    <span className="passwordForgotten-emphasis">
+                      intuitive
+                    </span>{' '}
+                    pour vos contrats immobiliers
+                  </p>
+                </div>
+                <form className="" onSubmit={this.registerUser}>
+                  <input
+                    ref={firstName => (this.firstName = firstName)}
+                    placeholder="Prénom"
+                    type="text"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      firstNameError
+                    }
+                    name="firstName"
+                  />
+                  <input
+                    ref={lastName => (this.lastName = lastName)}
+                    placeholder="Nom"
+                    type="text"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      lastNameError
+                    }
+                    name="lastName"
+                  />
+                  <input
+                    ref={email => (this.email = email)}
+                    placeholder="Email"
+                    type="text"
+                    className={
+                      'login-loginInput mod-intern mod-register ' + emailError
+                    }
+                    name="email"
+                  />
+                  <ReactFlagsSelect
+                    searchable={true}
+                    defaultCountry="FR"
+                    className="login-loginInput mod-intern mod-register"
+                    onSelect={this.onSelectFlag}
+                  />
+                  <input
+                    ref={password => (this.password = password)}
+                    placeholder="Mot de passe"
+                    type="password"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      passwordError
+                    }
+                    name="password"
+                  />
+                  <input
+                    ref={password1 => (this.password1 = password1)}
+                    placeholder="Confirmez votre mot de passe"
+                    type="password"
+                    className={
+                      'login-loginInput mod-intern mod-register ' +
+                      passwordError
+                    }
+                    name="passwordConfirmation"
+                  />
+                  <div className="register-checkBoxes">
+                    <input
+                      ref={optIn => (this.optIn = optIn)}
+                      placeholder="Confirmez le mot de passe"
+                      type="checkbox"
+                      className="login-loginInput mod-intern mod-checkBox"
+                      name="optIn"
+                    />
+                    <p>
+                      Recevez les offres et promotions atyla par email. Vous
+                      pouvez modifier ce paramètre, à tout moment.{' '}
+                      <a>Plus d’informations</a>
+                    </p>
+                  </div>
+                  <div className="register-checkBoxes">
+                    <input
+                      type="checkbox"
+                      checked={this.state.isChecked}
+                      onChange={this.toggleConditionsChange}
+                      className="login-loginInput mod-last mod-checkBox"
+                      name="legalAge"
+                    />
+                    <p className={legalError}>
+                      Je certifie avoir lu et accepté les{' '}
+                      <a>Conditions d’utilisation</a> de atyla
+                    </p>
+                  </div>
+                  <button
+                    type="submit"
+                    className="homepage-switcherAtylaButton mod-register"
+                  >
+                    <span className="homepage-switcherAtylaButtonContent">
+                      <span className="homepage-switcherAtylaButtonBrand">
+                        atyla
+                      </span>
+                      <span className="homepage-switcherAtylaButtonText">
                         Ouvrir un compte
                       </button>
                     </form>
