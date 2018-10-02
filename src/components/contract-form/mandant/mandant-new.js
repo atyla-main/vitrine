@@ -239,6 +239,7 @@ class MandantNew extends Component {
             />
           </button>
           <img
+            id={'nextArrow3'}
             className={'mandant-nextArrow'}
             src={NextArrow}
             alt=""

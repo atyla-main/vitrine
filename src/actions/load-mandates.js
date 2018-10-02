@@ -52,7 +52,6 @@ function loadFromId(mandants) {
       dispatch(loadSeveralRequest());
       requestService.request('GET', `api/contacts/${mandant.id}`, null).then(
         payload => {
-          console.log('PAYLOAD', payload);
           dispatch(loadSeveralSuccess(payload, mandants.length, index + 1));
         },
         error => {

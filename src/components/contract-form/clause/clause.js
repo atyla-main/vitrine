@@ -37,6 +37,7 @@ class Clause extends Component {
         <ClausesForm form={'testForm'} onSubmit={this.handleSubmit} />
         <div className={'mandant-bottomButton'}>
           <img
+            id={'nextArrow1'}
             className={'mandant-nextArrow'}
             src={PrevArrow}
             alt=""
@@ -45,6 +46,7 @@ class Clause extends Component {
             onClick={this.props.onPrev}
           />
           <img
+            id={'prevArrow1'}
             className={'mandant-nextArrow'}
             src={NextArrow}
             alt=""

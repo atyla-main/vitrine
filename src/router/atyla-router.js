@@ -90,7 +90,7 @@ const Private = ({ match }) => (
               alt=""
               className={'atylaNavBar-head'}
             />
-            Bonjour !
+            Bonjour Jean !
           </NavLink>
         </Navbar.Text>
       </div>

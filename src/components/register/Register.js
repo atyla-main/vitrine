@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core/styles';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
 import AtylaLogo from '../../img/atyla-design-v1/logo.png';
+import { Button } from 'react-bootstrap';
 
 class Register extends React.Component {
   constructor(props) {
@@ -107,6 +108,7 @@ class Register extends React.Component {
       .catch(err => {
         this.setState({ errors: 'Erreur serveur merci de recharger la page.' });
       });
+    window.location.href = '/login';
   }
 
   toggleOptInChange = () => {
@@ -256,13 +258,13 @@ class Register extends React.Component {
                           <a>Conditions d’utilisation</a> de atyla
                         </p>
                       </div>
-                      <button type="submit" className="login-button">
-                        <p className="passwordForgotten-footer">
-                          <a href="/login">
-                            Retournez à la page de connexion atyla
-                          </a>
-                        </p>
-                      </button>
+                      <Button
+                        className="login-button"
+                        bsStyle="success"
+                        type="submit"
+                      >
+                        Retournez à la page de connexion atyla
+                      </Button>
                     </form>
                     <p className="login-errorMessage">{this.state.errors}</p>
                   </div>

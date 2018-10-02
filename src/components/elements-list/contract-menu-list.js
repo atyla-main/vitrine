@@ -45,14 +45,14 @@ class ContractMenuList extends Component {
               {list.map((item, index) => {
                 return (
                   <div
-                    key={item.id}
+                    key={index}
                     className={
                       'contractElementsList-line ' +
                       (list.length === index + 1 ? 'mod-last' : '')
                     }
                   >
                     <div className={'contractElementsList-element1'}>
-                      {item.date}
+                      {moment(item.createdAt).format('DD/MM/YYYY hh:mm')}
                     </div>
                     <div className={'contractElementsList-element2'}>
                       {item.mandant}

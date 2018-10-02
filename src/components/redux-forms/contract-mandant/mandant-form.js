@@ -219,13 +219,21 @@ class MandantForm extends Component {
                   inputClassName={'contractForm-inputLine'}
                 />
               </div>
-              <div className={'contractForm-inputField'}>
-                <MuiThemeProvider theme={AtylaInputTheme}>
+              <div
+                id={'selectMaritalState1'}
+                className={'contractForm-inputField'}
+              >
+                <MuiThemeProvider
+                  id={'selectMaritalState2'}
+                  theme={AtylaInputTheme}
+                >
                   <Select
+                    id={'selectMaritalState3'}
                     value={this.state.maritalState}
                     onChange={this.handleChange}
                     input={
                       <AtylaInput
+                        id={'selectMaritalState4'}
                         value={this.state.maritalState}
                         name="maritalState"
                       />

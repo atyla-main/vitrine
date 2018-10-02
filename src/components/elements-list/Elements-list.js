@@ -4,7 +4,6 @@ class ElementsList extends Component {
   render() {
     const { list } = this.props;
 
-    console.log('LIST:', list);
     return (
       <div>
         <div className={'elementsList-line elementsList-header'}>

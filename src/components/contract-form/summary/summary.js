@@ -116,6 +116,8 @@ class Summary extends Component {
             <a
               ref={input => (this.inputElement = input)}
               href={generatePdf.pdf.data.attributes.pdfUrl}
+              target={'_blank'}
+              rel={'noopener noreferrer'}
             />
           )}
         <div className={'summary-buttons'}>

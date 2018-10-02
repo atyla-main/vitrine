@@ -66,6 +66,7 @@ class Mandant extends Component {
         <PropertyForm form={'propertyForm'} onSubmit={this.handleSubmit} />
         <div className={'mandant-bottomButton'}>
           <img
+            id={'prevArrow4'}
             className={'mandant-nextArrow'}
             src={PrevArrow}
             alt=""
@@ -74,6 +75,7 @@ class Mandant extends Component {
             onClick={this.props.onPrev}
           />
           <img
+            id={'nextArrow4'}
             className={'mandant-nextArrow'}
             src={NextArrow}
             alt=""

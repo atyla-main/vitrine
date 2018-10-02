@@ -99,7 +99,6 @@ class Offices extends Component {
           type: 'offices'
         }
       };
-      console.log('BODY:', body);
       dispatch(createNegociatorActions.create(body));
       dispatch(fetchNegociatorsActions.fetch(`userId=${userId}`));
     }

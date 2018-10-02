@@ -30,7 +30,6 @@ class PasswordForgotten extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         if (res && res.name && res.name === 'SequelizeValidationError') {
           this.setState({ errors: i18n.t('login.errorInformation') });
         } else {
@@ -46,7 +45,6 @@ class PasswordForgotten extends React.Component {
         }
       })
       .catch(err => {
-        console.log(err);
         this.setState({ errors: i18n.t('login.error') });
       });
   }

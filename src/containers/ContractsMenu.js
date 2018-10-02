@@ -13,7 +13,7 @@ import Tab from '@material-ui/core/Tab';
 import { requestService } from '../services/request';
 import { loadContractsActions } from '../actions/load-contracts';
 import { HandleTabChange } from '../components/handle-tab-change/handle-tab-change';
-import moment from 'moment';
+import { fetchMandateListActions } from '../actions/fetch-mandate-list';
 
 class ContractsMenu extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class ContractsMenu extends Component {
 
   componentWillUnmount() {
     // TODO: CAN BE REMOVED TRY WITHOUT
-    this.setState({ listOn: false });
+    this.setState({ listOn: false, mandates: [] });
   }
 
   handleStatusChange(event) {
@@ -61,31 +61,30 @@ class ContractsMenu extends Component {
     });
   }
 
-  _getMandatesInfos(mandates) {
-    mandates.forEach(mandate => {
-      requestService
-        .request('GET', `api/contract-list/${mandate.id}`, null)
-        .then(payload => {
-          let mandatesList = this.state.mandates;
-          let mandateLite = {
-            id: mandate.id,
-            date: moment(mandate.attributes.createdAt).format(
-              'MM/DD/YYYY h:mm'
-            ),
-            number: mandate.attributes.mandateNumber || '...'
-          };
-          mandateLite.mandant = payload.data.attributes.mandant || '...';
-          mandateLite.property = payload.data.attributes.property || '...';
-          mandatesList.push(mandateLite);
-          this.setState({ mandates: mandatesList, listOn: true });
-        });
-    });
+  _getMandatesInfos() {
+    const { dispatch } = this.props;
+
+    dispatch(
+      fetchMandateListActions.fetch(
+        `?status=${this.state.tabValue}&userId=${Auth.getId()}`
+      )
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { dispatch } = this.props;
-    const { mandates, mandateUpdated } = this.props;
+    const { mandates, mandateUpdated, fetchMandateList, dispatch } = this.props;
     let userId = Auth.getId();
+
+    if (
+      fetchMandateList.mandateList &&
+      prevProps.fetchMandateList.fetchingMandateList === true &&
+      fetchMandateList.mandateListFetch === true &&
+      fetchMandateList.fetchingMandateList === false
+    ) {
+      this.setState({
+        mandates: fetchMandateList.mandateList.data.attributes.mandateList
+      });
+    }
 
     if (
       prevProps.mandateUpdated &&
@@ -107,7 +106,7 @@ class ContractsMenu extends Component {
     ) {
       if (this.state.listOn === false) {
         this.setState({ mandates: [] });
-        this._getMandatesInfos(mandates.mandates.data);
+        this._getMandatesInfos();
       }
     }
   }
@@ -178,12 +177,13 @@ class ContractsMenu extends Component {
 }
 
 function mapStateToProps(state) {
-  const { fetchUser, fetchMandates, updateMandate } = state;
+  const { fetchUser, fetchMandates, updateMandate, fetchMandateList } = state;
 
   return {
     user: fetchUser,
     mandates: fetchMandates,
-    mandateUpdated: updateMandate
+    mandateUpdated: updateMandate,
+    fetchMandateList
   };
 }
 

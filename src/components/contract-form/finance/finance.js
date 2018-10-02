@@ -42,6 +42,7 @@ class Finance extends Component {
         <FinConditionsForm form={'testForm'} onSubmit={this.handleSubmit} />
         <div className={'mandant-bottomButton'}>
           <img
+            id={'prevArrow2'}
             className={'mandant-nextArrow'}
             src={PrevArrow}
             alt=""
@@ -50,6 +51,7 @@ class Finance extends Component {
             onClick={this.props.onPrev}
           />
           <img
+            id={'nextArrow2'}
             className={'mandant-nextArrow'}
             src={NextArrow}
             alt=""

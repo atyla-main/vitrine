@@ -27,7 +27,6 @@ class PasswordForgotten extends React.Component {
     )
       .then(res => res.json())
       .then(res => {
-        console.log(res.message);
         if (res.message !== 'ok') {
           window.location.href = '/not-found';
         }

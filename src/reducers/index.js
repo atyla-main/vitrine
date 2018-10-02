@@ -21,6 +21,7 @@ import { loadContracts } from './load-contracts';
 import { updateProperty } from './update-property';
 import { createProperty } from './create-property';
 import { fetchContract } from './fetch-contract';
+import { fetchMandateList } from './fetch-mandate-list';
 
 export default combineReducers({
   form: formReducer,
@@ -44,5 +45,6 @@ export default combineReducers({
   updateProperty,
   createProperty,
   loadContracts,
-  fetchContract
+  fetchContract,
+  fetchMandateList
 });
