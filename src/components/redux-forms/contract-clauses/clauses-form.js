@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Field,
-  FieldArray,
-  reduxForm,
-  formValueSelector,
-  change
-} from 'redux-form';
+import { Field, FieldArray, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
 import {
   AtylaInputTheme,
   AtylaInput
 } from '../../../styles/inputs/atyla-inputs';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Arrow from '../../../img/atyla-design-v1/arrow_left.png';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import ClauseList from '../../clauses/clause-list';
 
 const renderField = ({
@@ -58,7 +45,7 @@ const renderField = ({
 
 const renderAtylaRadioInCharge = field => {
   let mod = field.actualValue === field.valueCheck ? 'mod-active' : '';
-  if (field.valueCheck === 'Autre' && field.actualValue != 'Notaire') {
+  if (field.valueCheck === 'Autre' && field.actualValue !== 'Notaire') {
     mod = 'mod-active';
   }
 
@@ -85,9 +72,7 @@ const renderAtylaCheckBox = field => (
         'mandantForm-radioButton ' +
         (field.actualValue === field.valueCheck ? 'mod-active' : '')
       }
-    >
-
-    </div>
+    />
     {field.label}
   </div>
 );
@@ -126,7 +111,7 @@ class ClausesForm extends Component {
     this.state = {
       content: '',
       label: '',
-      specialClauses: new Array()
+      specialClauses: []
     };
 
     this.transformKey = this.transformKey.bind(this);
@@ -171,29 +156,11 @@ class ClausesForm extends Component {
     dispatch(change('specialClause', clauses));
   }
 
-  transformKey(hash) {
-    let newHash = {};
-
-    for (let key in hash) {
-      newHash[_.camelCase(key)] = hash[key];
-    }
-
-    return newHash;
-  }
-
   componentDidMount() {
     const { mandate } = this.props;
 
     if (mandate.mandate) {
       let attributes = this.transformKey(mandate.mandate.data.attributes);
-
-      if (!attributes.clause) {
-        attributes.clause = [{ label: '', content: '' }];
-      }
-
-      if (!attributes.specialClause) {
-        attributes.specialClause = [{ label: '', content: '' }];
-      }
 
       if (!attributes.delegationOfPower) {
         attributes.delegationOfPower = { totale: true, autre: '' };
@@ -218,14 +185,7 @@ class ClausesForm extends Component {
   }
 
   componentDidUpdate() {
-    const {
-      dispatch,
-      change,
-      proposer,
-      visiter,
-      publicite,
-      totalPower
-    } = this.props;
+    const { dispatch, change, totalPower } = this.props;
 
     if (totalPower === true) {
       dispatch(change('delegationOfPower.proposer', true));
@@ -236,14 +196,7 @@ class ClausesForm extends Component {
 
   render() {
     const {
-      dispatch,
-      change,
-      buttonSubmit,
       handleSubmit,
-      pristine,
-      submitting,
-      mandantId,
-      reset,
       form,
       autrePower,
       autreDocument,
@@ -361,7 +314,7 @@ class ClausesForm extends Component {
                   component="input"
                   type="checkbox"
                 />{' '}
-                  Carnet d'entretien
+                  Carnet d&#39;entretien
               </label>
             </div>
             <div className={'clausesForm-otherCheckBoxInput'}>
@@ -376,7 +329,6 @@ class ClausesForm extends Component {
                 <Field
                   placeholder="Autre..."
                   name="documentsRequired.autreContent"
-                  component="input"
                   disabled={autreDocument ? false : true}
                   component={renderField}
                   inputClassName={'clausesForm-otherInput'}
@@ -417,8 +369,7 @@ class ClausesForm extends Component {
 
 ClausesForm = reduxForm({
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-  initialValues: { specialClause: [{ label: '', content: '' }] }
+  forceUnregisterOnUnmount: true
 })(ClausesForm);
 
 const selector = (form, ...other) => formValueSelector(form)(...other);

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { colors } from '../../styles/colors';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';

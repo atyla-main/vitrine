@@ -4,13 +4,7 @@ import Auth from '../../services/Auth';
 import i18n from '../../services/i18n';
 import { I18n } from 'react-i18next';
 import _ from 'lodash';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import { colors } from '../../styles/colors';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
 import AtylaLogo from '../../img/atyla-design-v1/logo.png';
 

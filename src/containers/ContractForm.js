@@ -10,12 +10,9 @@ import Property from '../components/contract-form/property/property';
 import Finance from '../components/contract-form/finance/finance';
 import Clause from '../components/contract-form/clause/clause';
 import Summary from '../components/contract-form/summary/summary';
-import { history } from '../helpers/history';
-import { reduxForm, destroy } from 'redux-form';
 import MandateFormSubmit from '../components/redux-forms/submit-forms/mandate-form-submit';
 import { submit } from 'redux-form';
 import ArrowLeft from '../img/atyla-design-v1/arrow_left.png';
-import NextArrow from '../img/atyla-design-v1/next_arrow.png';
 
 class ContractForm extends Component {
   constructor(props) {

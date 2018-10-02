@@ -102,7 +102,7 @@ class Contacts extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { dispatch, user, contact } = this.props;
+    const { dispatch, user } = this.props;
     const { parameters, toShow } = this.state;
 
     let body = {
@@ -124,8 +124,8 @@ class Contacts extends Component {
   }
 
   componentDidUpdate() {
-    const { dispatch, user, contact } = this.props;
-    const { parameters, toShow } = this.state;
+    const { dispatch, contact } = this.props;
+    const { toShow } = this.state;
 
     if (this.state.created === true && contact.contactCreate === true) {
       dispatch(

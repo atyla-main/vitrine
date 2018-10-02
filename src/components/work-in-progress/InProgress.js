@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line
 import Home from '../../home.css';
-import AtylaLogo from '../../img/Logo1_Blanc.png';
 import Logo from '../../img/atyla-design-v1/logo.png';
 import HommeDessin from '../../img/atyla-design-v1/home_dessin.png';
 import NuageGauche from '../../img/atyla-design-v1/nuage_gauche.png';
@@ -25,7 +25,7 @@ class InProgress extends Component {
       <div>
         <div className={'homeAtyla-body'}>
           <header className={'homeAtyla-header'}>
-            <a href="#" className="homeAtyla-a">
+            <a className="homeAtyla-a">
               <img src={Logo} alt="logo" className="logo" />
             </a>
             <a className="homeAtyla-a" href="./register">
@@ -184,7 +184,8 @@ class InProgress extends Component {
 
             <div id="part3">
               <div className="titre-partie" id="3">
-                Concentrez-vous sur <span className="gras">l essentiel</span>
+                Concentrez-vous sur{' '}
+                <span className="gras">l&#39;essentiel</span>
               </div>
               <div className="souligne" />
 
@@ -294,23 +295,17 @@ class InProgress extends Component {
           </div>
 
           <footer className="homeAtyla-footer">
-            <a href="" className="homeAtyla-a">
+            <a className="homeAtyla-a">
               <img src={LogoBlanc} alt="logo" className="footer_logo" />
             </a>
 
             <div id="footer-1">
               <h6>Découvrez atyla</h6>
-              <a href="./about" className="homeAtyla-a">
-                À propos
-              </a>
+              <a className="homeAtyla-a">À propos</a>
               <br />
-              <a href="./team" className="homeAtyla-a">
-                Équipe
-              </a>
+              <a className="homeAtyla-a">Équipe</a>
               <br />
-              <a href="./terms" className="homeAtyla-a">
-                Mentions légales
-              </a>
+              <a className="homeAtyla-a">Mentions légales</a>
             </div>
 
             <div id="footer-3">
@@ -338,6 +333,7 @@ class InProgress extends Component {
               <a
                 href="mailto:contact@atyla.io"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="homeAtyla-a"
               >
                 contact@atyla.io

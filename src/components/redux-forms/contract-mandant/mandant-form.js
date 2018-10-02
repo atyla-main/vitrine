@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Field,
-  reduxForm,
-  formValueSelector,
-  submit,
-  change
-} from 'redux-form';
+import { Field, reduxForm, formValueSelector, submit } from 'redux-form';
 import Collapse from '@material-ui/core/Collapse';
 import Arrow from '../../../img/atyla-design-v1/arrow_left.png';
 import DeleteBlack from '../../../img/atyla-design-v1/delete_black.png';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import {
   AtylaInputTheme,
   AtylaInput,
@@ -22,6 +12,16 @@ import {
 } from '../../../styles/inputs/atyla-inputs';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+
+export const MenuItemTheme = createMuiTheme({
+  overrides: {
+    MuiMenuItem: {
+      root: {
+        color: 'red'
+      }
+    }
+  }
+});
 
 const renderField = ({
   input,
@@ -116,13 +116,8 @@ class MandantForm extends Component {
     const {
       maritalStateValue,
       civilityValue,
-      buttonSubmit,
       handleSubmit,
-      pristine,
-      submitting,
-      mandantId,
-      onDelete,
-      reset
+      onDelete
     } = this.props;
 
     return (
@@ -223,13 +218,10 @@ class MandantForm extends Component {
                 id={'selectMaritalState1'}
                 className={'contractForm-inputField'}
               >
-                <MuiThemeProvider
-                  id={'selectMaritalState2'}
-                  theme={AtylaInputTheme}
-                >
+                <MuiThemeProvider theme={AtylaInputTheme}>
                   <Select
                     id={'selectMaritalState3'}
-                    value={this.state.maritalState}
+                    value={this.state.maritalState || 'none'}
                     onChange={this.handleChange}
                     input={
                       <AtylaInput
@@ -239,9 +231,11 @@ class MandantForm extends Component {
                       />
                     }
                     name="maritalState"
-                    placeholder="Statut marital"
                     style={{ width: '100%' }}
                   >
+                    <MenuItem value={'none'} disabled>
+                      Statut marital...
+                    </MenuItem>
                     <MenuItem value={'Celibataire'}>Célibataire</MenuItem>
                     <MenuItem value={'Marié'}>Marié</MenuItem>
                     <MenuItem value={'Divorce'}>Divorcé</MenuItem>

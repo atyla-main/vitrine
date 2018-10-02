@@ -4,14 +4,9 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
 import {
   AtylaInputTheme,
-  AtylaInput,
-  AtylaInputLabel
+  AtylaInput
 } from '../../../styles/inputs/atyla-inputs';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 const renderField = ({
   input,
@@ -62,9 +57,9 @@ const renderAtylaButtonBox = field => (
 
 const renderAtylaOtherButtonBox = field => {
   if (
-    field.actualValue != 'Appartement' &&
-    field.actualValue != 'Maison' &&
-    field.actualValue != 'Autre'
+    field.actualValue !== 'Appartement' &&
+    field.actualValue !== 'Maison' &&
+    field.actualValue !== 'Autre'
   ) {
     if (field.actualValue) {
       return (
@@ -136,9 +131,9 @@ class PropertyForm extends Component {
     if (property && property.property) {
       let attributes = this.transformKey(property.property.data.attributes);
       if (
-        attributes.propertyNature != 'Appartement' &&
-        attributes.propertyNature != 'Maison' &&
-        attributes.propertyNature != 'Maison'
+        attributes.propertyNature !== 'Appartement' &&
+        attributes.propertyNature !== 'Maison' &&
+        attributes.propertyNature !== 'Maison'
       ) {
         this.handleOtherInput(true);
       }
@@ -153,15 +148,7 @@ class PropertyForm extends Component {
   }
 
   render() {
-    const {
-      buttonSubmit,
-      handleSubmit,
-      pristine,
-      submitting,
-      mandantId,
-      reset,
-      propertyNatureValue
-    } = this.props;
+    const { handleSubmit, propertyNatureValue } = this.props;
 
     return (
       <div className={'propertyForm-container'}>

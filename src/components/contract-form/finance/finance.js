@@ -35,8 +35,6 @@ class Finance extends Component {
   }
 
   render() {
-    const { mandate, property } = this.props;
-
     return (
       <div>
         <FinConditionsForm form={'testForm'} onSubmit={this.handleSubmit} />

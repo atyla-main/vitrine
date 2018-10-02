@@ -7,10 +7,6 @@ import { fetchMandatesActions } from '../actions/fetch-mandates';
 import { fetchUserActions } from '../actions/fetch-user';
 import { updateMandateActions } from '../actions/update-mandate';
 import Auth from '../services/Auth';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { requestService } from '../services/request';
 import { loadContractsActions } from '../actions/load-contracts';
 import { HandleTabChange } from '../components/handle-tab-change/handle-tab-change';
 import { fetchMandateListActions } from '../actions/fetch-mandate-list';
@@ -22,7 +18,13 @@ class ContractsMenu extends Component {
     this.state = {
       tabValue: 'pending',
       toShow: 'Mandats de vente',
-      status: ['Mandats de vente'],
+      status: [
+        'Mandats de vente',
+        'Compromis de vente',
+        'Mandats de gestion',
+        'Contrats de location',
+        'Baux commerciaux'
+      ],
       listOn: false,
       mandates: []
     };
@@ -53,8 +55,6 @@ class ContractsMenu extends Component {
 
   handleStatusChange(event) {
     const { value } = event.target;
-    const { dispatch } = this.props;
-    let userId = Auth.getId();
 
     this.setState({
       toShow: value
@@ -140,19 +140,13 @@ class ContractsMenu extends Component {
     let userId = Auth.getId();
     let value = event.target.value;
 
-    if (this.state.tabValue != value) {
+    if (this.state.tabValue !== value) {
       this.setState({ tabValue: value, listOn: false });
       dispatch(fetchMandatesActions.fetch(`userId=${userId}&status=${value}`));
     }
   }
 
   render() {
-    const { mandates, classes } = this.props;
-    let list = [];
-
-    if (this.state.mandates) {
-      list = this.state.mandates;
-    }
     return (
       <div className={'contract-tab'}>
         <TabHeader

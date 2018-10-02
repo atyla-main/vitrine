@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Field,
-  FieldArray,
-  reduxForm,
-  formValueSelector,
-  change
-} from 'redux-form';
+import { Field } from 'redux-form';
 import Arrow from '../../img/atyla-design-v1/arrow_left.png';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import DeleteBlack from '../../img/atyla-design-v1/delete_black.png';
 

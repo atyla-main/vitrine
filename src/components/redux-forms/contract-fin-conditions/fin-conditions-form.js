@@ -4,14 +4,9 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
 import {
   AtylaInputTheme,
-  AtylaInput,
-  AtylaInputLabel
+  AtylaInput
 } from '../../../styles/inputs/atyla-inputs';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import writtenNumber from 'written-number';
@@ -52,7 +47,7 @@ const renderField = ({
 
 const renderAtylaCheckBox = field => {
   let mod = field.actualValue === field.valueCheck ? 'mod-active' : '';
-  if (field.valueCheck === 'Autre' && field.actualValue != 'Notaire') {
+  if (field.valueCheck === 'Autre' && field.actualValue !== 'Notaire') {
     mod = 'mod-active';
   }
   return (
@@ -90,7 +85,7 @@ class FinConditionsForm extends Component {
     event.preventDefault();
     const { dispatch, change } = this.props;
 
-    if (event.target.name != 'percentage') {
+    if (event.target.name !== 'percentage') {
       let key = event.target.name.split('.')[0];
       dispatch(change([`${key}.currency`], 'euros'));
       dispatch(
@@ -120,7 +115,7 @@ class FinConditionsForm extends Component {
     if (mandate.mandate) {
       if (mandate.mandate && !attributes['escrow-account']) {
         attributes['escrow-account'] = 'Notaire';
-      } else if (attributes['escrow-account'] != 'Notaire') {
+      } else if (attributes['escrow-account'] !== 'Notaire') {
         attributes['escrow-account-other'] = attributes['escrow-account'];
       }
 
@@ -140,12 +135,7 @@ class FinConditionsForm extends Component {
 
   render() {
     const {
-      buttonSubmit,
       handleSubmit,
-      pristine,
-      submitting,
-      mandantId,
-      reset,
       remunerationTypeValue,
       escrowAccountValue,
       inChargeOfRemunerationValue
@@ -170,7 +160,7 @@ class FinConditionsForm extends Component {
               inputClassName={'contractForm-inputLine'}
             />
           </div>
-          <div className={'contractForm-inputField mod-label'}>
+          <div className={'finConditionsForm-checkBoxedInput'}>
             <div className={'finConditionsForm-checkBox'}>
               <span className={'finConditionsForm-inline'}>Séquestre: </span>
               <div className={'finConditionsForm-inline'}>
@@ -190,19 +180,21 @@ class FinConditionsForm extends Component {
                 actualValue={escrowAccountValue}
               />
             </div>
-            <Field
-              atylaInputLabel={true}
-              name={
-                escrowAccountValue === 'Notaire' ? '' : 'escrowAccountOther'
-              }
-              component={renderField}
-              placeholder="Autre"
-              type="text"
-              disabled={escrowAccountValue === 'Notaire' ? true : false}
-              inputClassName={
-                'contractForm-inputLine finConditionsForm-otherInput'
-              }
-            />
+            <div className={'finConditionsForm-inputBoxed'}>
+              <Field
+                atylaInputLabel={true}
+                name={
+                  escrowAccountValue === 'Notaire' ? '' : 'escrowAccountOther'
+                }
+                component={renderField}
+                placeholder="Autre"
+                type="text"
+                disabled={escrowAccountValue === 'Notaire' ? true : false}
+                inputClassName={
+                  'contractForm-inputLine finConditionsForm-otherInput'
+                }
+              />
+            </div>
           </div>
           <div className={'finConditionsForm-title'} style={{ width: '408px' }}>
             Rémunération mandataire

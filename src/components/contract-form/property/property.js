@@ -16,9 +16,8 @@ class Mandant extends Component {
   }
 
   handleSubmit(values) {
-    const { dispatch, mandate, property } = this.props;
+    const { dispatch, property } = this.props;
     let attributes = values;
-    // attributes.rentalState = values.rentalState ? 'Occupé' : 'Libre';
 
     let body = {
       data: {
@@ -59,8 +58,6 @@ class Mandant extends Component {
   }
 
   render() {
-    const { mandate, property } = this.props;
-
     return (
       <div>
         <PropertyForm form={'propertyForm'} onSubmit={this.handleSubmit} />

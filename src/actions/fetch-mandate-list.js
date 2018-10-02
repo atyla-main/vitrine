@@ -1,5 +1,4 @@
 import { requestService } from '../services/request';
-import moment from 'moment';
 
 export const fetchMandateListConstants = {
   FETCH_REQUEST: 'FETCH_MANDATE_LIST_REQUEST',

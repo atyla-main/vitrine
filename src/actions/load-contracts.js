@@ -1,5 +1,3 @@
-import { requestService } from '../services/request';
-
 export const loadContractsConstants = {
   LOAD_CONTRACTS: 'LOAD_CONTRACTS'
 };

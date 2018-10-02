@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
-import { requestService } from '../../services/request';
 import Bin from '../../img/atyla-design-v1/bin_icon.png';
 import Edit from '../../img/atyla-design-v1/edit_icon.png';
 

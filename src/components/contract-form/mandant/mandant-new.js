@@ -3,8 +3,6 @@ import MandantForm from '../../redux-forms/contract-mandant/mandant-form';
 import { createContactActions } from '../../../actions/create-contact';
 import { updateContactActions } from '../../../actions/update-contacts';
 import { fetchContractActions } from '../../../actions/fetch-contract';
-import { fetchContactsActions } from '../../../actions/fetch-contacts';
-import { fetchMandatesActions } from '../../../actions/fetch-mandates';
 import { fetchMandantsActions } from '../../../actions/fetch-mandants';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
@@ -77,7 +75,7 @@ class MandantNew extends Component {
   }
 
   componentDidMount() {
-    const { createContact, dispatch, createMandate } = this.props;
+    const { createContact, createMandate } = this.props;
 
     this.setState({ fetchContract: true });
 
@@ -103,7 +101,6 @@ class MandantNew extends Component {
       createContact,
       createMandate,
       fetchContract,
-      fetchMandates,
       fetchMandants,
       loadContracts,
       updateContact

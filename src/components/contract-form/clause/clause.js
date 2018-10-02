@@ -30,8 +30,6 @@ class Clause extends Component {
   }
 
   render() {
-    const { mandate, property } = this.props;
-
     return (
       <div>
         <ClausesForm form={'testForm'} onSubmit={this.handleSubmit} />

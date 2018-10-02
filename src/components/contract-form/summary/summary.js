@@ -31,13 +31,7 @@ class Summary extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      dispatch,
-      mandate,
-      updateMandate,
-      generatePdf,
-      generateSign
-    } = this.props;
+    const { dispatch, updateMandate, generatePdf, generateSign } = this.props;
 
     if (
       updateMandate.mandate &&
@@ -94,13 +88,7 @@ class Summary extends Component {
   }
 
   render() {
-    const {
-      dispatch,
-      mandate,
-      property,
-      generatePdf,
-      generateSign
-    } = this.props;
+    const { dispatch, generatePdf, generateSign } = this.props;
 
     return (
       <div className={'finConditionsForm-container mod-summary'}>
@@ -114,11 +102,14 @@ class Summary extends Component {
         {generatePdf.pdf &&
           generatePdf.pdfFetch === true && (
             <a
+              hidden
               ref={input => (this.inputElement = input)}
               href={generatePdf.pdf.data.attributes.pdfUrl}
               target={'_blank'}
               rel={'noopener noreferrer'}
-            />
+            >
+              Download pdf
+            </a>
           )}
         <div className={'summary-buttons'}>
           <button

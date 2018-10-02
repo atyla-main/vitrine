@@ -1,8 +1,4 @@
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { withStyles, createMuiTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import { colors } from '../../styles/colors';
 

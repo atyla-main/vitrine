@@ -27,7 +27,7 @@ function loadSeveralRequest() {
 }
 
 function loadSeveralSuccess(mandate, index, mandantslength) {
-  if (index == mandantslength) {
+  if (index === mandantslength) {
     return {
       type: loadMandatesConstants.LOAD_SEVERAL_MANDATES_SUCCESS,
       mandate,

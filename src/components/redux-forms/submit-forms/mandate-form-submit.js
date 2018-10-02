@@ -5,7 +5,7 @@ import SaveIcon from '../../../img/atyla-design-v1/save_icon.png';
 
 class MandateFormSubmit extends Component {
   render() {
-    const { dispatch, formName, text } = this.props;
+    const { dispatch, formName } = this.props;
 
     return (
       <img

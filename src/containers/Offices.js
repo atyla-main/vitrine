@@ -66,8 +66,6 @@ class Offices extends Component {
   handleSubmit(values) {
     const { dispatch, user } = this.props;
     let userId = Auth.getId();
-    let parameters = this.state[`${this.state.toShow}Parameters`];
-    let attributes = parameters;
 
     let body = {
       data: {

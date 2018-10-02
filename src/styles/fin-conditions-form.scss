@@ -14,6 +14,13 @@
   @media (min-width: 1200px) { @content; }
 }
 
+.finConditionsForm-checkBoxedInput {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  margin: 0 auto 60px auto;
+}
+
 .finConditionsForm-container {
   padding: 4vw 15vw 4vw 15vw;
   -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
@@ -32,6 +39,10 @@
   }
 }
 
+.finConditionsForm-inputBoxed {
+  flex: 0 726px;
+}
+
 .finConditionsForm-title {
   margin: 20px auto 80px auto;
   font-size: 32px;
@@ -45,7 +56,7 @@
 }
 
 .finConditionsForm-checkBox {
-  width: 5vw;
+  width: 281px;
   display: flex;
   justify-content: space-between;
   font-size: 12px;

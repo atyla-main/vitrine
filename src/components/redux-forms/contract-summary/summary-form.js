@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import moment from 'moment';
 import {
   AtylaInputTheme,
-  AtylaInput,
-  AtylaInputLabel
+  AtylaInput
 } from '../../../styles/inputs/atyla-inputs';
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 const renderField = ({
   input,
@@ -79,13 +74,7 @@ class SummaryForm extends Component {
   }
 
   render() {
-    const {
-      buttonSubmit,
-      handleSubmit,
-      pristine,
-      submitting,
-      reset
-    } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className={'summary-inputContainer'}>
@@ -119,8 +108,6 @@ SummaryForm = reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(SummaryForm);
-
-const selector = (form, ...other) => formValueSelector(form)(...other);
 
 function mapStateToProps(state, initialProps) {
   const { updateMandate } = state;
