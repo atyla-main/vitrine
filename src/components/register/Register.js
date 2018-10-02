@@ -2,6 +2,13 @@ import React from 'react';
 import ReactFlagsSelect from 'react-flags-select';
 import { I18n } from 'react-i18next';
 import _ from 'lodash';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
+import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
+import AtylaLogo from '../../img/atyla-design-v1/logo.png';
 
 class Register extends React.Component {
   constructor(props) {
@@ -129,29 +136,128 @@ class Register extends React.Component {
     let legalError = this.state.legalError;
 
     return (
-      <I18n ns="translations">
-        {(t, { i18n }) => (
-          <div>
-            {isRegister ? (
-              <div className="login">
-                <div className="login-container">
-                  <p className="login-header">atyla</p>
-                  <div className="passwordForgotten-section">
-                    <i className="fa fa-envelope-o passwordForgotten-mail" />
-                    <p>
-                      Un email vient de vous être envoyé à l’adresse suivant : <span className="passwordForgotten-emphasis">
-                        {this.state.email}
-                      </span>
-                    </p>
-                    <p className="passwordForgotten-lastSection">
-                      Vous devez cliquer sur le
-                      <span className="passwordForgotten-emphasis">
-                        {' '}
-                        lien de confirmation{' '}
-                      </span>
-                      afin de pouvoir activer votre compte
+      <div>
+        <div className="login-logo">
+          <a href="../">
+            <img src={AtylaLogo} height={46} width={123} alt="" />
+          </a>
+        </div>
+        <I18n ns="translations">
+          {(t, { i18n }) => (
+            <div>
+              {isRegister ? (
+                <div className="login">
+                  <div className="login-container">
+                    <p className="login-header">atyla</p>
+                    <div className="passwordForgotten-section">
+                      <i className="fa fa-envelope-o passwordForgotten-mail" />
+                      <p>
+                        Un email vient de vous être envoyé à l’adresse
+                        suivant : <span className="passwordForgotten-emphasis">
+                          {this.state.email}
+                        </span>
+                      </p>
+                      <p className="passwordForgotten-lastSection">
+                        Vous devez cliquer sur le
+                        <span className="passwordForgotten-emphasis">
+                          {' '}
+                          lien de confirmation{' '}
+                        </span>
+                        afin de pouvoir activer votre compte
+                      </p>
+                    </div>
+                    <p className="passwordForgotten-footer">
+                      <a href="/login">
+                        Retournez à la page de connexion atyla
+                      </a>
                     </p>
                   </div>
+
+                </div>
+              ) : (
+                <div className="login">
+                  <div className="login-container">
+                    <div className="register-title">
+                      <p>
+                        Découvrez atyla pour vos{' '}
+                        <span className="passwordForgotten-emphasis">
+                          contrats immobiliers
+                        </span>
+                      </p>
+                    </div>
+                    <form className="login-form" onSubmit={this.registerUser}>
+                      <MuiThemeProvider theme={AtylaInputTheme}>
+                        <AtylaInput
+                          ref={firstName => (this.firstName = firstName)}
+                          placeholder="Prénom"
+                          type="text"
+                          className={
+                            'login-loginInput mod-intern mod-register' +
+                            firstNameError
+                          }
+                          name="firstName"
+                        />
+                        <AtylaInput
+                          ref={lastName => (this.lastName = lastName)}
+                          placeholder="Nom"
+                          type="text"
+                          className={
+                            'login-loginInput mod-intern mod-register' +
+                            lastNameError
+                          }
+                          name="lastName"
+                        />
+                        <AtylaInput
+                          ref={email => (this.email = email)}
+                          placeholder="Email"
+                          type="text"
+                          className={
+                            'login-loginInput mod-intern mod-register' +
+                            emailError
+                          }
+                          name="email"
+                        />
+                        <ReactFlagsSelect
+                          searchable={true}
+                          defaultCountry="FR"
+                          className="login-loginInput mod-intern mod-register"
+                          onSelect={this.onSelectFlag}
+                        />
+                        <AtylaInput
+                          ref={password => (this.password = password)}
+                          placeholder="Mot de passe"
+                          type="password"
+                          className={
+                            'login-loginInput mod-intern mod-register' +
+                            passwordError
+                          }
+                          name="password"
+                        />
+                        <AtylaInput
+                          ref={password1 => (this.password1 = password1)}
+                          placeholder="Confirmez votre mot de passe"
+                          type="password"
+                          className={
+                            'login-loginInput mod-intern mod-register' +
+                            passwordError
+                          }
+                          name="passwordConfirmation"
+                        />
+                      </MuiThemeProvider>
+                      <div className="register-checkBoxes">
+                        <input
+                          type="checkbox"
+                          checked={this.state.isChecked}
+                          onChange={this.toggleConditionsChange}
+                          className="login-loginInput mod-checkBox"
+                          name="legalAge"
+                        />
+                        <p className="legalError">
+                          Je certifie avoir lu et accepté les{' '}
+                          <a>Conditions d’utilisation</a> de atyla
+                        </p>
+                      </div>
+                      <button type="submit" className="login-button">
                   <p className="passwordForgotten-footer">
                     <a href="/login">Retournez à la page de connexion atyla</a>
                   </p>
@@ -263,16 +369,16 @@ class Register extends React.Component {
                       </span>
                       <span className="homepage-switcherAtylaButtonText">
                         Ouvrir un compte
-                      </span>
-                    </span>
-                  </button>
-                </form>
-                <p className="login-errorMessage">{this.state.errors}</p>
-              </div>
-            )}
-          </div>
-        )}
-      </I18n>
+                      </button>
+                    </form>
+                    <p className="login-errorMessage">{this.state.errors}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </I18n>
+      </div>
     );
   }
 }

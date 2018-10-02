@@ -2,18 +2,84 @@
   @media (min-width: 768px) { @content; }
 }
 
-.register-container {
-  width: auto;
-  margin: auto 10px auto 10px;
-  height: 100%;
+.login {
+      margin-top: 0;
+}
 
-  @media(min-height: 812px) {
-    height: calc(100vh - 95px);
-  }
+.login-container {
+  -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  -moz-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  align-self: center;
+  background-color: white;
+  display: block;
+  width: 679px;
+  margin-bottom: 20px;
+  border: 1px solid #bbdeff;
+  border-radius: 10px;
 
   @include sm {
-    width: 500px;
-    margin: auto;
+    width: 679px;
+  }
+}
+
+.login-button {
+  background-image: none;
+  background-color: #3d25c8;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  height: 6vw;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-shadow: none;
+  font-size: 26px;
+  font-family: 'Lato-black';
+
+  &:hover {
+    background-color: #2B15A9;
+  }
+
+  &:active {
+    background-color: #3d25c8;
+  }
+
+  &:focus:active {
+    background-color: #3d25c8;
+  }
+
+  &:focus {
+    background-color: #3d25c8;
+  }
+
+  &.mod-signup {
+    background-color: white;
+    color: black;
+    border: 3px solid #3d25c8;
+    font-weight: 700;
+    margin-bottom: 35px;
+
+    &:hover {
+      text-decoration: none;
+      border: 3px solid #2B15A9;
+      background-color: transparentize(#9d9d9c, 0.9);
+    }
+
+    &:active {
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
+    }
+
+    &:focus:active {
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
+    }
+
+    &:focus {
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
+    }
   }
 }
 
@@ -21,8 +87,9 @@
   width: auto;
   text-align: center;
   margin: 30px auto 30px auto;
-  font-size: 20px;
-  border-bottom: 1px solid #4CA863;
+  font-size: 22px;
+  border-bottom: 1px solid #3d25c8;
+  border-width: 3px;
 
   @include sm {
      width: 450px;
@@ -31,7 +98,7 @@
 
 .register-checkBoxes {
   display: flex;
-  margin: 0 10px 0 20px;
+  margin: 20px 0px 0 0px;
 }
 
 .flag-select.country-flag>img {
@@ -66,4 +133,8 @@
 .flag-select {
   font-size: 14px;
   color: #7F7F7F;
+}
+
+.legalError {
+  margin-top: 10px;
 }
