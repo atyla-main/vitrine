@@ -35,7 +35,7 @@ class ContractMenuList extends Component {
           <div className={'contractElementsList-element2'}>
             Mandant principal
           </div>
-          <div className={'contractElementsList-element3'}>Addresse bien</div>
+          <div className={'contractElementsList-element3'}>Adresse bien</div>
           <div className={'contractElementsList-element4'}>Numéro mandat</div>
           <div className={'contractElementsList-element5'} />
         </div>
@@ -87,7 +87,7 @@ class ContractMenuList extends Component {
             </div>
           ) : (
             <div className={'contractElementsList-emptyMessage'}>
-              Aucun elements de disponible
+              Aucun element disponible
             </div>
           )}
         </div>

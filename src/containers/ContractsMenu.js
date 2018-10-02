@@ -21,8 +21,8 @@ class ContractsMenu extends Component {
 
     this.state = {
       tabValue: 'pending',
-      toShow: 'Mandat de vente',
-      status: ['Mandat de vente'],
+      toShow: 'Mandats de vente',
+      status: ['Mandats de vente'],
       listOn: false,
       mandates: []
     };

@@ -223,6 +223,7 @@ class MandantForm extends Component {
                     onChange={this.handleChange}
                     input={<AtylaInput name="maritalState" />}
                     name="maritalState"
+                    placeholder="Statut marital"
                     style={{ width: '100%' }}
                   >
                     <MenuItem value={'Celibataire'}>Célibataire</MenuItem>
@@ -237,7 +238,7 @@ class MandantForm extends Component {
                 maritalStateValue === 'PACS') && (
                 <div>
                   <div className={'contractForm-inputField mod-label'}>
-                    <span>Né le</span>
+                    <span>Marié le</span>
                     <Field
                       atylaInputLabel={true}
                       name="weddingPacsDate"
@@ -253,7 +254,7 @@ class MandantForm extends Component {
                       atylaInputLabel={true}
                       name="weddingPacsPlace"
                       component={renderField}
-                      placeholder="Ville de naissance"
+                      placeholder="Ville de mariage"
                       type="text"
                       inputClassName={'contractForm-inputLine'}
                     />
@@ -267,7 +268,7 @@ class MandantForm extends Component {
                 <Field
                   name="address"
                   component={renderField}
-                  placeholder="Addresse"
+                  placeholder="N°, type et libellé de la voie"
                   type="text"
                   inputClassName={'contractForm-inputLine'}
                 />
@@ -282,7 +283,7 @@ class MandantForm extends Component {
                 />
               </div>
               <div>
-                <div className={'mandantForm-header'}>Coordonnés</div>
+                <div className={'mandantForm-header'}>Coordonnées</div>
               </div>
               <div className={'contractForm-inputField'}>
                 <Field
