@@ -1,0 +1,788 @@
+/* FIN RESET CSS */
+
+/* ANNIMATIONS NUAGE */
+
+@keyframes movenuage0-1 {
+  0% {
+    margin-top: 10vw;
+    right: 30vw;
+  }
+  25% {
+    margin-top: 12vw;
+    right: 32vw;
+  }
+  50% {
+    margin-top: 14vw;
+    right: 30vw;
+  }
+  75% {
+    margin-top: 12vw;
+    right: 28vw;
+  }
+  100% {
+    margin-top: 10vw;
+    right: 30vw;
+  }
+}
+
+@keyframes movenuage0-2 {
+  0% {
+    margin-top: 17vw;
+    right: 17vw;
+  }
+  25% {
+    margin-top: 16vw;
+    right: 18vw;
+  }
+  50% {
+    margin-top: 17vw;
+    right: 19vw;
+  }
+  75% {
+    margin-top: 18vw;
+    right: 18vw;
+  }
+  100% {
+    margin-top: 17vw;
+    right: 17vw;
+  }
+}
+
+@keyframes movenuage0-3 {
+  0% {
+    margin-top: 11vw;
+    right: 10vw;
+  }
+  25% {
+    margin-top: 12vw;
+    right: 9vw;
+  }
+  50% {
+    margin-top: 13vw;
+    right: 10vw;
+  }
+  75% {
+    margin-top: 12vw;
+    right: 11vw;
+  }
+  100% {
+    margin-top: 11vw;
+    right: 10vw;
+  }
+}
+
+.rw-words {
+  display: inline;
+  text-indent: 10px;
+  font-family: 'Lato-Black';
+  font-weight: bold;
+}
+
+.rw-words-1 span {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  color: #3d25c8;
+  -webkit-animation: rotateWord 20s linear infinite 0s;
+  -ms-animation: rotateWord 20s linear infinite 0s;
+  animation: rotateWord 20s linear infinite 0s;
+}
+
+.rw-words-1 span:nth-child(2) {
+  -webkit-animation-delay: 4s;
+  -ms-animation-delay: 4s;
+  animation-delay: 4s;
+  color: #3d25c8;
+}
+
+.rw-words-1 span:nth-child(3) {
+  -webkit-animation-delay: 8s;
+  -ms-animation-delay: 8s;
+  animation-delay: 8s;
+  color: #3d25c8;
+}
+
+.rw-words-1 span:nth-child(4) {
+  -webkit-animation-delay: 12s;
+  -ms-animation-delay: 12s;
+  animation-delay: 12s;
+  color: #3d25c8;
+}
+
+.rw-words-1 span:nth-child(5) {
+  -webkit-animation-delay: 16s;
+  -ms-animation-delay: 16s;
+  animation-delay: 16s;
+  color: #3d25c8;
+}
+
+@-webkit-keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-ms-keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -ms-transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -ms-transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* CSS */
+
+.homeAtyla-textField {
+  margin-top: 1vw;
+}
+
+.homeAtyla-body {
+  font-family: 'Lato-Regular';
+  font-size: 1vw;
+  font-color: #000;
+  line-height: 1vw;
+}
+
+.homeAtyla-header {
+  margin-bottom: 8vw;
+}
+
+.homeAtyla-a {
+  font-family: 'Lato-Black';
+  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+}
+
+.homeAtyla-a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.homeAtyla-button:hover {
+  cursor: pointer;
+  color: #3d25c8;
+  background-color: #fff;
+  border: solid;
+  border-width: 2px;
+  border-color: #3d25c8;
+}
+
+.connexion:hover {
+  color: #fff;
+  background-color: #3d25c8;
+}
+
+.cta-experience:hover {
+  background-color: #fff;
+  color: #2b15a9;
+  border-color: #2b15a9;
+  border: solid;
+}
+
+.gras {
+  font-family: 'Lato-Black';
+  font-weight: bold;
+}
+
+.blue {
+  color: #3d25c8;
+  font-size: 120%;
+}
+
+.logo {
+  left: 6%;
+  top: 3vw;
+  position: absolute;
+  width: 9vw;
+}
+
+.inscription {
+  font-family: 'Lato-Bold';
+  font-size: 105%;
+  color: #fff;
+  background-color: #3d25c8;
+  width: 13%;
+  height: 3vw;
+  border-radius: 12px;
+  right: 20vw;
+  top: 3vw;
+  position: absolute;
+}
+
+.connexion {
+  font-family: 'Lato-Bold';
+  font-size: 105%;
+  color: #3d25c8;
+  background-color: #fff;
+  width: 13%;
+  height: 3vw;
+  border: solid;
+  border-width: 2px;
+  border-color: #3d25c8;
+  border-radius: 12px;
+  right: 5vw;
+  top: 3vw;
+  position: absolute;
+}
+
+.titre-main {
+  font-family: 'Lato-Regular';
+  font-size: 280%;
+  line-height: 150%;
+  position: absolute;
+  width: 50vw;
+  margin-top: 7%;
+  margin-left: 8vw;
+}
+
+.cta-main {
+  font-family: 'Lato-Bold';
+  font-size: 75%;
+  color: #fff;
+  background-color: #3d25c8;
+  width: 25vw;
+  height: 5vw;
+  border-radius: 12px;
+  margin-left: 7vw;
+}
+
+#nuage-0-1 {
+  position: absolute;
+  width: 9vw;
+  right: 30vw;
+  margin-top: 10vw;
+  animation-name: movenuage0-1;
+  animation-duration: 24s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-0-2 {
+  position: absolute;
+  width: 5vw;
+  right: 17vw;
+  margin-top: 17vw;
+  animation-name: movenuage0-2;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-0-3 {
+  position: absolute;
+  width: 7vw;
+  right: 10vw;
+  margin-top: 11vw;
+  animation-name: movenuage0-3;
+  animation-duration: 24s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-1-1 {
+  position: absolute;
+  width: 4vw;
+  right: 29vw;
+  margin-top: 1vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-1-2 {
+  position: absolute;
+  width: 4vw;
+  right: 15vw;
+  margin-top: 12vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-2-1 {
+  position: absolute;
+  width: 4vw;
+  left: 19vw;
+  margin-top: 1vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-2-2 {
+  position: absolute;
+  width: 4vw;
+  left: 34vw;
+  margin-top: 12vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-3-1 {
+  position: absolute;
+  width: 4vw;
+  right: 29vw;
+  margin-top: 1vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-1-3-2 {
+  position: absolute;
+  width: 4vw;
+  right: 15vw;
+  margin-top: 12vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-1-1 {
+  position: absolute;
+  width: 4vw;
+  left: 17vw;
+  margin-top: 3vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-1-2 {
+  position: absolute;
+  width: 4vw;
+  left: 32vw;
+  margin-top: 11vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-2-1 {
+  position: absolute;
+  width: 4vw;
+  right: 15vw;
+  margin-top: 23vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-2-2 {
+  position: absolute;
+  width: 4vw;
+  right: 29vw;
+  margin-top: 32vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-3-1 {
+  position: absolute;
+  width: 4vw;
+  left: 17vw;
+  margin-top: 45vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-3-2 {
+  position: absolute;
+  width: 4vw;
+  left: 32vw;
+  margin-top: 53vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-4-1 {
+  position: absolute;
+  width: 4vw;
+  right: 15vw;
+  margin-top: 65vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-2-4-2 {
+  position: absolute;
+  width: 4vw;
+  right: 29vw;
+  margin-top: 74vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-3-1 {
+  position: absolute;
+  width: 4vw;
+  left: 18vw;
+  margin-top: 8vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#nuage-3-2 {
+  position: absolute;
+  width: 4vw;
+  left: 10vw;
+  margin-top: 18vw;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.home-dessin {
+  margin-left: 2vw;
+  width: 96%;
+}
+
+#part1 {
+  margin-top: 10vw;
+}
+
+.titre-partie {
+  font-size: 320%;
+  display: inline-block;
+  margin-left: 25%;
+}
+
+.souligne {
+  margin-top: 3vw;
+  width: 38%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 4px;
+  background-color: #3d25c8;
+}
+
+.titre-sous-partie {
+  font-family: 'Lato-Bold';
+  font-weight: bold;
+  font-size: 220%;
+  line-height: 125%;
+  width: 35%;
+  margin-left: 8%;
+}
+
+.titre-sous-partie2 {
+  font-family: 'Lato-Bold';
+  font-weight: bold;
+  font-size: 220%;
+  line-height: 130%;
+  margin-top: 2vw;
+}
+
+.atylaHome-body p {
+  font-size: 135%;
+  line-height: 135%;
+  width: 40%;
+  margin-top: 2vw;
+}
+
+.sous-partie-1 {
+  margin-top: 8vw;
+  margin-left: 18vw;
+}
+
+.dessin_1 {
+  position: absolute;
+  width: 16%;
+}
+
+.icon_1 {
+  width: 4%;
+  position: absolute;
+}
+
+.cta-savoir {
+  font-family: 'Lato-Bold';
+  font-size: 120%;
+  color: #fff;
+  background-color: #3d25c8;
+  width: 20vw;
+  height: 4vw;
+  border-radius: 12px;
+  margin-top: 2vw;
+}
+
+#d-1-1,
+#d-1-3 {
+  right: 17vw;
+}
+
+#d-1-2 {
+  margin-left: 2vw;
+}
+
+#i-1-2 {
+  width: 4%;
+}
+
+#p-1-1,
+#p-1-3,
+#cta-1-1,
+#cta-1-3 {
+  margin-left: 8%;
+}
+
+#i-1-2 {
+  margin-left: 35vw;
+}
+
+#t-1-2,
+#p-1-2,
+#cta-1-2 {
+  margin-left: 41vw;
+}
+
+#part2 {
+  margin-top: 12vw;
+}
+
+.partie-2 {
+  margin-left: 18%;
+  margin-top: 8vw;
+}
+
+.dessin_2 {
+  position: absolute;
+  width: 65%;
+}
+
+.sous-partie-2 .titre-sous-partie {
+  width: 30vw;
+}
+
+.sous-partie-2 p {
+  width: 30vw;
+}
+
+.numero {
+  color: #3d25c8;
+  width: 3vw;
+  height: 3vw;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #3d25c8;
+  border-radius: 50px;
+  font-size: 150%;
+  padding-top: 1vw;
+  text-align: center;
+}
+
+#part2-1 {
+  margin-left: 37vw;
+}
+
+#part2-2 {
+  margin-top: 14vw;
+}
+
+#part2-3 {
+  margin-left: 37vw;
+  margin-top: 12vw;
+}
+
+#part2-4 {
+  margin-top: 12vw;
+}
+
+#part3 {
+  margin-top: 12vw;
+}
+
+.dessin_3 {
+  position: absolute;
+  right: 0;
+  margin-top: 12vw;
+  width: 62%;
+  transition-property: width, margin-top;
+  transition-duration: 3s;
+  transition-timing-function: ease;
+  z-index: 2;
+}
+
+.dessin_3:hover {
+  width: 90%;
+  margin-top: 2vw;
+}
+
+.partie-3 {
+  margin-left: 10%;
+  margin-top: 8vw;
+}
+
+.icone_3 {
+  width: 14%;
+  margin-bottom: 5vw;
+}
+
+.titre-bas {
+  font-family: 'Lato-Black';
+  font-size: 185%;
+  margin-top: 2vw;
+  display: inline-block;
+}
+
+.partie-3 p {
+  margin-top: 1%;
+}
+
+#part4 {
+  margin-top: 12vw;
+  padding-top: 8vw;
+  padding-bottom: 8vw;
+  padding-left: 10vw;
+  color: #fff;
+  background-color: #3d25c8;
+}
+
+.titre-bas2 {
+  font-family: 'Lato-Black';
+  font-size: 250%;
+  display: inline-block;
+}
+
+.cta-experience {
+  font-family: 'Lato-Black';
+  font-size: 150%;
+  color: #3d25c8;
+  background-color: #fff;
+  border: solid;
+  border-width: 2px;
+  width: 21vw;
+  height: 5vw;
+  position: absolute;
+  right: 10vw;
+  border-radius: 12px;
+}
+
+.homeAtyla-footer {
+  color: #fff;
+  background-color: #001f3f;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+  font-family: 'Lato-Regular';
+  font-size: 130%;
+  line-height: 150%;
+  height: 17vw;
+}
+
+.homeAtyla-footer a {
+  font-family: 'Lato-Regular';
+  font-weight: normal;
+}
+
+.footer_logo {
+  width: 8%;
+  position: absolute;
+  left: 6vw;
+  margin-top: 1vw;
+}
+
+#footer-1 {
+  position: absolute;
+  left: 25vw;
+}
+
+#footer-2 {
+  position: absolute;
+  margin-left: 50vw;
+}
+
+#footer-3 {
+  position: absolute;
+  margin-left: 70vw;
+}
+
+.footer_reseaux {
+  width: 2vw;
+  margin-left: 4vw;
+}
+
+h6 {
+  font-family: 'Lato-Black';
+  font-weight: bold;
+  margin-bottom: 2vw;
+}
