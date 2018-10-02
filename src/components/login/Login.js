@@ -70,7 +70,9 @@ class Login extends React.Component {
     return (
       <div>
         <div className="login-logo">
-          <img src={AtylaLogo} height={46} width={123} alt="" />
+          <a href="../">
+            <img src={AtylaLogo} height={46} width={123} alt="" />
+          </a>
         </div>
         <div>
           <I18n ns="translations">

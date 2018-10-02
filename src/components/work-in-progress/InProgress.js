@@ -343,6 +343,11 @@ class InProgress extends Component {
                 contact@atyla.io
               </a>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </footer>
 
           <script
