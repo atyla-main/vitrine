@@ -161,14 +161,13 @@ class Register extends React.Component {
               <div className="register-container">
                 <div className="register-title">
                   <p>
-                    Investissez dans les tokens de votre choix de la manière la
-                    plus
+                    Découvrea atyla : la solution
                     <span className="passwordForgotten-emphasis"> simple </span>
                     et{' '}
                     <span className="passwordForgotten-emphasis">
-                      sécurisée
+                      intuitive
                     </span>{' '}
-                    possible
+                    pour vos contrats immobiliers
                   </p>
                 </div>
                 <form className="" onSubmit={this.registerUser}>

@@ -11,7 +11,7 @@ class CreateButton extends Component {
           onClick={openModal}
           className={'tabHeader-buttonDesign'}
         >
-          Créer un element   +
+          Créer un contrat   +
         </button>
       </div>
     );

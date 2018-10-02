@@ -47,7 +47,7 @@ class EmailConfirmation extends React.Component {
                   </span>
                 </p>
                 <p className="passwordForgotten-lastSection">
-                  Vous pouvez maintenant vous y connecter pour gérer vos tokens
+                  Vous pouvez maintenant vous y connecter
                 </p>
               </div>
               <p className="passwordForgotten-footer">

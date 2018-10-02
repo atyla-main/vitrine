@@ -26,7 +26,7 @@ export const AtylaStepperTheme = createMuiTheme({
 let steps = [
   'Mandant',
   'Bien',
-  'Conditions financiéres',
+  'Conditions financières',
   'Clauses',
   'Récapitulatif'
 ];

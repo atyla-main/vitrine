@@ -78,28 +78,12 @@ class Summary extends Component {
         <div className={'summary-content'}>
           <SummaryForm form={'testForm'} onSubmit={this.handleSubmit} />
           <SummaryCollapse title={'Mandant'}>
-            <div>
-              <h2>Hello</h2>
-              <p>Content contenue superbe</p>
-            </div>
           </SummaryCollapse>
           <SummaryCollapse title={'Bien'}>
-            <div>
-              <h2>Hello</h2>
-              <p>Content contenue superbe</p>
-            </div>
           </SummaryCollapse>
-          <SummaryCollapse title={'Conditions Financieres'}>
-            <div>
-              <h2>Hello</h2>
-              <p>Content contenue superbe</p>
-            </div>
+          <SummaryCollapse title={'Conditions financières'}>
           </SummaryCollapse>
           <SummaryCollapse title={'Clauses'}>
-            <div>
-              <h2>Hello</h2>
-              <p>Content contenue superbe</p>
-            </div>
           </SummaryCollapse>
         </div>
         {generatePdf.pdf &&

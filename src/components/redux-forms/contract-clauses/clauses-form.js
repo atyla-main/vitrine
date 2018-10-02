@@ -287,7 +287,7 @@ class ClausesForm extends Component {
                 name="delegationOfPower.publicite"
                 component={renderAtylaRdioButton}
                 valueCheck={true}
-                label={'Publicite'}
+                label={'Publicité'}
                 actualValue={publicite}
               />
               <div>
@@ -332,7 +332,7 @@ class ClausesForm extends Component {
                     component="input"
                     type="checkbox"
                   />{' '}
-                    Surface Carrez
+                    Surface carrez
                 </label>
               </div>
               <label>
@@ -341,7 +341,7 @@ class ClausesForm extends Component {
                   component="input"
                   type="checkbox"
                 />{' '}
-                  Organisation Immeuble
+                  Organisation immeuble
               </label>
             </div>
             <div className={'clausesForm-checkBoxes'}>
@@ -361,7 +361,7 @@ class ClausesForm extends Component {
                   component="input"
                   type="checkbox"
                 />{' '}
-                  Carnet d entretien
+                  Carnet d'entretien
               </label>
             </div>
             <div className={'clausesForm-otherCheckBoxInput'}>
