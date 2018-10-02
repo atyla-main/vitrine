@@ -25,19 +25,23 @@ class InProgress extends Component {
       <div>
         <body className={'homeAtyla-body'}>
           <header className={'homeAtyla-header'}>
-            <a href="#">
-              <img src={Logo} alt="logo" className="logo homeAtyla-a" />
+            <a href="#" className="homeAtyla-a">
+              <img src={Logo} alt="logo" className="logo" />
             </a>
-            <a href="./register">
-              <button className="inscription homeAtyla-a">M INSCRIRE</button>
+            <a className="homeAtyla-a" href="./register">
+              <button className="inscription homeAtyla-button">
+                M INSCRIRE
+              </button>
             </a>
-            <a href="./login">
-              <button className="connexion homeAtyla-a">ME CONNECTER</button>
+            <a className="homeAtyla-a" href="./login">
+              <button className="connexion homeAtyla-button">
+                ME CONNECTER
+              </button>
             </a>
           </header>
 
           <div id="part0">
-            <p className="titre-main">
+            <div className="titre-main">
               La solution <span className="gras">simple</span> et{' '}
               <span className="gras">intuitive</span> <br />pour créer vos
               <span className="rw-words rw-words-1">
@@ -49,12 +53,12 @@ class InProgress extends Component {
               </span>
               <br />
               <br />
-              <a href="./register">
-                <button className="cta-main homeAtyla-a homeAtyla-button">
+              <a href="./register" className="homeAtyla-a">
+                <button className="cta-main homeAtyla-button">
                   Créez votre contrat
                 </button>
               </a>
-            </p>
+            </div>
             <img src={HommeDessin} alt="home-dessin" className="home-dessin" />
             <img src={NuageGauche} alt="nuage-dessin" id="nuage-0-1" />
             <img src={NuageDroite} alt="nuage-dessin" id="nuage-0-2" />
@@ -206,11 +210,8 @@ class InProgress extends Component {
                   Générez un contrat immobilier automatiquement <br />via un
                   formulaire pré-rempli, simple et intuitif
                 </p>
-                <a href="./register">
-                  <button
-                    className="cta-savoir homeAtyla-a homeAtyla-button"
-                    id="cta-1-1"
-                  >
+                <a href="./register" className="homeAtyla-a">
+                  <button className="cta-savoir homeAtyla-button" id="cta-1-1">
                     En savoir plus sur atyla
                   </button>
                 </a>
@@ -238,11 +239,8 @@ class InProgress extends Component {
                   Débarassez-vous de vos contraintes <br />administratives en
                   gérant tout en ligne
                 </p>
-                <a href="./register">
-                  <button
-                    className="cta-savoir homeAtyla-a homeAtyla-button"
-                    id="cta-1-2"
-                  >
+                <a href="./register" className="homeAtyla-a">
+                  <button className="cta-savoir homeAtyla-button" id="cta-1-2">
                     En savoir plus sur atyla
                   </button>
                 </a>
@@ -270,11 +268,8 @@ class InProgress extends Component {
                   Personnalisez l outil sur-mesure en <br />paramétrant vos
                   préférences d utilisation
                 </p>
-                <a href="./register">
-                  <button
-                    className="cta-savoir homeAtyla-a homeAtyla-button"
-                    id="cta-1-3"
-                  >
+                <a href="./register" className="homeAtyla-a">
+                  <button className="cta-savoir homeAtyla-button" id="cta-1-3">
                     En savoir plus sur atyla
                   </button>
                 </a>
@@ -283,37 +278,39 @@ class InProgress extends Component {
           </div>
 
           <div id="part4">
-            <a href="./register">
-              <button
-                className="homeAtyla-a homeAtyla-button cta-experience "
-                id="cta-4"
-              >
+            <a href="./register" className="homeAtyla-a">
+              <button className="homeAtyla-button cta-experience " id="cta-4">
                 Commencez avec atyla
               </button>
             </a>
             <div className="titre-bas2">Vivez une nouvelle expérience</div>
             <br />
             <p className="homeAtyla-textField">
-              Vous utilisez déjà atyla ? <a href="./login">Connectez-vous</a>
+              Vous utilisez déjà atyla ?{' '}
+              <a href="./login" className="homeAtyla-a">
+                Connectez-vous
+              </a>
             </p>
           </div>
 
-          <footer className={'homeAtyla-footer'}>
-            <a href="">
-              <img
-                src={LogoBlanc}
-                alt="logo"
-                className="footer_logo homeAtyla-a"
-              />
+          <footer className="homeAtyla-footer">
+            <a href="" className="homeAtyla-a">
+              <img src={LogoBlanc} alt="logo" className="footer_logo" />
             </a>
 
             <div id="footer-1">
               <h6>Découvrez atyla</h6>
-              <a href="./about">À propos</a>
+              <a href="./about" className="homeAtyla-a">
+                À propos
+              </a>
               <br />
-              <a href="./team">Équipe</a>
+              <a href="./team" className="homeAtyla-a">
+                Équipe
+              </a>
               <br />
-              <a href="./terms">Mentions légales</a>
+              <a href="./terms" className="homeAtyla-a">
+                Mentions légales
+              </a>
             </div>
 
             <div id="footer-3">
@@ -338,7 +335,11 @@ class InProgress extends Component {
               <h6>Contactez-nous</h6>
               10 rue Cambon <br />
               75001 Paris <br />
-              <a href="mailto:contact@atyla.io" target="_blank">
+              <a
+                href="mailto:contact@atyla.io"
+                target="_blank"
+                className="homeAtyla-a"
+              >
                 contact@atyla.io
               </a>
             </div>
