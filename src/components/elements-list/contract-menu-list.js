@@ -87,7 +87,7 @@ class ContractMenuList extends Component {
             </div>
           ) : (
             <div className={'contractElementsList-emptyMessage'}>
-              Aucun element disponible
+              Aucun élément disponible
             </div>
           )}
         </div>

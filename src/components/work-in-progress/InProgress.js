@@ -23,14 +23,14 @@ class InProgress extends Component {
   render() {
     return (
       <div>
-        <body className={'homeAtyla-body'}>
+        <div className={'homeAtyla-body'}>
           <header className={'homeAtyla-header'}>
             <a href="#" className="homeAtyla-a">
               <img src={Logo} alt="logo" className="logo" />
             </a>
             <a className="homeAtyla-a" href="./register">
               <button className="inscription homeAtyla-button">
-                M INSCRIRE
+                M&#39;INSCRIRE
               </button>
             </a>
             <a className="homeAtyla-a" href="./login">
@@ -357,7 +357,7 @@ class InProgress extends Component {
             defer
             src="//js.hs-scripts.com/4866139.js"
           />
-        </body>
+        </div>
       </div>
     );
   }

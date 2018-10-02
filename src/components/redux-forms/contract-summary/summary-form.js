@@ -100,7 +100,7 @@ class SummaryForm extends Component {
             />
           </div>
           <div className={'contractForm-inputField mod-label'}>
-            <span>Signé le</span>
+            <span>Signé le </span>
             <Field
               name="signatureDate"
               component={renderField}

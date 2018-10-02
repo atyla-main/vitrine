@@ -9,6 +9,9 @@ import { colors } from '../../styles/colors';
 export const AtylaInputTheme = createMuiTheme({
   overrides: {
     MuiInput: {
+      input: {
+        color: 'black'
+      },
       underline: {
         '&:before': {
           borderBottom: `1px solid ${colors.frenchPass}`

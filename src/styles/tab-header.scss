@@ -1,3 +1,19 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .tabHeader {
   display: flex;
   justify-content: space-between;
@@ -22,9 +38,13 @@
   border-radius: 12px;
   margin-bottom: 22px;
   text-shadow: none;
-  font-size: calc(2vw - 70%);
+  font-size: 18px;
   font-family: 'Lato-black';
   color: white;
+
+  @include lg {
+    font-size: calc(2vw - 70%);
+  }
 }
 
 .tabHeader-selectButton {
@@ -37,7 +57,10 @@
   margin-right: 20px;
   width: 228px;
   font-weight: normal;
-  font-size: calc(2vw - 70%);
-  text-transform: capitalize;
+  font-size: 18px;
   font-family: 'Lato-Black';
+
+  @include lg {
+    font-size: calc(2vw - 70%);
+  }
 }

@@ -15,9 +15,13 @@ export const AtylaStepperTheme = createMuiTheme({
   overrides: {
     MuiStepIcon: {
       root: {
+        transform: 'scale(1.5)',
         '&$active': {
           color: colors.purpleHeart
         }
+      },
+      text: {
+        fontSize: '13px'
       }
     }
   }

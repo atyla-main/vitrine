@@ -197,13 +197,13 @@ class PropertyForm extends Component {
           <div className={'propertyFrom-checkBox'}>
             <label>
               <Field name="coOwnership" component="input" type="checkbox" />{' '}
-              Bien en copropriété
+                Bien en copropriété
             </label>
           </div>
           <div className={'propertyFrom-checkBox mod-last'}>
             <label>
               <Field name="rentalState" component="input" type="checkbox" />{' '}
-              Bien loué
+                Bien loué
             </label>
           </div>
           <div className={'contractForm-inputField'}>

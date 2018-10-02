@@ -1,5 +1,5 @@
 .mandant-addButton {
-  background-color: none;
+  background-color: white;
   border: 1px solid #bbdeff;
   border-radius: 12px;
   font-family: 'Lato-Black';
@@ -25,6 +25,7 @@
 .mandant-stepper {
   font-family: 'Lato-Regular';
   font-size: 18px;
+  line-height: 20px;
 
   &.mod-active {
     font-family: 'Lato-Black';

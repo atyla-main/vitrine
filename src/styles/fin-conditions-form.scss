@@ -1,3 +1,19 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .finConditionsForm-container {
   padding: 4vw 15vw 4vw 15vw;
   -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
@@ -32,15 +48,27 @@
   width: 5vw;
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 12px;
+
+  @include lg {
+    font-size: 16px;
+  }
 }
 
 .finConditionsForm-otherInput {
-  width: 29vw;
+  width: 25vw;
+
+  @include lg {
+    width: 29vw;
+  }
 }
 
 .finConditionsForm-inline {
-  margin-right: 46px;
+  margin-right: 5px;
+
+  @include lg {
+    margin-right: 46px;
+  }
 }
 
 .finConditionsForm-radioLabel {
@@ -51,5 +79,38 @@
   display: flex;
   margin: 0 6vw 85px 0vw;
   font-family: 'Lato-Regular';
-  font-size: 18px;
+  font-size: 14px;
+
+  @include lg {
+    font-size: 18px;
+  }
+}
+
+.finConditionsForm-remInput {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.finConditionsForm-typeInput {
+  width: 35vw;
+
+  @include lg {
+    width: 40vw;
+  }
+}
+
+.finConditionsForm-currencyContainer {
+  position: relative;
+}
+
+.finConditionsForm-currency {
+  position: absolute;
+  font-size: 20px;
+  left: 92%;
+  top: 10px;
+
+  @include lg {
+    left: 94%;
+  }
 }

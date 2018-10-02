@@ -41,5 +41,5 @@ function handleResponse(response) {
 
 function logout() {
   localStorage.removeItem('user');
-  history.push('/register');
+  history.push('/login');
 }

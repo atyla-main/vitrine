@@ -128,7 +128,6 @@ class Contacts extends Component {
     const { parameters, toShow } = this.state;
 
     if (this.state.created === true && contact.contactCreate === true) {
-      console.log('FECTH CONTACTS');
       dispatch(
         fetchContactsActions.fetch(`userId=${Auth.getId()}&status=${toShow}`)
       );

@@ -6,6 +6,7 @@ import SummaryCollapse from '../../summary-collapse/summary-collapse';
 import { generatePdfActions } from '../../../actions/generate-pdf';
 import { generateSignActions } from '../../../actions/generate-sign';
 import { submit } from 'redux-form';
+import SimpleDialogue from '../../dialogue-box/sign-dialogue';
 
 class Summary extends Component {
   constructor(props) {
@@ -14,14 +15,29 @@ class Summary extends Component {
     this.state = {
       firstSubmit: false,
       generate: false,
-      sign: false
+      sign: false,
+      open: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClickOpen() {
+    this.setState({
+      open: true
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch, mandate, updateMandate, generatePdf } = this.props;
+    const {
+      dispatch,
+      mandate,
+      updateMandate,
+      generatePdf,
+      generateSign
+    } = this.props;
 
     if (
       updateMandate.mandate &&
@@ -48,6 +64,19 @@ class Summary extends Component {
     ) {
       this.inputElement.click();
     }
+
+    if (
+      generateSign.sign &&
+      prevProps.generateSign.fetchingSign === true &&
+      generateSign.signFetch === true &&
+      generateSign.fetchingSign === false
+    ) {
+      this.setState({ open: true });
+    }
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   handleSubmit(values) {
@@ -77,14 +106,10 @@ class Summary extends Component {
       <div className={'finConditionsForm-container mod-summary'}>
         <div className={'summary-content'}>
           <SummaryForm form={'testForm'} onSubmit={this.handleSubmit} />
-          <SummaryCollapse title={'Mandant'}>
-          </SummaryCollapse>
-          <SummaryCollapse title={'Bien'}>
-          </SummaryCollapse>
-          <SummaryCollapse title={'Conditions financières'}>
-          </SummaryCollapse>
-          <SummaryCollapse title={'Clauses'}>
-          </SummaryCollapse>
+          <SummaryCollapse title={'Mandant'} />
+          <SummaryCollapse title={'Bien'} />
+          <SummaryCollapse title={'Conditions financières'} />
+          <SummaryCollapse title={'Clauses'} />
         </div>
         {generatePdf.pdf &&
           generatePdf.pdfFetch === true && (
@@ -120,6 +145,11 @@ class Summary extends Component {
           >
             Signature numérique
           </button>
+          <SimpleDialogue
+            selectedValue={this.state.selectedValue}
+            open={this.state.open}
+            onClose={this.handleClose}
+          />
         </div>
       </div>
     );

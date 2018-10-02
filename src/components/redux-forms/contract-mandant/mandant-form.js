@@ -69,9 +69,7 @@ const renderAtylaCheckBox = field => (
         'mandantForm-radioButton ' +
         (field.actualValue === field.valueCheck ? 'mod-active' : '')
       }
-    >
-
-    </div>
+    />
     {field.label}
   </div>
 );
@@ -81,7 +79,7 @@ class MandantForm extends Component {
     super(props);
 
     this.state = {
-      collapsed: false,
+      collapsed: true,
       maritalState: ''
     };
     this.handleCollapsed = this.handleCollapsed.bind(this);
@@ -94,6 +92,11 @@ class MandantForm extends Component {
     if (!attributes.civility) {
       attributes.civility = 'Monsieur';
     }
+
+    if (attributes.maritalState) {
+      this.setState({ maritalState: attributes.maritalState });
+    }
+
     this.props.initialize(attributes);
   }
 
@@ -221,7 +224,12 @@ class MandantForm extends Component {
                   <Select
                     value={this.state.maritalState}
                     onChange={this.handleChange}
-                    input={<AtylaInput name="maritalState" />}
+                    input={
+                      <AtylaInput
+                        value={this.state.maritalState}
+                        name="maritalState"
+                      />
+                    }
                     name="maritalState"
                     placeholder="Statut marital"
                     style={{ width: '100%' }}

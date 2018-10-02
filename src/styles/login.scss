@@ -73,22 +73,33 @@ $color-chambray: #31538f;
   margin-bottom: 22px;
   text-shadow: none;
   font-size: 26px;
+  line-height: 26px;
   font-family: 'Lato-black';
+  height: 50px;
+  box-sizing: border-box;
 
   &:hover {
-    background-color: #2B15A9;
+    color: #3d25c8;
+    background-color: white;
+    border: 2px solid #3d25c8;
   }
 
   &:active {
-    background-color: #3d25c8;
+    color: #3d25c8;
+    background-color: white;
+    border: 2px solid #3d25c8;
   }
 
   &:focus:active {
-    background-color: #3d25c8;
+    color: #3d25c8;
+    background-color: white;
+    border: 2px solid #3d25c8;
   }
 
   &:focus {
-    background-color: #3d25c8;
+    color: #3d25c8;
+    background-color: white;
+    border: 2px solid #3d25c8;
   }
 
   &.mod-signup {
@@ -97,26 +108,31 @@ $color-chambray: #31538f;
     border: 3px solid #3d25c8;
     font-weight: 700;
     margin-bottom: 55px;
+    text-decoration: none;
 
     &:hover {
+      color: white;
+      border: none;
       text-decoration: none;
-      border: 3px solid #2B15A9;
-      background-color: transparentize(#9d9d9c, 0.9);
+      background-color: #3d25c8;
     }
 
     &:active {
-      color: black;
-      background-color: transparentize(#9d9d9c, 0.9);
+      color: white;
+      border: none;
+      background-color: #3d25c8;
     }
 
     &:focus:active {
-      color: black;
-      background-color: transparentize(#9d9d9c, 0.9);
+      color: white;
+      border: none;
+      background-color: #3d25c8;
     }
 
     &:focus {
-      color: black;
-      background-color: transparentize(#9d9d9c, 0.9);
+      color: white;
+      border: none;
+      background-color: #3d25c8;
     }
   }
 }

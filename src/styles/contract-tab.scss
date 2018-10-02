@@ -1,3 +1,11 @@
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .contract-tab {
-  margin: 6vw 8vw 5vw 8vw;
+  margin: 15vw 8vw 15vw 8vw;
+
+  @include lg {
+    margin: 6vw 8vw 5vw 8vw;
+  }
 }

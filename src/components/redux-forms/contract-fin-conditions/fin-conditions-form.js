@@ -92,7 +92,6 @@ class FinConditionsForm extends Component {
 
     if (event.target.name != 'percentage') {
       let key = event.target.name.split('.')[0];
-      console.log('===================================KEY IS NOT LUMP SUMP');
       dispatch(change([`${key}.currency`], 'euros'));
       dispatch(
         change(
@@ -129,6 +128,10 @@ class FinConditionsForm extends Component {
         attributes['remuneration-type'] = 'forfaitaire';
       }
 
+      if (mandate.mandate && !attributes['in-charge-of-remuneration']) {
+        attributes['in-charge-of-remuneration'] = 'Acquéreur';
+      }
+
       this.setState({ remunerationState: attributes['remuneration-type'] });
 
       this.props.initialize(this.transformKey(attributes));
@@ -152,7 +155,12 @@ class FinConditionsForm extends Component {
       <div className={'finConditionsForm-container'}>
         <form onSubmit={handleSubmit}>
           <div className={'finConditionsForm-title'}>Vente</div>
-          <div className={'contractForm-inputField'}>
+          <div
+            className={
+              'contractForm-inputField finConditionsForm-currencyContainer'
+            }
+          >
+            <span className={'finConditionsForm-currency'}>€</span>
             <Field
               name="saleAmount.amount"
               component={renderField}
@@ -199,7 +207,7 @@ class FinConditionsForm extends Component {
           <div className={'finConditionsForm-title'} style={{ width: '408px' }}>
             Rémunération mandataire
           </div>
-          <div>
+          <div className={'finConditionsForm-remInput'}>
             <div className={'contractForm-inputField'}>
               <Field
                 name={
@@ -211,7 +219,9 @@ class FinConditionsForm extends Component {
                 placeholder={'Montant rémunération'}
                 type="text"
                 onChange={this.handleAmountChange}
-                inputClassName={'contractForm-inputLine'}
+                inputClassName={
+                  'contractForm-inputLine finConditionsForm-typeInput'
+                }
               />
             </div>
             <div className={'contractForm-inputField'}>
@@ -236,8 +246,8 @@ class FinConditionsForm extends Component {
             <Field
               name="inChargeOfRemuneration"
               component={renderAtylaCheckBox}
-              valueCheck={'Notaire'}
-              label={'Notaire'}
+              valueCheck={'Acquéreur'}
+              label={'Acquéreur'}
               modRadio={true}
               actualValue={inChargeOfRemunerationValue}
             />

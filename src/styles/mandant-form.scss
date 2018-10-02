@@ -1,3 +1,19 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .mandantForm {
   margin-bottom: 40px;
 }
@@ -12,6 +28,10 @@
   text-align: center;
   position: relative;
   margin: auto;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .mandantForm-arrow {
@@ -85,7 +105,11 @@
   cursor: pointer;
 
   &.mod-noInput {
-    margin-right: 40px;
+    margin-right: 5px;
+
+    @include lg {
+      margin-right: 40px;
+    }
   }
 }
 

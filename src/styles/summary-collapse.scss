@@ -9,6 +9,10 @@
   margin-bottom: 40px;
   font-family: 'Lato-Black';
   position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .summaryCollapse-arrow {

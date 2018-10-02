@@ -1,5 +1,25 @@
+@mixin xs {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin sm {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 992px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1200px) { @content; }
+}
+
 .summary-inputLabel {
-  width: 42vw;
+  width: 38vw;
+
+  @include lg {
+    width: 42vw;
+  }
 }
 
 .summary-inputContainer {
@@ -15,14 +35,24 @@
 .summary-button {
   color: white;
   font-family: 'Lato-Black';
-  height: 82px;
-  padding: 20px;
-  font-size: 28px;
+  height: 50px;
+  padding: 14px;
+  font-size: 15px;
   border-radius: 12px;
   background-color: #3d25c8;
+
+  @include lg {
+    height: 82px;
+    padding: 20px;
+    font-size: 28px;
+  }
 }
 
 .summary-content {
   padding: 0 3vw 0 3vw;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+
+  @include lg {
+    margin-bottom: 50px;
+  }
 }
