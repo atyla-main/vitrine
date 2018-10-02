@@ -229,6 +229,7 @@
 .homeAtyla-a:hover {
   cursor: pointer;
   text-decoration: underline;
+  color: inherit;
 }
 
 .homeAtyla-button:hover {
@@ -553,7 +554,7 @@
   margin-top: 2vw;
 }
 
-.atylaHome-body p {
+.homeAtyla-body p {
   font-size: 135%;
   line-height: 135%;
   width: 40%;
@@ -643,7 +644,7 @@
   width: 3vw;
   height: 3vw;
   border-style: solid;
-  border-width: 3px;
+  border-width: 1%;
   border-color: #3d25c8;
   border-radius: 50px;
   font-size: 150%;
@@ -656,16 +657,16 @@
 }
 
 #part2-2 {
-  margin-top: 14vw;
+  margin-top: 8vw;
 }
 
 #part2-3 {
   margin-left: 37vw;
-  margin-top: 12vw;
+  margin-top: 8vw;
 }
 
 #part2-4 {
-  margin-top: 12vw;
+  margin-top: 8vw;
 }
 
 #part3 {
@@ -785,4 +786,5 @@ h6 {
   font-family: 'Lato-Black';
   font-weight: bold;
   margin-bottom: 2vw;
+  font-size: 130%;
 }

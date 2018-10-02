@@ -161,7 +161,7 @@ class Register extends React.Component {
               <div className="register-container">
                 <div className="register-title">
                   <p>
-                    Découvrea atyla : la solution
+                    Découvrez atyla : la solution
                     <span className="passwordForgotten-emphasis"> simple </span>
                     et{' '}
                     <span className="passwordForgotten-emphasis">
@@ -249,7 +249,7 @@ class Register extends React.Component {
                       name="legalAge"
                     />
                     <p className={legalError}>
-                      Je certifie avoir l’âge légal et avoir lu et accepté les{' '}
+                      Je certifie avoir lu et accepté les{' '}
                       <a>Conditions d’utilisation</a> de atyla
                     </p>
                   </div>
