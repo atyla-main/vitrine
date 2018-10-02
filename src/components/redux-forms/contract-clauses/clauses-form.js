@@ -8,6 +8,19 @@ import {
   change
 } from 'redux-form';
 import _ from 'lodash';
+import {
+  AtylaInputTheme,
+  AtylaInput
+} from '../../../styles/inputs/atyla-inputs';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Arrow from '../../../img/atyla-design-v1/arrow_left.png';
+import ClauseList from '../../clauses/clause-list';
 
 const renderField = ({
   input,
@@ -15,17 +28,27 @@ const renderField = ({
   type,
   inputClassName,
   placeholder,
+  multiline,
+  rows,
+  rowsMax,
+  disabled,
   meta: { touched, error, warning }
 }) => (
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        className={inputClassName}
-      />
+      <MuiThemeProvider theme={AtylaInputTheme}>
+        <AtylaInput
+          {...input}
+          disabled={disabled}
+          multiline={multiline}
+          rows={rows}
+          rowsMax={rowsMax}
+          placeholder={placeholder}
+          type={type}
+          className={inputClassName}
+        />
+      </MuiThemeProvider>
       {touched &&
         ((error && <span>{error}</span>) ||
           (warning && <span>{warning}</span>))}
@@ -33,38 +56,67 @@ const renderField = ({
   </div>
 );
 
-const renderClauses = ({ fields, meta: { error, submitFailed } }) => (
-  <ul>
-    {fields.map((clause, index) => (
-      <li key={index}>
-        <button
-          type="button"
-          title="Remove Clause"
-          onClick={() => fields.remove(index)}
-        >
-          Delete
-        </button>
-        <Field
-          name={`${clause}.label`}
-          type="text"
-          component={renderField}
-          label="Label"
-        />
-        <Field
-          name={`${clause}.content`}
-          type="text"
-          component={renderField}
-          label="Clause"
-        />
-      </li>
-    ))}
-    <li>
-      <button type="button" onClick={() => fields.push({})}>
-        Add clauses
-      </button>
-      {submitFailed && error && <span>{error}</span>}
-    </li>
-  </ul>
+const renderAtylaRadioInCharge = field => {
+  let mod = field.actualValue === field.valueCheck ? 'mod-active' : '';
+  if (field.valueCheck === 'Autre' && field.actualValue != 'Notaire') {
+    mod = 'mod-active';
+  }
+
+  return (
+    <div
+      className={'mandantForm-radio ' + (field.modRadio ? 'mod-noInput' : '')}
+      onClick={param => field.input.onChange(field.valueCheck)}
+    >
+      <div className={'mandantForm-radioButton ' + mod}> </div>
+      {field.label}
+    </div>
+  );
+};
+
+const renderAtylaCheckBox = field => (
+  <div
+    className={'mandantForm-radio'}
+    onClick={param => {
+      field.input.onChange(!field.actualValue);
+    }}
+  >
+    <div
+      className={
+        'mandantForm-radioButton ' +
+        (field.actualValue === field.valueCheck ? 'mod-active' : '')
+      }
+    >
+
+    </div>
+    {field.label}
+  </div>
+);
+
+const renderAtylaRdioButton = field => (
+  <div
+    className={
+      'clausesForm-radioButton ' +
+      (field.actualValue === field.valueCheck ? 'mod-active' : '')
+    }
+    onClick={param => {
+      field.input.onChange(!field.actualValue);
+    }}
+  >
+    {field.label}
+  </div>
+);
+
+const renderAtylaOtherRadio = field => (
+  <input
+    defaultValue={field.actualValue === true ? '' : field.actualValue}
+    placeholder={field.label}
+    className={
+      'clausesForm-radioOther ' + (!field.actualValue ? '' : 'mod-active')
+    }
+    onChange={e => {
+      field.input.onChange(e.target.value);
+    }}
+  />
 );
 
 class ClausesForm extends Component {
@@ -134,7 +186,32 @@ class ClausesForm extends Component {
 
     if (mandate.mandate) {
       let attributes = this.transformKey(mandate.mandate.data.attributes);
-      attributes.clause = [{ label: '', content: '' }];
+
+      if (!attributes.clause) {
+        attributes.clause = [{ label: '', content: '' }];
+      }
+
+      if (!attributes.specialClause) {
+        attributes.specialClause = [{ label: '', content: '' }];
+      }
+
+      if (!attributes.delegationOfPower) {
+        attributes.delegationOfPower = { totale: true, autre: '' };
+      }
+
+      if (!attributes.documentsRequired) {
+        attributes.documentsRequired = {
+          surfaceCarrez: true,
+          organisationImmeuble: true,
+          dossierTechnique: true,
+          carnetEntretien: true
+        };
+      }
+
+      if (!attributes.documentsRequiredPerson) {
+        attributes.documentsRequiredPerson = 'client';
+      }
+
       this.props.initialize(attributes);
       this.setState({ specialClauses: attributes.specialClause || [] });
     }
@@ -170,164 +247,168 @@ class ClausesForm extends Component {
       form,
       autrePower,
       autreDocument,
-      totalPower
+      totalPower,
+      proposer,
+      visiter,
+      publicite,
+      documentsRequiredPersonValue
     } = this.props;
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <h2>Délégation de pouvoir</h2>
-          </div>
-          <div>
-            <label>
+        <div className={'clausesForm-container'}>
+          <form onSubmit={handleSubmit}>
+            <div className={'clausesForm-title'}>Délégation de pouvoir</div>
+            <div className={'clausesForm-total'}>
               <Field
                 name="delegationOfPower.totale"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Totale
-            </label>
-          </div>
-          <div>
-            <label>
+                component={renderAtylaCheckBox}
+                valueCheck={true}
+                label={'Totale'}
+                actualValue={totalPower}
+              />
+            </div>
+            <div className={'clausesForm-radioButtons'}>
               <Field
                 name="delegationOfPower.proposer"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Proposer
-            </label>
-            <label>
+                component={renderAtylaRdioButton}
+                valueCheck={true}
+                label={'Proposer'}
+                actualValue={proposer}
+              />
               <Field
                 name="delegationOfPower.visiter"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Visiter
-            </label>
-          </div>
-          <div>
-            <label>
+                component={renderAtylaRdioButton}
+                valueCheck={true}
+                label={'Visiter'}
+                actualValue={visiter}
+              />
               <Field
                 name="delegationOfPower.publicite"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Publicité
-            </label>
-            <label>
-              <Field
-                name="delegationOfPower.autre"
-                component="input"
-                type="checkbox"
+                component={renderAtylaRdioButton}
+                valueCheck={true}
+                label={'Publicite'}
+                actualValue={publicite}
               />
-              {autrePower ? (
+              <div>
+                {autrePower ? (
+                  <Field
+                    name="delegationOfPower.autre"
+                    component={renderAtylaOtherRadio}
+                    valueCheck={''}
+                    label={'Autre'}
+                    actualValue={autrePower}
+                  />
+                ) : (
+                  <Field
+                    name="delegationOfPower.autre"
+                    component={renderAtylaRdioButton}
+                    valueCheck={true}
+                    label={'Autre'}
+                    actualValue={autrePower}
+                  />
+                )}
+              </div>
+            </div>
+            <div className={'contractForm-inputField clausesForm-textArea'}>
+              <Field
+                name={'mandateAdvertising'}
+                component={renderField}
+                placeholder={'Description mandat de publicité'}
+                type="textarea"
+                multiline={true}
+                rows="3"
+                rowsMax="3"
+                margin="normal"
+                inputClassName={'contractForm-inputLine'}
+              />
+            </div>
+            <div className={'clausesForm-title'}>Pieces à fournir</div>
+            <div className={'clausesForm-checkBoxes'}>
+              <div className={'clausesForm-checkBox'}>
+                <label>
+                  <Field
+                    name="documentsRequired.surfaceCarrez"
+                    component="input"
+                    type="checkbox"
+                  />{' '}
+                    Surface Carrez
+                </label>
+              </div>
+              <label>
                 <Field
-                  placeholder="Autre..."
-                  name="delegationOfPower.autreContent"
+                  name="documentsRequired.organisationImmeuble"
                   component="input"
-                  component={renderField}
+                  type="checkbox"
+                />{' '}
+                  Organisation Immeuble
+              </label>
+            </div>
+            <div className={'clausesForm-checkBoxes'}>
+              <div className={'clausesForm-checkBox'}>
+                <label>
+                  <Field
+                    name="documentsRequired.dossierTechnique"
+                    component="input"
+                    type="checkbox"
+                  />{' '}
+                    Dossier technique
+                </label>
+              </div>
+              <label>
+                <Field
+                  name="documentsRequired.carnetEntretien"
+                  component="input"
+                  type="checkbox"
+                />{' '}
+                  Carnet d entretien
+              </label>
+            </div>
+            <div className={'clausesForm-otherCheckBoxInput'}>
+              <div className={'clausesForm-otherCheckBox'}>
+                <Field
+                  name="documentsRequired.autre"
+                  component="input"
+                  type="checkbox"
                 />
-              ) : (
-                <span>Autre</span>
-              )}
-            </label>
-          </div>
-          <div className={'contractForm-inputField'}>
-            <Field
-              name={'mandateAdvertising'}
-              component={renderField}
-              placeholder={'Description mandat de publicité'}
-              type="textarea"
-              inputClassName={'contractForm-inputLine'}
-            />
-          </div>
-          <div>
-            <h2>Pieces à fournir</h2>
-          </div>
-          <div>
-            <label>
-              <Field
-                name="documentsRequired.surfaceCarrez"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Surface Carrez
-            </label>
-            <label>
-              <Field
-                name="documentsRequired.dossierTechnique"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Dossier technique
-            </label>
-          </div>
-          <div>
-            <label>
-              <Field
-                name="documentsRequired.organisationImmeuble"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Organisation Immeuble
-            </label>
-            <label>
-              <Field
-                name="documentsRequired.carnetEntretien"
-                component="input"
-                type="checkbox"
-              />{' '}
-              Carnet d entretien
-            </label>
-          </div>
-          <div>
-            <label>
-              <Field
-                name="documentsRequired.autre"
-                component="input"
-                type="checkbox"
-              />
-              {autreDocument ? (
+              </div>
+              <div>
                 <Field
                   placeholder="Autre..."
                   name="documentsRequired.autreContent"
                   component="input"
+                  disabled={autreDocument ? false : true}
                   component={renderField}
+                  inputClassName={'clausesForm-otherInput'}
                 />
-              ) : (
-                <span>Autre</span>
-              )}
-            </label>
-          </div>
-          <div>
-            <span>A la charge de</span>
-            <label>
+              </div>
+            </div>
+            <div
+              className={'finConditionsForm-radioInputs clausesForm-checkBoxes'}
+            >
+              <span className={'finConditionsForm-radioLabel'}>
+                A la charge de:
+              </span>
               <Field
                 name="documentsRequiredPerson"
-                component="input"
-                type="radio"
-                value="client"
-              />{' '}
-              Client
-            </label>
-            <label>
+                component={renderAtylaRadioInCharge}
+                valueCheck={'client'}
+                label={'Client'}
+                modRadio={true}
+                actualValue={documentsRequiredPersonValue}
+              />
               <Field
                 name="documentsRequiredPerson"
-                component="input"
-                type="radio"
-                value="agence"
-              />{' '}
-              Agence
-            </label>
-          </div>
-          <div>
-            <h2>Clause particulière</h2>
-          </div>
-        </form>
+                component={renderAtylaRadioInCharge}
+                valueCheck={'agence'}
+                label={'Agence'}
+                actualValue={documentsRequiredPersonValue}
+              />
+            </div>
+          </form>
+        </div>
         <div>
-          <FieldArray name="specialClause" component={renderClauses} />
+          <FieldArray name="specialClause" component={ClauseList} />
         </div>
       </div>
     );
@@ -343,9 +424,15 @@ ClausesForm = reduxForm({
 const selector = (form, ...other) => formValueSelector(form)(...other);
 
 function mapStateToProps(state, initialProps) {
-  const { updateMandate } = state;
+  const { updateMandate, createMandate } = state;
+
+  let mandate = createMandate;
+  if (updateMandate && updateMandate.mandateUpdate === true) {
+    mandate = updateMandate;
+  }
+
   return {
-    mandate: updateMandate,
+    mandate: mandate,
     autrePower: selector(initialProps.form, state, 'delegationOfPower.autre'),
     autreDocument: selector(
       initialProps.form,
@@ -355,7 +442,16 @@ function mapStateToProps(state, initialProps) {
     totalPower: selector(initialProps.form, state, 'delegationOfPower.totale'),
     proposer: selector(initialProps.form, state, 'delegationOfPower.proposer'),
     visiter: selector(initialProps.form, state, 'delegationOfPower.visiter'),
-    publicite: selector(initialProps.form, state, 'delegationOfPower.publicite')
+    publicite: selector(
+      initialProps.form,
+      state,
+      'delegationOfPower.publicite'
+    ),
+    documentsRequiredPersonValue: selector(
+      initialProps.form,
+      state,
+      'documentsRequiredPerson'
+    )
   };
 }
 

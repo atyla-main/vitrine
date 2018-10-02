@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Collapse from '@material-ui/core/Collapse';
+import Arrow from '../../img/atyla-design-v1/arrow_left.png';
 
 class SummaryCollapse extends Component {
   constructor(props) {
@@ -20,6 +21,22 @@ class SummaryCollapse extends Component {
           onClick={e => this.setState({ collapsed: !collapsed })}
         >
           {title}
+          <div>
+            <img
+              src={Arrow}
+              heigh={10}
+              width={10}
+              alt=""
+              className={'summaryCollapse-arrow mod-up'}
+            />
+            <img
+              src={Arrow}
+              heigh={10}
+              width={10}
+              alt=""
+              className={'summaryCollapse-arrow mod-down'}
+            />
+          </div>
         </div>
         <div>
           <Collapse in={collapsed}>{children}</Collapse>

@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
 import moment from 'moment';
+import {
+  AtylaInputTheme,
+  AtylaInput,
+  AtylaInputLabel
+} from '../../../styles/inputs/atyla-inputs';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
 
 const renderField = ({
   input,
@@ -10,17 +20,27 @@ const renderField = ({
   type,
   inputClassName,
   placeholder,
+  multiline,
+  rows,
+  rowsMax,
+  disabled,
   meta: { touched, error, warning }
 }) => (
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        className={inputClassName}
-      />
+      <MuiThemeProvider theme={AtylaInputTheme}>
+        <AtylaInput
+          {...input}
+          disabled={disabled}
+          multiline={multiline}
+          rows={rows}
+          rowsMax={rowsMax}
+          placeholder={placeholder}
+          type={type}
+          className={inputClassName}
+        />
+      </MuiThemeProvider>
       {touched &&
         ((error && <span>{error}</span>) ||
           (warning && <span>{warning}</span>))}
@@ -68,7 +88,7 @@ class SummaryForm extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className={'summary-inputContainer'}>
         <form onSubmit={handleSubmit}>
           <div className={'contractForm-inputField'}>
             <Field
@@ -79,14 +99,14 @@ class SummaryForm extends Component {
               inputClassName={'contractForm-inputLine'}
             />
           </div>
-          <div className={'contractForm-inputField'}>
+          <div className={'contractForm-inputField mod-label'}>
             <span>Signé le</span>
             <Field
               name="signatureDate"
               component={renderField}
               placeholder="dd/mm/yyyy"
               type="text"
-              inputClassName={'contractForm-inputLine'}
+              inputClassName={'contractForm-inputLine summary-inputLabel'}
             />
           </div>
         </form>

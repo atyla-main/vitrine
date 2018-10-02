@@ -10,20 +10,10 @@ import Auth from '../services/Auth';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { withStyles } from '@material-ui/core/styles';
 import { requestService } from '../services/request';
 import { loadContractsActions } from '../actions/load-contracts';
+import { HandleTabChange } from '../components/handle-tab-change/handle-tab-change';
 import moment from 'moment';
-
-const styles = {
-  root: {
-    flexGrow: 1,
-    marginBottom: '10px'
-  },
-  indicator: {
-    backgroundColor: '#0070BA'
-  }
-};
 
 class ContractsMenu extends Component {
   constructor(props) {
@@ -31,8 +21,8 @@ class ContractsMenu extends Component {
 
     this.state = {
       tabValue: 'pending',
-      toShow: 'Compromis de vente',
-      status: ['Compromis de vente'],
+      toShow: 'Mandat de vente',
+      status: ['Mandat de vente'],
       listOn: false,
       mandates: []
     };
@@ -146,12 +136,15 @@ class ContractsMenu extends Component {
     );
   }
 
-  handleTabChange(event, value) {
+  handleTabChange(event) {
     const { dispatch } = this.props;
     let userId = Auth.getId();
+    let value = event.target.value;
 
-    this.setState({ tabValue: value, listOn: false });
-    dispatch(fetchMandatesActions.fetch(`userId=${userId}&status=${value}`));
+    if (this.state.tabValue != value) {
+      this.setState({ tabValue: value, listOn: false });
+      dispatch(fetchMandatesActions.fetch(`userId=${userId}&status=${value}`));
+    }
   }
 
   render() {
@@ -170,18 +163,10 @@ class ContractsMenu extends Component {
           statusList={this.state.status}
           openModal={() => history.push('/dashboard/contracts/new')}
         />
-        <Paper className={classes.root}>
-          <Tabs
-            value={this.state.tabValue}
-            onChange={this.handleTabChange}
-            classes={{ indicator: classes.indicator }}
-            centered
-            fullWidth
-          >
-            <Tab label={'En cours'} value={'pending'} />
-            <Tab label={'Terminé'} value={'done'} />
-          </Tabs>
-        </Paper>
+        <HandleTabChange
+          currentValue={this.state.tabValue}
+          handleChange={this.handleTabChange}
+        />
         <ContractMenuList
           list={this.state.mandates}
           onDelete={this.handleContractDelete}
@@ -202,4 +187,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(ContractsMenu));
+export default connect(mapStateToProps)(ContractsMenu);

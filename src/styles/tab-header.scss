@@ -15,25 +15,29 @@
 }
 
 .tabHeader-buttonDesign {
-  background-color: white;
-  color: #0070BA;
-  border: 2px solid #0070BA;
-  border-radius: 8px;
-  padding: 12px;
-  margin-right: 20px;
+  padding: 12px 30px;
+  background-image: none;
+  background-color: #3d25c8;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  text-shadow: none;
+  font-size: calc(2vw - 70%);
+  font-family: 'Lato-black';
+  color: white;
 }
 
 .tabHeader-selectButton {
   background: none;
   height: 48px;
   background-color: white;
-  color: #0070BA;
-  border: 2px solid #0070BA;
-  border-radius: 8px;
+  color: black;
+  border: none;
   padding: 12px;
   margin-right: 20px;
-  width: 150px;
+  width: 228px;
   font-weight: normal;
-  font-size: 15px;
+  font-size: calc(2vw - 70%);
   text-transform: capitalize;
+  font-family: 'Lato-Black';
 }

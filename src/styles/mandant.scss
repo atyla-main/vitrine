@@ -1,0 +1,32 @@
+.mandant-addButton {
+  background-color: none;
+  border: 1px solid #bbdeff;
+  border-radius: 12px;
+  font-family: 'Lato-Black';
+  font-size: 24px;
+  padding: 15px;
+
+  &.mod-margin {
+    margin-bottom: 54px;
+  }
+}
+
+.mandant-nextArrow {
+  cursor: pointer;
+}
+
+.mandant-bottomButton {
+  margin: 0 4vw 0 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mandant-stepper {
+  font-family: 'Lato-Regular';
+  font-size: 18px;
+
+  &.mod-active {
+    font-family: 'Lato-Black';
+  }
+}

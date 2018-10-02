@@ -18,26 +18,25 @@ $color-chambray: #31538f;
 .login {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  height: calc(100vh - 82px);
-
-  @include sm {
-    height: calc(100vh - 65px);
-  }
+  margin: 4vw auto 0 auto;
 }
 
 .login-logo {
-
+  margin-top: 2vw;
+  margin-left: 2vw;
 }
 
 .login-container {
+  -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  -moz-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
   align-self: center;
   background-color: white;
   display: block;
-  height: 656px;
   width: 679px;
   margin-bottom: 20px;
-  border: 1px solid #306EB4;
+  border: 1px solid #bbdeff;
+  border-radius: 10px;
 
   @include sm {
     width: 679px;
@@ -45,17 +44,18 @@ $color-chambray: #31538f;
 }
 
 .login-form {
-  margin: 0 20px 0 20px;
+  margin: 0 55px 0 55px;
 }
 
 .login-header {
-  margin: 0 auto 20px auto;
-  font-size: 42px;
+  margin: 20px auto 80px auto;
+  font-size: 32px;
+  font-family: 'Lato-Black';
   line-height: 1.7;
   font-weight: 500;
   text-align: center;
   width: 325px;
-  padding-bottom: 25px;
+  padding-bottom: 5px;
   border-bottom: 6px solid #3d25c8;
 }
 
@@ -66,54 +66,57 @@ $color-chambray: #31538f;
 
 .login-button {
   background-image: none;
-  background-color: #306EB4;
+  background-color: #3d25c8;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   width: 100%;
-  height: 35px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   text-shadow: none;
+  font-size: 26px;
+  font-family: 'Lato-black';
 
   &:hover {
-    background-color: #306EB4;
+    background-color: #2B15A9;
   }
 
   &:active {
-    background-color: #306EB4;
+    background-color: #3d25c8;
   }
 
   &:focus:active {
-    background-color: #306EB4;
+    background-color: #3d25c8;
   }
 
   &:focus {
-    background-color: #306EB4;
+    background-color: #3d25c8;
   }
 
   &.mod-signup {
-    background-color: #D9D9D9;
-    color: #595959;
+    background-color: white;
+    color: black;
+    border: 3px solid #3d25c8;
     font-weight: 700;
+    margin-bottom: 55px;
 
     &:hover {
       text-decoration: none;
-      background-color: #D9D9D9;
-      color: #595959;
+      border: 3px solid #2B15A9;
+      background-color: transparentize(#9d9d9c, 0.9);
     }
 
     &:active {
-      background-color: #D9D9D9;
-      color: #595959;
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
     }
 
     &:focus:active {
-      background-color: #D9D9D9;
-      color: #595959;
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
     }
 
     &:focus {
-      background-color: #D9D9D9;
-      color: #595959;
+      color: black;
+      background-color: transparentize(#9d9d9c, 0.9);
     }
   }
 }
@@ -145,7 +148,7 @@ $color-chambray: #31538f;
   }
 
   &.mod-last {
-    margin-bottom: 30px;
+    margin-bottom: 72px;
   }
 
   &.mod-center {
@@ -168,7 +171,10 @@ $color-chambray: #31538f;
 .login-connectionImpossible {
   text-align: center;
   font-size: 12px;
-  color: #306EB4;
+
+  a {
+    color: black;
+  }
 }
 
 .login-ctaLimit {

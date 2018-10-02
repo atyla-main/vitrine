@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
 import { requestService } from '../../services/request';
+import Bin from '../../img/atyla-design-v1/bin_icon.png';
+import Edit from '../../img/atyla-design-v1/edit_icon.png';
 
 class ContractMenuList extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class ContractMenuList extends Component {
     const { list, onDelete, onEdit } = this.props;
 
     return (
-      <div>
+      <div className={'contractMenuList-container'}>
         <div
           className={'contractElementsList-line contractElementsList-header'}
         >
@@ -37,12 +39,18 @@ class ContractMenuList extends Component {
           <div className={'contractElementsList-element4'}>Numéro mandat</div>
           <div className={'contractElementsList-element5'} />
         </div>
-        <div>
+        <div className={'contractMenuList-list'}>
           {list.length > 0 ? (
             <div>
-              {list.map(item => {
+              {list.map((item, index) => {
                 return (
-                  <div key={item.id} className={'contractElementsList-line'}>
+                  <div
+                    key={item.id}
+                    className={
+                      'contractElementsList-line ' +
+                      (list.length === index + 1 ? 'mod-last' : '')
+                    }
+                  >
                     <div className={'contractElementsList-element1'}>
                       {item.date}
                     </div>
@@ -56,8 +64,22 @@ class ContractMenuList extends Component {
                       {item.number}
                     </div>
                     <div className={'contractElementsList-element5'}>
-                      <button onClick={e => onEdit(item.id)}>E</button>
-                      <button onClick={e => onDelete(item.id)}>D</button>
+                      <img
+                        onClick={e => onEdit(item.id)}
+                        src={Edit}
+                        height={25}
+                        width={20}
+                        alt=""
+                        className={'contractMenuList-icon mod-margin'}
+                      />
+                      <img
+                        onClick={e => onDelete(item.id)}
+                        src={Bin}
+                        height={25}
+                        width={20}
+                        alt=""
+                        className={'contractMenuList-icon'}
+                      />
                     </div>
                   </div>
                 );

@@ -1,0 +1,28 @@
+.summary-inputLabel {
+  width: 42vw;
+}
+
+.summary-inputContainer {
+  margin-bottom: 50px;
+}
+
+.summary-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 40px auto;
+}
+
+.summary-button {
+  color: white;
+  font-family: 'Lato-Black';
+  height: 82px;
+  padding: 20px;
+  font-size: 28px;
+  border-radius: 12px;
+  background-color: #3d25c8;
+}
+
+.summary-content {
+  padding: 0 3vw 0 3vw;
+  margin-bottom: 50px;
+}

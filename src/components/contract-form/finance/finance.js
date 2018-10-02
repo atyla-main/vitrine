@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateMandateActions } from '../../../actions/update-mandate';
 import FinConditionsForm from '../../redux-forms/contract-fin-conditions/fin-conditions-form';
+import NextArrow from '../../../img/atyla-design-v1/next_arrow.png';
+import PrevArrow from '../../../img/atyla-design-v1/prev_arrow.png';
 
 class Finance extends Component {
   constructor(props) {
@@ -16,10 +18,15 @@ class Finance extends Component {
 
   handleSubmit(values) {
     const { dispatch, mandate } = this.props;
+    let attributes = values;
+
+    if (attributes.escrowAccountOther && attributes.escrowAccount === 'Autre') {
+      attributes.escrowAccount = attributes.escrowAccountOther;
+    }
 
     let body = {
       data: {
-        attributes: values
+        attributes: attributes
       }
     };
 
@@ -33,8 +40,24 @@ class Finance extends Component {
     return (
       <div>
         <FinConditionsForm form={'testForm'} onSubmit={this.handleSubmit} />
-        <button onClick={this.props.onPrev}>Prev</button>
-        <button onClick={this.props.onNext}>Next</button>
+        <div className={'mandant-bottomButton'}>
+          <img
+            className={'mandant-nextArrow'}
+            src={PrevArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onPrev}
+          />
+          <img
+            className={'mandant-nextArrow'}
+            src={NextArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onNext}
+          />
+        </div>
       </div>
     );
   }

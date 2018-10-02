@@ -12,6 +12,7 @@ import {
 import Input from '@material-ui/core/Input';
 import { colors } from '../../styles/colors';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
+import AtylaLogo from '../../img/atyla-design-v1/logo.png';
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -68,7 +69,9 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <div className="login-logo">Atyla</div>
+        <div className="login-logo">
+          <img src={AtylaLogo} height={46} width={123} alt="" />
+        </div>
         <div>
           <I18n ns="translations">
             {(t, { i18n }) => (

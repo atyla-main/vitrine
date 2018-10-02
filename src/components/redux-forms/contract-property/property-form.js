@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
+import {
+  AtylaInputTheme,
+  AtylaInput,
+  AtylaInputLabel
+} from '../../../styles/inputs/atyla-inputs';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
 
 const renderField = ({
   input,
@@ -9,17 +19,25 @@ const renderField = ({
   type,
   inputClassName,
   placeholder,
+  multiline,
+  rows,
+  rowsMax,
   meta: { touched, error, warning }
 }) => (
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        className={inputClassName}
-      />
+      <MuiThemeProvider theme={AtylaInputTheme}>
+        <AtylaInput
+          {...input}
+          multiline={multiline}
+          rows={rows}
+          rowsMax={rowsMax}
+          placeholder={placeholder}
+          type={type}
+          className={inputClassName}
+        />
+      </MuiThemeProvider>
       {touched &&
         ((error && <span>{error}</span>) ||
           (warning && <span>{warning}</span>))}
@@ -27,11 +45,79 @@ const renderField = ({
   </div>
 );
 
+const renderAtylaButtonBox = field => (
+  <div
+    className={
+      'propertyFrom-radio ' +
+      (field.actualValue === field.valueCheck ? 'mod-active' : '')
+    }
+    onClick={param => {
+      field.input.onChange(field.valueCheck);
+      field.onOther(false);
+    }}
+  >
+    {field.label}
+  </div>
+);
+
+const renderAtylaOtherButtonBox = field => {
+  if (
+    field.actualValue != 'Appartement' &&
+    field.actualValue != 'Maison' &&
+    field.actualValue != 'Autre'
+  ) {
+    if (field.actualValue) {
+      return (
+        <input
+          placeholder={'Autre...'}
+          onChange={e => {
+            field.input.onChange(e.target.value);
+          }}
+          value={field.actualValue}
+          className={'propertyFrom-otherInput'}
+        />
+      );
+    }
+  }
+
+  return (
+    <div>
+      {field.other ? (
+        <input
+          placeholder={'Autre...'}
+          onChange={e => {
+            field.input.onChange(e.target.value);
+          }}
+          className={'propertyFrom-otherInput'}
+        />
+      ) : (
+        <div
+          className={
+            'propertyFrom-radio ' +
+            (field.actualValue === field.valueCheck ? 'mod-active' : '')
+          }
+          onClick={() => {
+            field.input.onChange(field.valueCheck);
+            field.onOther(!field.other);
+          }}
+        >
+          <div className={'propertyFrom-otherLabel'}>{field.label}...</div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 class PropertyForm extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      otherInput: false
+    };
+
     this.transformKey = this.transformKey.bind(this);
+    this.handleOtherInput = this.handleOtherInput.bind(this);
   }
 
   transformKey(hash) {
@@ -48,10 +134,22 @@ class PropertyForm extends Component {
     const { property } = this.props;
 
     if (property && property.property) {
-      this.props.initialize(
-        this.transformKey(property.property.data.attributes)
-      );
+      let attributes = this.transformKey(property.property.data.attributes);
+      if (
+        attributes.propertyNature != 'Appartement' &&
+        attributes.propertyNature != 'Maison' &&
+        attributes.propertyNature != 'Maison'
+      ) {
+        this.handleOtherInput(true);
+      }
+      this.props.initialize(attributes);
+    } else {
+      this.props.initialize({ propertyNature: 'Appartement' });
     }
+  }
+
+  handleOtherInput(value) {
+    this.setState({ otherInput: value });
   }
 
   render() {
@@ -61,51 +159,48 @@ class PropertyForm extends Component {
       pristine,
       submitting,
       mandantId,
-      reset
+      reset,
+      propertyNatureValue
     } = this.props;
 
     return (
-      <div>
+      <div className={'propertyForm-container'}>
         <form onSubmit={handleSubmit}>
-          <div>
-            <h2>Informations</h2>
+          <div className={'propertyFrom-title'}>Informations</div>
+          <div className={'propertyFrom-radios'}>
+            <Field
+              name="propertyNature"
+              component={renderAtylaButtonBox}
+              valueCheck={'Appartement'}
+              label={'Appartement'}
+              actualValue={propertyNatureValue}
+              onOther={this.handleOtherInput}
+            />
+            <Field
+              name="propertyNature"
+              component={renderAtylaButtonBox}
+              valueCheck={'Maison'}
+              label={'Maison'}
+              actualValue={propertyNatureValue}
+              onOther={this.handleOtherInput}
+            />
+            <Field
+              name="propertyNature"
+              component={renderAtylaOtherButtonBox}
+              valueCheck={'Autre'}
+              label={'Autre'}
+              actualValue={propertyNatureValue}
+              other={this.state.otherInput}
+              onOther={this.handleOtherInput}
+            />
           </div>
-          <div>
-            <label>
-              <Field
-                name="propertyNature"
-                component="input"
-                type="radio"
-                value="Appartement"
-              />{' '}
-              Appartement
-            </label>
-            <label>
-              <Field
-                name="propertyNature"
-                component="input"
-                type="radio"
-                value="Maison"
-              />{' '}
-              Maison
-            </label>
-            <label>
-              <Field
-                name="propertyNature"
-                component="input"
-                type="radio"
-                value="Autre"
-              />{' '}
-              Autre
-            </label>
-          </div>
-          <div>
+          <div className={'propertyFrom-checkBox'}>
             <label>
               <Field name="coOwnership" component="input" type="checkbox" />{' '}
               Bien en copropriété
             </label>
           </div>
-          <div>
+          <div className={'propertyFrom-checkBox mod-last'}>
             <label>
               <Field name="rentalState" component="input" type="checkbox" />{' '}
               Bien loué
@@ -116,13 +211,15 @@ class PropertyForm extends Component {
               name="description"
               component={renderField}
               placeholder="Désignation"
-              type="textarea"
+              type="text"
+              multiline={true}
+              rows="6"
+              rowsMax="10"
+              margin="normal"
               inputClassName={'contractForm-inputLine'}
             />
           </div>
-          <div>
-            <h2>Adresse</h2>
-          </div>
+          <div className={'propertyFrom-title'}>Adresse</div>
           <div className={'contractForm-inputField'}>
             <Field
               name="address"
@@ -152,6 +249,8 @@ PropertyForm = reduxForm({
   forceUnregisterOnUnmount: true
 })(PropertyForm);
 
+const selector = (form, ...other) => formValueSelector(form)(...other);
+
 function mapStateToProps(state, initialProps) {
   const { createProperty, updateProperty } = state;
 
@@ -162,7 +261,8 @@ function mapStateToProps(state, initialProps) {
   }
 
   return {
-    property: property
+    property: property,
+    propertyNatureValue: selector(initialProps.form, state, 'propertyNature')
   };
 }
 

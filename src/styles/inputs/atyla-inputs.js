@@ -7,10 +7,6 @@ import Input from '@material-ui/core/Input';
 import { colors } from '../../styles/colors';
 
 export const AtylaInputTheme = createMuiTheme({
-  palette: {
-    primary: { main: colors.frenchPass },
-    secondary: { main: colors.frenchPass }
-  },
   overrides: {
     MuiInput: {
       underline: {
@@ -37,6 +33,31 @@ export const AtylaInput = withStyles({
     border: 0,
     color: colors.starDust,
     height: 48,
-    fontSize: '21px'
+    fontSize: '21px',
+    fontFamily: 'Lato-Regular'
+  }
+})(Input);
+
+export const AtylaInputLabel = withStyles({
+  root: {
+    width: '40vw',
+    borderRadius: 3,
+    border: 0,
+    color: colors.starDust,
+    height: 48,
+    fontSize: '21px',
+    fontFamily: 'Lato-Regular'
+  }
+})(Input);
+
+export const AtylaInputOther = withStyles({
+  root: {
+    width: '40vw',
+    borderRadius: 3,
+    border: 0,
+    color: colors.starDust,
+    height: 48,
+    fontSize: '18px',
+    fontFamily: 'Lato-Regular'
   }
 })(Input);

@@ -12,6 +12,7 @@ import { fetchMandates } from './fetch-mandates';
 import { createMandate } from './create-mandate';
 import { createContact } from './create-contact';
 import { generatePdf } from './generate-pdf';
+import { generateSign } from './generate-sign';
 import { reducer as formReducer } from 'redux-form';
 import { updateMandate } from './update-mandate';
 import { updateContact } from './update-contact';
@@ -34,6 +35,7 @@ export default combineReducers({
   fetchMandants,
   createMandate,
   generatePdf,
+  generateSign,
   createContact,
   fetchMandates,
   updateMandate,

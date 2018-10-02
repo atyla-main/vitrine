@@ -1,0 +1,55 @@
+.finConditionsForm-container {
+  padding: 4vw 15vw 4vw 15vw;
+  -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  -moz-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  align-self: center;
+  background-color: white;
+  display: block;
+  width: 90%;
+  margin: 0 auto 47px auto;
+  border: 1px solid #bbdeff;
+  border-radius: 10px;
+
+  &.mod-summary {
+    padding: 4vw 12vw 4vw 12vw;
+  }
+}
+
+.finConditionsForm-title {
+  margin: 20px auto 80px auto;
+  font-size: 32px;
+  font-family: 'Lato-Black';
+  line-height: 1.7;
+  font-weight: 500;
+  text-align: center;
+  width: 325px;
+  padding-bottom: 5px;
+  border-bottom: 6px solid #3d25c8;
+}
+
+.finConditionsForm-checkBox {
+  width: 5vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.finConditionsForm-otherInput {
+  width: 29vw;
+}
+
+.finConditionsForm-inline {
+  margin-right: 46px;
+}
+
+.finConditionsForm-radioLabel {
+  margin-right: 10px;
+}
+
+.finConditionsForm-radioInputs {
+  display: flex;
+  margin: 0 6vw 85px 0vw;
+  font-family: 'Lato-Regular';
+  font-size: 18px;
+}

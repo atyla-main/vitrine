@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createMandateActions } from '../actions/create-mandate';
 import { createPropertyActions } from '../actions/create-property';
+import { updateMandateActions } from '../actions/update-mandate';
 import Auth from '../services/Auth';
 import MandantNew from '../components/contract-form/mandant/mandant-new';
 import Steppers from '../components/steppers/steppers';
@@ -13,6 +14,8 @@ import { history } from '../helpers/history';
 import { reduxForm, destroy } from 'redux-form';
 import MandateFormSubmit from '../components/redux-forms/submit-forms/mandate-form-submit';
 import { submit } from 'redux-form';
+import ArrowLeft from '../img/atyla-design-v1/arrow_left.png';
+import NextArrow from '../img/atyla-design-v1/next_arrow.png';
 
 class ContractForm extends Component {
   constructor(props) {
@@ -61,7 +64,39 @@ class ContractForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { updateMandate, createProperty, updateProperty } = this.props;
+    const {
+      mandate,
+      updateMandate,
+      createProperty,
+      updateProperty,
+      dispatch
+    } = this.props;
+
+    if (
+      createProperty.property &&
+      prevProps.createProperty.creatingProperty === true &&
+      createProperty.propertyCreate === true &&
+      createProperty.creatingProperty === false
+    ) {
+      dispatch(
+        updateMandateActions.update(
+          {
+            data: {
+              attributes: {},
+              relationships: {
+                property: {
+                  data: {
+                    id: createProperty.property.data.id,
+                    type: 'properties'
+                  }
+                }
+              }
+            }
+          },
+          mandate.mandate.data.id
+        )
+      );
+    }
 
     if (this.state.pageChanged === true) {
       if (
@@ -121,20 +156,26 @@ class ContractForm extends Component {
     const { pageNumber, formNames } = this.state;
 
     return (
-      <div>
-        <button
-          onClick={e => {
-            window.location.href = '/dashboard/contracts';
-          }}
-        >
-          Retour accueil
-        </button>
-        <MandateFormSubmit text={'Submit'} formName={formNames[pageNumber]} />
-        <Steppers
-          pageNumber={pageNumber}
-          formName={formNames[pageNumber]}
-          onPageChange={this.changePage}
-        />
+      <div className={'contract-tab'}>
+        <div className={'contractForm-header'}>
+          <button
+            className={'contractForm-backButton'}
+            onClick={e => {
+              window.location.href = '/dashboard/contracts';
+            }}
+          >
+            <img src={ArrowLeft} alt="" height={10} width={10} /> Accueil
+          </button>
+          <MandateFormSubmit text={'Submit'} formName={formNames[pageNumber]} />
+        </div>
+        <div className={'contractForm-steppers'}>
+          <Steppers
+            pageNumber={pageNumber}
+            formName={formNames[pageNumber]}
+            onPageChange={this.changePage}
+            currentPage={pageNumber}
+          />
+        </div>
         {pageNumber === 0 && (
           <MandantNew
             pageNumber={pageNumber}

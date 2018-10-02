@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateMandateActions } from '../../../actions/update-mandate';
 import ClausesForm from '../../redux-forms/contract-clauses/clauses-form';
+import NextArrow from '../../../img/atyla-design-v1/next_arrow.png';
+import PrevArrow from '../../../img/atyla-design-v1/prev_arrow.png';
 
 class Clause extends Component {
   constructor(props) {
@@ -33,8 +35,24 @@ class Clause extends Component {
     return (
       <div>
         <ClausesForm form={'testForm'} onSubmit={this.handleSubmit} />
-        <button onClick={this.props.onPrev}>Prev</button>
-        <button onClick={this.props.onNext}>Next</button>
+        <div className={'mandant-bottomButton'}>
+          <img
+            className={'mandant-nextArrow'}
+            src={PrevArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onPrev}
+          />
+          <img
+            className={'mandant-nextArrow'}
+            src={NextArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onNext}
+          />
+        </div>
       </div>
     );
   }

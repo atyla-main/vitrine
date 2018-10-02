@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import { reset } from 'redux-form';
 import _ from 'lodash';
 import Auth from '../../../services/Auth';
+import CrossBlack from '../../../img/atyla-design-v1/cross_black.png';
+import NextArrow from '../../../img/atyla-design-v1/next_arrow.png';
 
 const transformKey = hash => {
   let newHash = {};
@@ -224,8 +226,27 @@ class MandantNew extends Component {
               />
             );
           })}
-        <button onClick={this.handleNewContact}>Add new mandant</button>
-        <button onClick={this.props.onNext}>Next</button>
+        <div className={'mandant-bottomButton'}>
+          <button
+            className={'mandant-addButton'}
+            onClick={this.handleNewContact}
+          >
+            Ajouter un mandant  <img
+              src={CrossBlack}
+              alt=""
+              height={20}
+              width={20}
+            />
+          </button>
+          <img
+            className={'mandant-nextArrow'}
+            src={NextArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onNext}
+          />
+        </div>
       </div>
     );
   }

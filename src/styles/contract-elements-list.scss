@@ -1,26 +1,43 @@
 .contractElementsList-line {
-  height: 40px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   margin: auto;
   text-align: center;
   align-items: center;
+  border-bottom: 1px solid #bbdeff;
+
+  &.mod-last {
+    border-bottom: none;
+  }
 }
 
 .contractElementsList-element1 {
   width: 200px;
+  text-align: left;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
 }
 
 .contractElementsList-element2 {
   width: 200px;
+  text-align: left;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
 }
 
 .contractElementsList-element3 {
   width: 200px;
+  text-align: left;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
 }
 
 .contractElementsList-element4 {
   width: 200px;
+  text-align: left;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
 }
 
 .contractElementsList-element5 {
@@ -29,11 +46,39 @@
 
 
 .contractElementsList-header {
-  background-color: #f8f8f8;
-  border-bottom: 1px solid gray;
+  border-bottom: 2px solid #3d25c8;
   font-weight: bold;
 }
 
 .contractElementsList-emptyMessage {
+  margin-top: 20px;
   text-align: center;
+  font-family: 'Lato-Regular';
+  font-size: 16px;
+}
+
+.contractMenuList-container {
+  -webkit-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  -moz-box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  box-shadow: -19px 18px 16px -4px rgba(187,222,255,0.57);
+  align-self: center;
+  background-color: white;
+  display: block;
+  margin-bottom: 20px;
+  border: 1px solid #bbdeff;
+  border-radius: 10px;
+  padding: 1vw 4vw;
+}
+
+.contractMenuList-list {
+  margin-bottom: 50px;
+}
+
+.contractMenuList-icon {
+  &:hover {
+    cursor: pointer;
+  }
+  &.mod-margin {
+    margin-right: 10px;
+  }
 }

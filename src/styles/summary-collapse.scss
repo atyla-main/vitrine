@@ -1,5 +1,39 @@
 .summaryCollapse-header {
-  border: black 1px solid;
-  background-color: #f8f8f8;
-  width: 300px;
+  width: 100%;
+  border: 1px solid #bbdeff;
+  border-radius: 12px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-family: 'Lato-Black';
+  position: relative;
+}
+
+.summaryCollapse-arrow {
+  position: absolute;
+  left: 97%;
+
+  &.mod-up {
+    top: 10px;
+    transform: rotate(90deg);
+  }
+
+  &.mod-down {
+    bottom: 11px;
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .summaryCollapse-arrow {
+    left: 96%;
+  }
+}
+
+@media (max-width: 450px) {
+  .summaryCollapse-arrow {
+    left: 93%;
+  }
 }

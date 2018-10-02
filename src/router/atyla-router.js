@@ -18,6 +18,9 @@ import Contacts from '../containers/Contacts';
 import Properties from '../containers/Properties';
 import ContractForm from '../containers/ContractForm';
 import ContractsMenu from '../containers/ContractsMenu';
+import AtylaLogo from '../img/atyla-design-v1/logo.png';
+import Head from '../img/atyla-design-v1/05_ICON_HEAD.png';
+import Bell from '../img/atyla-design-v1/05_ICON_BELL.png';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -56,41 +59,41 @@ const LogOut = ({ component: Component, ...rest }) => (
 
 const Private = ({ match }) => (
   <div>
-    <Navbar className="atylaNavBar mod-user">
+    <Navbar className="">
       <Navbar.Header>
-        <Navbar.Brand className="atylaNavBar-privateBrand">atyla</Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Brand className="">
+          <img src={AtylaLogo} height={46} width={123} alt="" />
+        </Navbar.Brand>
       </Navbar.Header>
-      <Navbar.Collapse className="atylaNavBar-navLinks mod-user">
-        <Navbar.Text pullRight>
+      <div className="atylaNavBar-menu">
+        <Navbar.Text pullRight className="atylaNavBar-buttonText">
           <NavLink
             to="/logout"
-            className="atylaNavBar-privateLogoutLink"
-            activeClassName="atylaNavBar-activeLink mod-private"
+            className="atylaNavBar-button"
+            activeClassName="atylaNavBar-button"
             exact
           >
             Déconnexion
           </NavLink>
         </Navbar.Text>
-        <Navbar.Text pullRight className="atylaNavBar-privateIconText">
-          <NavLink
-            to="#"
-            className="atylaNavBar-privateNormalLink mod-icon"
-            exact
-          >
-            <i className="fa fa-user-circle" />
+        <Navbar.Text pullRight className="atylaNavBar-navText">
+          <NavLink to="#" className="" exact>
+            <img src={Bell} height={39} width={34} alt="" />
           </NavLink>
         </Navbar.Text>
-        <Navbar.Text pullRight className="atylaNavBar-privateIconText">
-          <NavLink
-            to="#"
-            className="atylaNavBar-privateNormalLink mod-icon"
-            exact
-          >
-            <i className="fa fa-bell-o" />
+        <Navbar.Text pullRight className="atylaNavBar-navText">
+          <NavLink to="#" className="atylaNavBar-headText" exact>
+            <img
+              src={Head}
+              height={39}
+              width={40}
+              alt=""
+              className={'atylaNavBar-head'}
+            />
+            Bonjour !
           </NavLink>
         </Navbar.Text>
-      </Navbar.Collapse>
+      </div>
     </Navbar>
     <Switch>
       <PrivateRoute path="/account" component={User} userId={Auth.getId()} />

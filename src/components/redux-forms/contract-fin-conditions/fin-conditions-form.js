@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import _ from 'lodash';
+import {
+  AtylaInputTheme,
+  AtylaInput,
+  AtylaInputLabel
+} from '../../../styles/inputs/atyla-inputs';
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import writtenNumber from 'written-number';
 
 const renderField = ({
   input,
@@ -9,17 +22,27 @@ const renderField = ({
   type,
   inputClassName,
   placeholder,
+  multiline,
+  rows,
+  rowsMax,
+  disabled,
   meta: { touched, error, warning }
 }) => (
   <div>
     {label && <label>{label}</label>}
     <div>
-      <input
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        className={inputClassName}
-      />
+      <MuiThemeProvider theme={AtylaInputTheme}>
+        <AtylaInput
+          {...input}
+          disabled={disabled}
+          multiline={multiline}
+          rows={rows}
+          rowsMax={rowsMax}
+          placeholder={placeholder}
+          type={type}
+          className={inputClassName}
+        />
+      </MuiThemeProvider>
       {touched &&
         ((error && <span>{error}</span>) ||
           (warning && <span>{warning}</span>))}
@@ -27,11 +50,58 @@ const renderField = ({
   </div>
 );
 
+const renderAtylaCheckBox = field => {
+  let mod = field.actualValue === field.valueCheck ? 'mod-active' : '';
+  if (field.valueCheck === 'Autre' && field.actualValue != 'Notaire') {
+    mod = 'mod-active';
+  }
+  return (
+    <div
+      className={'mandantForm-radio ' + (field.modRadio ? 'mod-noInput' : '')}
+      onClick={param => field.input.onChange(field.valueCheck)}
+    >
+      <div className={'mandantForm-radioButton ' + mod}> </div>
+      {field.label}
+    </div>
+  );
+};
+
 class FinConditionsForm extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      remunerationState: 'forfaitaire'
+    };
+
     this.transformKey = this.transformKey.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    const { dispatch, change } = this.props;
+    this.setState({ remunerationState: event.target.value });
+    dispatch(change([event.target.name], event.target.value));
+  }
+
+  handleAmountChange(event) {
+    event.preventDefault();
+    const { dispatch, change } = this.props;
+
+    if (event.target.name != 'percentage') {
+      let key = event.target.name.split('.')[0];
+      console.log('===================================KEY IS NOT LUMP SUMP');
+      dispatch(change([`${key}.currency`], 'euros'));
+      dispatch(
+        change(
+          [`${key}.valueText`],
+          writtenNumber(event.target.value, { lang: 'fr' })
+        )
+      );
+    }
+    dispatch(change([event.target.name], event.target.value));
   }
 
   transformKey(hash) {
@@ -46,9 +116,22 @@ class FinConditionsForm extends Component {
 
   componentDidMount() {
     const { mandate } = this.props;
+    let attributes = mandate.mandate.data.attributes;
 
     if (mandate.mandate) {
-      this.props.initialize(this.transformKey(mandate.mandate.data.attributes));
+      if (mandate.mandate && !attributes['escrow-account']) {
+        attributes['escrow-account'] = 'Notaire';
+      } else if (attributes['escrow-account'] != 'Notaire') {
+        attributes['escrow-account-other'] = attributes['escrow-account'];
+      }
+
+      if (mandate.mandate && !attributes['remuneration-type']) {
+        attributes['remuneration-type'] = 'forfaitaire';
+      }
+
+      this.setState({ remunerationState: attributes['remuneration-type'] });
+
+      this.props.initialize(this.transformKey(attributes));
     }
   }
 
@@ -60,47 +143,61 @@ class FinConditionsForm extends Component {
       submitting,
       mandantId,
       reset,
-      remunerationTypeValue
+      remunerationTypeValue,
+      escrowAccountValue,
+      inChargeOfRemunerationValue
     } = this.props;
 
     return (
-      <div>
+      <div className={'finConditionsForm-container'}>
         <form onSubmit={handleSubmit}>
-          <div>
-            <h2>Vente</h2>
-          </div>
+          <div className={'finConditionsForm-title'}>Vente</div>
           <div className={'contractForm-inputField'}>
             <Field
               name="saleAmount.amount"
               component={renderField}
               placeholder="Prix de vente"
               type="text"
+              onChange={this.handleAmountChange}
               inputClassName={'contractForm-inputLine'}
             />
           </div>
-          <div>
-            <span>Séquestre</span>
-            <label>
+          <div className={'contractForm-inputField mod-label'}>
+            <div className={'finConditionsForm-checkBox'}>
+              <span className={'finConditionsForm-inline'}>Séquestre: </span>
+              <div className={'finConditionsForm-inline'}>
+                <Field
+                  name="escrowAccount"
+                  component={renderAtylaCheckBox}
+                  valueCheck={'Notaire'}
+                  label={'Notaire'}
+                  actualValue={escrowAccountValue}
+                />
+              </div>
               <Field
                 name="escrowAccount"
-                component="input"
-                type="radio"
-                value="Notaire"
-              />{' '}
-              Notaire
-            </label>
-            <label>
-              <Field
-                name="escrowAccount"
-                component="input"
-                type="radio"
-                value="Autre"
-              />{' '}
-              Autre
-            </label>
+                component={renderAtylaCheckBox}
+                valueCheck={'Autre'}
+                label={''}
+                actualValue={escrowAccountValue}
+              />
+            </div>
+            <Field
+              atylaInputLabel={true}
+              name={
+                escrowAccountValue === 'Notaire' ? '' : 'escrowAccountOther'
+              }
+              component={renderField}
+              placeholder="Autre"
+              type="text"
+              disabled={escrowAccountValue === 'Notaire' ? true : false}
+              inputClassName={
+                'contractForm-inputLine finConditionsForm-otherInput'
+              }
+            />
           </div>
-          <div>
-            <h2>Rémunération mandataire</h2>
+          <div className={'finConditionsForm-title'} style={{ width: '408px' }}>
+            Rémunération mandataire
           </div>
           <div>
             <div className={'contractForm-inputField'}>
@@ -111,46 +208,46 @@ class FinConditionsForm extends Component {
                     : 'lumpSum.amount'
                 }
                 component={renderField}
-                placeholder={
-                  remunerationTypeValue === 'pourcentage'
-                    ? 'Pourcentage'
-                    : 'Montant rémunération'
-                }
+                placeholder={'Montant rémunération'}
                 type="text"
+                onChange={this.handleAmountChange}
                 inputClassName={'contractForm-inputLine'}
               />
             </div>
             <div className={'contractForm-inputField'}>
-              <Field
-                component="select"
-                name="remunerationType"
-                className={'contractForm-inputLine'}
-              >
-                <option value="forfaitaire">€</option>
-                <option value="pourcentage">%</option>
-              </Field>
+              <MuiThemeProvider theme={AtylaInputTheme}>
+                <Select
+                  value={this.state.remunerationState}
+                  onChange={this.handleChange}
+                  input={<AtylaInput name="remunerationType" />}
+                  name="remunerationType"
+                  style={{ width: '100%' }}
+                >
+                  <MenuItem value={'forfaitaire'}>€</MenuItem>
+                  <MenuItem value={'pourcentage'}>%</MenuItem>
+                </Select>
+              </MuiThemeProvider>
             </div>
           </div>
-          <div>
-            <span>A la charge de</span>
-            <label>
-              <Field
-                name="inChargeOfRemuneration"
-                component="input"
-                type="radio"
-                value="Notaire"
-              />{' '}
-              Acquéreur
-            </label>
-            <label>
-              <Field
-                name="inChargeOfRemuneration"
-                component="input"
-                type="radio"
-                value="Autre"
-              />{' '}
-              Vendeur
-            </label>
+          <div className={'finConditionsForm-radioInputs'}>
+            <span className={'finConditionsForm-radioLabel'}>
+              A la charge de:
+            </span>
+            <Field
+              name="inChargeOfRemuneration"
+              component={renderAtylaCheckBox}
+              valueCheck={'Notaire'}
+              label={'Notaire'}
+              modRadio={true}
+              actualValue={inChargeOfRemunerationValue}
+            />
+            <Field
+              name="inChargeOfRemuneration"
+              component={renderAtylaCheckBox}
+              valueCheck={'Vendeur'}
+              label={'Vendeur'}
+              actualValue={inChargeOfRemunerationValue}
+            />
           </div>
         </form>
       </div>
@@ -174,11 +271,17 @@ function mapStateToProps(state, initialProps) {
   }
 
   return {
+    inChargeOfRemunerationValue: selector(
+      initialProps.form,
+      state,
+      'inChargeOfRemuneration'
+    ),
     remunerationTypeValue: selector(
       initialProps.form,
       state,
       'remunerationType'
     ),
+    escrowAccountValue: selector(initialProps.form, state, 'escrowAccount'),
     mandate: mandate
   };
 }

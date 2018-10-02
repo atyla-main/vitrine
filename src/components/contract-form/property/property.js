@@ -5,6 +5,8 @@ import { updatePropertyActions } from '../../../actions/update-property';
 import { updateMandateActions } from '../../../actions/update-mandate';
 import PropertyForm from '../../redux-forms/contract-property/property-form';
 import Auth from '../../../services/Auth';
+import NextArrow from '../../../img/atyla-design-v1/next_arrow.png';
+import PrevArrow from '../../../img/atyla-design-v1/prev_arrow.png';
 
 class Mandant extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class Mandant extends Component {
   handleSubmit(values) {
     const { dispatch, mandate, property } = this.props;
     let attributes = values;
-    attributes.rentalState = values.rentalState ? 'Occupé' : 'Libre';
+    // attributes.rentalState = values.rentalState ? 'Occupé' : 'Libre';
 
     let body = {
       data: {
@@ -62,8 +64,24 @@ class Mandant extends Component {
     return (
       <div>
         <PropertyForm form={'propertyForm'} onSubmit={this.handleSubmit} />
-        <button onClick={this.props.onPrev}>Prev</button>
-        <button onClick={this.props.onNext}>Next</button>
+        <div className={'mandant-bottomButton'}>
+          <img
+            className={'mandant-nextArrow'}
+            src={PrevArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onPrev}
+          />
+          <img
+            className={'mandant-nextArrow'}
+            src={NextArrow}
+            alt=""
+            height={65}
+            width={65}
+            onClick={this.props.onNext}
+          />
+        </div>
       </div>
     );
   }
