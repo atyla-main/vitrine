@@ -309,12 +309,25 @@
   margin-left: 8vw;
 }
 
+@media (min-width: 1200px) {
+  .cta-main {
+    font-family: 'Lato-Bold';
+    font-size: 75%;
+    color: #fff;
+    background-color: #3d25c8;
+    width: 25vw;
+    height: 5vw;
+    border-radius: 12px;
+    margin-left: 7vw;
+  }
+}
+
 .cta-main {
   font-family: 'Lato-Bold';
   font-size: 75%;
   color: #fff;
   background-color: #3d25c8;
-  width: 25vw;
+  width: 30vw;
   height: 5vw;
   border-radius: 12px;
   margin-left: 7vw;

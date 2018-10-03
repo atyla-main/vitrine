@@ -55,7 +55,7 @@ class InProgress extends Component {
               <br />
               <a href="./register" className="homeAtyla-a">
                 <button className="cta-main homeAtyla-button">
-                  Créez votre contrat
+                  Créez votre contrat
                 </button>
               </a>
             </div>
