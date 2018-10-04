@@ -7,6 +7,7 @@ import {
   AtylaInput
 } from '../../../styles/inputs/atyla-inputs';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import LocationSearchInput from '../../google-components/location-search-input';
 
 const renderField = ({
   input,
@@ -113,6 +114,17 @@ class PropertyForm extends Component {
 
     this.transformKey = this.transformKey.bind(this);
     this.handleOtherInput = this.handleOtherInput.bind(this);
+    this.onAddressChange = this.onAddressChange.bind(this);
+  }
+
+  onAddressChange(addressObject) {
+    const { dispatch, change } = this.props;
+
+    dispatch(change('address', addressObject[0].formatted_address));
+    dispatch(change('city', addressObject[0].address_components[2].long_name));
+    dispatch(
+      change('postCode', addressObject[0].address_components[6].long_name)
+    );
   }
 
   transformKey(hash) {
@@ -208,12 +220,10 @@ class PropertyForm extends Component {
           </div>
           <div className={'propertyFrom-title'}>Adresse</div>
           <div className={'contractForm-inputField'}>
-            <Field
-              name="address"
-              component={renderField}
-              placeholder="N, type et libellé de la voie"
-              type="text"
-              inputClassName={'contractForm-inputLine'}
+            <LocationSearchInput
+              name={'address'}
+              placeholder={'N°, type et libellé de la voie'}
+              onUpdate={this.onAddressChange}
             />
           </div>
           <div className={'contractForm-inputField'}>

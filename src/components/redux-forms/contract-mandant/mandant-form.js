@@ -5,6 +5,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Arrow from '../../../img/atyla-design-v1/arrow_left.png';
 import DeleteBlack from '../../../img/atyla-design-v1/delete_black.png';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import LocationSearchInput from '../../google-components/location-search-input';
 import {
   AtylaInputTheme,
   AtylaInput,
@@ -84,6 +85,17 @@ class MandantForm extends Component {
     };
     this.handleCollapsed = this.handleCollapsed.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onAddressChange = this.onAddressChange.bind(this);
+  }
+
+  onAddressChange(addressObject) {
+    const { dispatch, change } = this.props;
+
+    dispatch(change('address', addressObject[0].formatted_address));
+    dispatch(change('city', addressObject[0].address_components[2].long_name));
+    dispatch(
+      change('postCode', addressObject[0].address_components[6].long_name)
+    );
   }
 
   componentDidMount() {
@@ -275,12 +287,10 @@ class MandantForm extends Component {
                 <div className={'mandantForm-header'}>Adresse</div>
               </div>
               <div className={'contractForm-inputField'}>
-                <Field
-                  name="address"
-                  component={renderField}
-                  placeholder="N°, type et libellé de la voie"
-                  type="text"
-                  inputClassName={'contractForm-inputLine'}
+                <LocationSearchInput
+                  name={'address'}
+                  placeholder={'N°, type et libellé de la voie'}
+                  onUpdate={this.onAddressChange}
                 />
               </div>
               <div className={'contractForm-inputField'}>
