@@ -66,9 +66,15 @@ class SummaryForm extends Component {
     if (mandate.mandate) {
       let attributes = this.transformKey(mandate.mandate.data.attributes);
 
-      if (attributes.signatureDate === null) {
-        attributes.signatureDate = moment().format('MM/DD/YYYY');
+      if (_.isEmpty(attributes.signatureDate)) {
+        attributes.signatureDate = moment().format('YYYY-MM-DD');
+      } else {
+        attributes.signatureDate = moment(
+          attributes.signatureDate,
+          'DD-MM-YYYY'
+        ).format('YYYY-MM-DD');
       }
+
       this.props.initialize(attributes);
     }
   }
@@ -93,8 +99,7 @@ class SummaryForm extends Component {
             <Field
               name="signatureDate"
               component={renderField}
-              placeholder="dd/mm/yyyy"
-              type="text"
+              type="date"
               inputClassName={'contractForm-inputLine summary-inputLabel'}
             />
           </div>

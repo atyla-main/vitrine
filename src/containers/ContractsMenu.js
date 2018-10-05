@@ -105,7 +105,6 @@ class ContractsMenu extends Component {
       mandates.mandatesFetch === true &&
       mandates.fetchingMandates === false
     ) {
-      console.log('BOUCLE INF 3');
       if (this.state.listOn === false) {
         this.setState({ mandates: [] });
         this._getMandatesInfos();
@@ -126,7 +125,6 @@ class ContractsMenu extends Component {
 
   handleContractDelete(mandateId) {
     const { dispatch } = this.props;
-    console.log('MANDATE ID', mandateId);
 
     dispatch(
       updateMandateActions.update(

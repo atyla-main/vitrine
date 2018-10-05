@@ -6,7 +6,8 @@ export const AtylaInputTheme = createMuiTheme({
   overrides: {
     MuiInput: {
       input: {
-        color: 'black'
+        color: 'black',
+        '-webkit-appearance': 'none'
       },
       underline: {
         '&:before': {

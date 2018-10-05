@@ -13,6 +13,7 @@ import {
 } from '../../../styles/inputs/atyla-inputs';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import moment from 'moment';
 
 export const MenuItemTheme = createMuiTheme({
   overrides: {
@@ -107,6 +108,19 @@ class MandantForm extends Component {
 
     if (attributes.maritalState) {
       this.setState({ maritalState: attributes.maritalState });
+    }
+
+    if (attributes.birthDate) {
+      attributes.birthDate = moment(attributes.birthDate, 'DD-MM-YYYY').format(
+        'YYYY-MM-DD'
+      );
+    }
+
+    if (attributes.weddingPacsDate) {
+      attributes.weddingPacsDate = moment(
+        attributes.weddingPacsDate,
+        'DD-MM-YYYY'
+      ).format('YYYY-MM-DD');
     }
 
     this.props.initialize(attributes);
@@ -210,8 +224,7 @@ class MandantForm extends Component {
                   atylaInputLabel={true}
                   name="birthDate"
                   component={renderField}
-                  placeholder="jj/mm/yyyy"
-                  type="text"
+                  type="date"
                   inputClassName={'contractForm-inputLine'}
                 />
               </div>
@@ -266,7 +279,7 @@ class MandantForm extends Component {
                       name="weddingPacsDate"
                       component={renderField}
                       placeholder="jj/mm/yyyy"
-                      type="text"
+                      type="date"
                       inputClassName={'contractForm-inputLine'}
                     />
                   </div>
