@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactFlagsSelect from 'react-flags-select';
 import { I18n } from 'react-i18next';
-import _ from 'lodash';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
 import AtylaLogo from '../../img/atyla-design-v1/logo.png';
 import { Button } from 'react-bootstrap';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
-import { SubmissionError } from 'redux-form';
 
 const renderField = ({
   input,
@@ -70,7 +68,7 @@ const validate = values => {
     errors.passwordConfirmation = 'Requis.';
   }
 
-  if (values.passwordConfirmation != values.password) {
+  if (values.passwordConfirmation !== values.password) {
     errors.passwordConfirmation = 'Doit être similaire au mot de passe.';
   }
 
@@ -147,7 +145,7 @@ class Register extends React.Component {
 
   render() {
     let { isRegister, termOfUseError } = this.state;
-    const { submit, submitting, termOfUseValue } = this.props;
+    const { submitting } = this.props;
 
     return (
       <div>
