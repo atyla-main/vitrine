@@ -6,6 +6,76 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AtylaInputTheme, AtylaInput } from '../../styles/inputs/atyla-inputs';
 import AtylaLogo from '../../img/atyla-design-v1/logo.png';
 import { Button } from 'react-bootstrap';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
+
+const renderField = ({
+  input,
+  label,
+  type,
+  inputClassName,
+  placeholder,
+  multiline,
+  rows,
+  rowsMax,
+  disabled,
+  meta: { touched, error, warning }
+}) => (
+  <div>
+    {label && <label>{label}</label>}
+    <div>
+      <MuiThemeProvider theme={AtylaInputTheme}>
+        <AtylaInput
+          {...input}
+          disabled={disabled}
+          multiline={multiline}
+          rows={rows}
+          rowsMax={rowsMax}
+          placeholder={placeholder}
+          type={type}
+          className={inputClassName}
+        />
+      </MuiThemeProvider>
+      {touched &&
+        ((error && <span className={'register-errorMessage'}>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+);
+
+const validate = values => {
+  const errors = {};
+  if (!values.firstName) {
+    errors.firstName = 'Requis.';
+  }
+
+  if (!values.lastName) {
+    errors.lastName = 'Requis.';
+  }
+
+  if (!values.email) {
+    errors.email = 'Requis.';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Adresse email invalide.';
+  }
+
+  if (!values.password) {
+    errors.password = 'Requis.';
+  } else if (values.password < 8) {
+    errors.password = 'Le mot de passe doit faire au minimum 8 charactères.';
+  }
+
+  if (!values.passwordConfirmation) {
+    errors.passwordConfirmation = 'Requis.';
+  }
+
+  if (values.passwordConfirmation != values.password) {
+    errors.passwordConfirmation = 'Doit être similaire au mot de passe.';
+  }
+
+  return errors;
+};
 
 class Register extends React.Component {
   constructor(props) {
@@ -13,51 +83,22 @@ class Register extends React.Component {
 
     this.state = {
       errors: '',
-      countryCode: '',
-      isChecked: false,
-      isOptIn: false,
-      isRegistered: false,
-      email: '',
-      firstNameError: '',
-      lastNameError: '',
-      emailError: '',
-      passwordError: '',
-      legalError: ''
+      countryCode: 'FR',
+      termOfUseError: '',
+      isRegistered: false
     };
-    this.registerUser = this.registerUser.bind(this);
+    this.registerSubmit = this.registerSubmit.bind(this);
   }
 
-  registerUser(event) {
-    event.preventDefault();
-    this.setState({
-      firstNameError: '',
-      lastNameError: '',
-      emailError: '',
-      passwordError: '',
-      legalError: '',
-      errors: ''
-    });
+  registerSubmit(form) {
+    const { termOfUseValue } = this.props;
+    this.setState({ errors: false });
 
-    if (!this.state.isChecked) {
-      this.setState({
-        legalError: 'form-hasError',
-        errors: "Il vous faut accepter les conditions d'utilisation."
-      });
+    if (!termOfUseValue || termOfUseValue === false) {
+      this.setState({ termOfUseError: true });
       return;
-    }
-
-    if (this.password.value !== this.password1.value) {
-      this.setState({
-        passwordError: 'has-error',
-        errors: 'Les mots de passe ne correspondent pas.'
-      });
-      return;
-    } else if (this.password.value && this.password.value.length < 8) {
-      this.setState({
-        passwordError: 'has-error',
-        errors: 'Le mot de passe doit faire au minimum 8 charactères.'
-      });
-      return;
+    } else {
+      this.setState({ termOfUseError: false });
     }
 
     fetch(`${process.env.REACT_APP_APIV1_URL}users`, {
@@ -69,55 +110,34 @@ class Register extends React.Component {
       body: JSON.stringify({
         data: {
           attributes: {
-            firstName: `${this.firstName.value}`,
-            lastName: `${this.lastName.value}`,
-            email: `${this.email.value}`,
-            password: `${this.password.value}`,
+            firstName: `${form.values.firstName}`,
+            lastName: `${form.values.lastName}`,
+            email: `${form.values.email}`,
+            password: `${form.values.password}`,
             country: `${this.state.countryCode}`,
-            optIn: `${this.state.isOptIn}`
+            optIn: `${form.values.termOfUse}`
           }
         }
       })
     })
       .then(res => res.json())
       .then(res => {
-        if (res.name && res.name === 'SequelizeValidationError') {
+        if (res.errors) {
           res.errors.forEach(error => {
-            this.setState({ [error.path + 'Error']: 'has-error' });
-            this.setState({ errors: 'Les champs sont obligatoires.' });
-            if (error.path === 'email' && !_.isEmpty(this.email.value)) {
-              if (error.validatorKey === 'isEmail') {
-                this.setState({ errors: 'Format de l’email invalid.' });
-              } else if (error.validatorKey === 'isUnique') {
-                this.setState({ errors: 'Email déjà utilisé.' });
-              }
+            if (error.detail && error.detail === 'email must be unique') {
+              this.setState({ errors: 'Email déjà utilisé.' });
+            } else {
+              this.setState({ errors: 'Merci de bien remplir le formulaire.' });
             }
           });
         } else {
-          this.setState({
-            errors: '',
-            isRegistered: true,
-            email: this.email.value
-          });
+          this.setState({ isRegister: true });
         }
       })
       .catch(err => {
         this.setState({ errors: 'Erreur serveur merci de recharger la page.' });
       });
-    window.location.href = '/login';
   }
-
-  toggleOptInChange = () => {
-    this.setState({
-      isOptIn: !this.state.isOptIn
-    });
-  };
-
-  toggleConditionsChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked
-    });
-  };
 
   onSelectFlag = countryCode => {
     this.setState({
@@ -126,11 +146,8 @@ class Register extends React.Component {
   };
 
   render() {
-    let isRegister = this.state.isRegistered;
-    let firstNameError = this.state.firstNameError;
-    let lastNameError = this.state.lastNameError;
-    let emailError = this.state.emailError;
-    let passwordError = this.state.passwordError;
+    let { isRegister, termOfUseError } = this.state;
+    const { submit, submitting, termOfUseValue } = this.props;
 
     return (
       <div>
@@ -181,82 +198,100 @@ class Register extends React.Component {
                         </span>
                       </p>
                     </div>
-                    <form className="login-form" onSubmit={this.registerUser}>
+                    <form
+                      className="login-form"
+                      onSubmit={e => {
+                        e.preventDefault();
+                        if (!this.props.registerFormValues.syncErrors) {
+                          this.registerSubmit(this.props.registerFormValues);
+                        }
+                      }}
+                    >
                       <MuiThemeProvider theme={AtylaInputTheme}>
-                        <AtylaInput
-                          ref={firstName => (this.firstName = firstName)}
-                          placeholder="Prénom"
-                          type="text"
-                          className={
-                            'login-loginInput mod-intern mod-register' +
-                            firstNameError
-                          }
-                          name="firstName"
-                        />
-                        <AtylaInput
-                          ref={lastName => (this.lastName = lastName)}
-                          placeholder="Nom"
-                          type="text"
-                          className={
-                            'login-loginInput mod-intern mod-register' +
-                            lastNameError
-                          }
-                          name="lastName"
-                        />
-                        <AtylaInput
-                          ref={email => (this.email = email)}
-                          placeholder="Email"
-                          type="text"
-                          className={
-                            'login-loginInput mod-intern mod-register' +
-                            emailError
-                          }
-                          name="email"
-                        />
+                        <div>
+                          <Field
+                            name="firstName"
+                            type="text"
+                            component={renderField}
+                            placeholder="Prénom"
+                            inputClassName={
+                              'login-loginInput mod-intern mod-register'
+                            }
+                          />
+                        </div>
+                        <div>
+                          <Field
+                            name="lastName"
+                            type="text"
+                            component={renderField}
+                            placeholder="Nom"
+                            inputClassName={
+                              'login-loginInput mod-intern mod-register'
+                            }
+                          />
+                        </div>
+                        <div>
+                          <Field
+                            name="email"
+                            type="text"
+                            component={renderField}
+                            placeholder="Email"
+                            inputClassName={
+                              'login-loginInput mod-intern mod-register'
+                            }
+                          />
+                        </div>
                         <ReactFlagsSelect
                           searchable={true}
-                          defaultCountry="FR"
-                          className="login-loginInput mod-intern mod-register"
+                          defaultCountry={this.state.countryCode}
+                          className="login-loginInput mod-intern mod-register mod-flag"
+                          selectedSize={21}
                           onSelect={this.onSelectFlag}
                         />
-                        <AtylaInput
-                          ref={password => (this.password = password)}
-                          placeholder="Mot de passe"
-                          type="password"
-                          className={
-                            'login-loginInput mod-intern mod-register' +
-                            passwordError
-                          }
-                          name="password"
-                        />
-                        <AtylaInput
-                          ref={password1 => (this.password1 = password1)}
-                          placeholder="Confirmez votre mot de passe"
-                          type="password"
-                          className={
-                            'login-loginInput mod-intern mod-register' +
-                            passwordError
-                          }
-                          name="passwordConfirmation"
-                        />
+                        <div>
+                          <Field
+                            name="password"
+                            type="password"
+                            component={renderField}
+                            placeholder="Mot de passe"
+                            inputClassName={
+                              'login-loginInput mod-intern mod-register'
+                            }
+                          />
+                        </div>
+                        <div className={'register-input'}>
+                          <Field
+                            name="passwordConfirmation"
+                            type="password"
+                            component={renderField}
+                            placeholder="Confirmez votre mot de passe"
+                            inputClassName={
+                              'login-loginInput mod-intern mod-register'
+                            }
+                          />
+                        </div>
                       </MuiThemeProvider>
                       <div className="register-checkBoxes">
-                        <input
+                        <Field
+                          name="termOfUse"
+                          component="input"
                           type="checkbox"
-                          checked={this.state.isChecked}
-                          onChange={this.toggleConditionsChange}
                           className="login-loginInput mod-checkBox"
-                          name="legalAge"
                         />
                         <p className="legalError">
                           Je certifie avoir lu et accepté les{' '}
                           <a>Conditions d’utilisation</a> de atyla
                         </p>
                       </div>
+                      {termOfUseError && (
+                        <p className={'register-errorMessage'}>Requis</p>
+                      )}
+                      <div />
                       <Button
                         className="login-button"
                         bsStyle="success"
                         type="submit"
+                        disabled={submitting}
                       >
                         Retournez à la page de connexion atyla
                       </Button>
@@ -273,4 +308,19 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+Register = reduxForm({
+  form: 'registerForm',
+  validate
+})(Register);
+
+const selector = (form, ...other) =>
+  formValueSelector('registerForm')(...other);
+
+function mapStateToProps(state, initialProps) {
+  return {
+    registerFormValues: state.form.registerForm,
+    termOfUseValue: selector(initialProps.form, state, 'termOfUse')
+  };
+}
+
+export default connect(mapStateToProps)(Register);

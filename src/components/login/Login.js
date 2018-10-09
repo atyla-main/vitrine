@@ -78,14 +78,14 @@ class Login extends React.Component {
                     <div className="login-inputs">
                       <MuiThemeProvider theme={AtylaInputTheme}>
                         <AtylaInput
-                          className="login-loginInput mod-intern"
+                          className="login-loginInput mod-intern mod-register"
                           inputRef={email => (this.email = email)}
                           placeholder="Saisissez votre adresse e-mail"
                           type="text"
                           name="email"
                         />
                         <AtylaInput
-                          className="login-loginInput mod-last"
+                          className="login-loginInput mod-last mod-register"
                           inputRef={password => (this.password = password)}
                           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                           type="password"

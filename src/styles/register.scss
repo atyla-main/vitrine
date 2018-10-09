@@ -3,7 +3,7 @@
 }
 
 .login {
-      margin-top: 0;
+  margin-top: 0;
 }
 
 .login-container {
@@ -144,4 +144,15 @@
 
 .legalError {
   margin-top: 10px;
+}
+
+.register-errorMessage {
+  color: red;
+  font-size: 12px;
+  font-family: 'Lato-Regular';
+  font-style: italic;
+}
+
+.register-input {
+  margin-bottom: 72px;
 }

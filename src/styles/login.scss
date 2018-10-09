@@ -22,8 +22,7 @@ $color-chambray: #31538f;
 }
 
 .login-logo {
-  margin-top: 2vw;
-  margin-left: 2vw;
+  margin: 2vw 0 2vw 2vw;
 }
 
 .login-container {
@@ -177,6 +176,16 @@ $color-chambray: #31538f;
 
   &.mod-register {
     width: 100%;
+  }
+
+  &.mod-flag {
+    height: 40px;
+    border-bottom: 1px solid #bbdeff;
+    padding: 0;
+
+    &:hover {
+      border-bottom: 1px solid #3d25c8;
+    }
   }
 
   &.has-error {
